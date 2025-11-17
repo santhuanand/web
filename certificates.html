@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificates - Santhosh Anand</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/web-vitals@3/dist/web-vitals.iife.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-logo">Certificates</div>
+        <div class="progress-bar">
+            <div class="progress-fill"></div>
+        </div>
+    </div>
+    
+    <!-- Animated Particles -->
+    <div class="particles" id="particles"></div>
+    
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo" onclick="window.location.href='index.html'" style="cursor: pointer;">Santhosh Anand</div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="certifications section-loading" style="padding-top: 120px; background: #f8fafc;">
+        <div class="container">
+            <h2 class="section-title fade-in-up">Professional Certifications</h2>
+            <p style="text-align: center; color: #6b7280; margin-bottom: 40px; font-size: 1.1rem;">Comprehensive Collection of Cloud, DevOps, Data Analytics, and AI Certifications</p>
+            
+            <div class="cert-filter" style="text-align: center; margin-bottom: 40px;">
+                <button class="filter-btn active" onclick="filterCerts('all')">All Certificates</button>
+                <button class="filter-btn" onclick="filterCerts('aws')">AWS</button>
+                <button class="filter-btn" onclick="filterCerts('azure')">Azure</button>
+                <button class="filter-btn" onclick="filterCerts('gcp')">Google Cloud</button>
+                <button class="filter-btn" onclick="filterCerts('data')">Data & Analytics</button>
+                <button class="filter-btn" onclick="filterCerts('devops')">DevOps</button>
+                <button class="filter-btn" onclick="filterCerts('ai')">AI</button>
+                <button class="filter-btn" onclick="filterCerts('others')">Others</button>
+            </div>
+            <div class="preview-grid" id="certificatesGrid">
+                <div class="preview-item enhanced-card fade-in-up" data-category="aws" onclick="openPDF('Certificates/AWS Solutions Architect Associate.pdf')">
+                    <h4>AWS Solutions Architect Associate</h4>
+                    <embed src="Certificates/AWS Solutions Architect Associate.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
+                    <div class="mobile-pdf-placeholder">
+                        <i class="fas fa-file-pdf"></i>
+                        <p>PDF Certificate</p>
+                        <button class="mobile-view-btn" onclick="event.stopPropagation(); openPDF('Certificates/AWS Solutions Architect Associate.pdf')">View Certificate</button>
+                    </div>
+                </div>
+                <div class="preview-item" data-category="aws" onclick="openPDF('Certificates/AWS Developer Associate.pdf')">
+                    <h4>AWS Developer Associate</h4>
+                    <embed src="Certificates/AWS Developer Associate.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
+                    <div class="mobile-pdf-placeholder">
+                        <i class="fas fa-file-pdf"></i>
+                        <p>PDF Certificate</p>
+                        <button class="mobile-view-btn" onclick="event.stopPropagation(); openPDF('Certificates/AWS Developer Associate.pdf')">View Certificate</button>
+                    </div>
+                </div>
+                <div class="preview-item" data-category="aws" onclick="openPDF('Certificates/AWS SysOps Associate Certification Training.pdf')">
+                    <h4>AWS SysOps Associate</h4>
+                    <embed src="Certificates/AWS SysOps Associate Certification Training.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
+                    <div class="mobile-pdf-placeholder">
+                        <i class="fas fa-file-pdf"></i>
+                        <p>PDF Certificate</p>
+                        <button class="mobile-view-btn" onclick="event.stopPropagation(); openPDF('Certificates/AWS SysOps Associate Certification Training.pdf')">View Certificate</button>
+                    </div>
+                </div>
+                <div class="preview-item" data-category="azure" onclick="openPDF('Certificates/Microsoft Certified Azure Administrator Associate.pdf')">
+                    <h4>Microsoft Azure Administrator</h4>
+                    <embed src="Certificates/Microsoft Certified Azure Administrator Associate.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
+                    <div class="mobile-pdf-placeholder">
+                        <i class="fas fa-file-pdf"></i>
+                        <p>PDF Certificate</p>
+                        <button class="mobile-view-btn" onclick="event.stopPropagation(); openPDF('Certificates/Microsoft Certified Azure Administrator Associate.pdf')">View Certificate</button>
+                    </div>
+                </div>
+                <div class="preview-item" data-category="azure" onclick="openPDF('Certificates/Microsoft Certified Azure Developer Associate.pdf')">
+                    <h4>Microsoft Azure Developer</h4>
+                    <embed src="Certificates/Microsoft Certified Azure Developer Associate.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
+                    <div class="mobile-pdf-placeholder">
+                        <i class="fas fa-file-pdf"></i>
+                        <p>PDF Certificate</p>
+                        <button class="mobile-view-btn" onclick="event.stopPropagation(); openPDF('Certificates/Microsoft Certified Azure Developer Associate.pdf')">View Certificate</button>
+                    </div>
+                </div>
+                <div class="preview-item" data-category="devops" onclick="openPDF('Certificates/DevOps on AWS.pdf')">
+                    <h4>DevOps on AWS</h4>
+                    <embed src="Certificates/DevOps on AWS.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
+                    <div class="mobile-pdf-placeholder">
+                        <i class="fas fa-file-pdf"></i>
+                        <p>PDF Certificate</p>
+                        <button class="mobile-view-btn" onclick="event.stopPropagation(); openPDF('Certificates/DevOps on AWS.pdf')">View Certificate</button>
+                    </div>
+                </div>
+                <div class="preview-item" data-category="devops" onclick="openPDF('Certificates/DevOps on Azure.pdf')">
+                    <h4>DevOps on Azure</h4>
+                    <embed src="Certificates/DevOps on Azure.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
+                    <div class="mobile-pdf-placeholder">
+                        <i class="fas fa-file-pdf"></i>
+                        <p>PDF Certificate</p>
+                        <button class="mobile-view-btn" onclick="event.stopPropagation(); openPDF('Certificates/DevOps on Azure.pdf')">View Certificate</button>
+                    </div>
+                </div>
+                <div class="preview-item" data-category="aws" onclick="openPDF('Certificates/Cloud Security.pdf')">
+                    <h4>Cloud Security</h4>
+                    <embed src="Certificates/Cloud Security.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
+                    <div class="mobile-pdf-placeholder">
+                        <i class="fas fa-file-pdf"></i>
+                        <p>PDF Certificate</p>
+                        <button class="mobile-view-btn" onclick="event.stopPropagation(); openPDF('Certificates/Cloud Security.pdf')">View Certificate</button>
+                    </div>
+                </div>
+                <div class="preview-item" data-category="data" onclick="openPDF('Certificates/Big Data Hadoop and Spark Developer OSL.pdf')">
+                    <h4>Big Data Hadoop and Spark</h4>
+                    <embed src="Certificates/Big Data Hadoop and Spark Developer OSL.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
+                    <div class="mobile-pdf-placeholder">
+                        <i class="fas fa-file-pdf"></i>
+                        <p>PDF Certificate</p>
+                        <button class="mobile-view-btn" onclick="event.stopPropagation(); openPDF('Certificates/Big Data Hadoop and Spark Developer OSL.pdf')">View Certificate</button>
+                    </div>
+                </div>
+                <div class="preview-item" data-category="data" onclick="openPDF('Certificates/Microsoft Power BI Certification Training.pdf')">
+                    <h4>Microsoft Power BI</h4>
+                    <embed src="Certificates/Microsoft Power BI Certification Training.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
+                    <div class="mobile-pdf-placeholder">
+                        <i class="fas fa-file-pdf"></i>
+                        <p>PDF Certificate</p>
+                        <button class="mobile-view-btn" onclick="event.stopPropagation(); openPDF('Certificates/Microsoft Power BI Certification Training.pdf')">View Certificate</button>
+                    </div>
+                </div>
+                <div class="preview-item" data-category="others" onclick="openPDF('Certificates/Agile Scrum Master.pdf')">
+                    <h4>Agile Scrum Master</h4>
+                    <embed src="Certificates/Agile Scrum Master.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
+                    <div class="mobile-pdf-placeholder">
+                        <i class="fas fa-file-pdf"></i>
+                        <p>PDF Certificate</p>
+                        <button class="mobile-view-btn" onclick="event.stopPropagation(); openPDF('Certificates/Agile Scrum Master.pdf')">View Certificate</button>
+                    </div>
+                </div>
+                <div class="preview-item" data-category="ai" onclick="openPDF('Certificates/Introduction to Artificial Intelligence.pdf')">
+                    <h4>Introduction to Artificial Intelligence</h4>
+                    <embed src="Certificates/Introduction to Artificial Intelligence.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
+                    <div class="mobile-pdf-placeholder">
+                        <i class="fas fa-file-pdf"></i>
+                        <p>PDF Certificate</p>
+                        <button class="mobile-view-btn" onclick="event.stopPropagation(); openPDF('Certificates/Introduction to Artificial Intelligence.pdf')">View Certificate</button>
+                    </div>
+                </div>
+                <div class="preview-item" data-category="ai" onclick="openPDF('Certificates/Digital Transformation.pdf')">
+                    <h4>Digital Transformation</h4>
+                    <embed src="Certificates/Digital Transformation.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
+                    <div class="mobile-pdf-placeholder">
+                        <i class="fas fa-file-pdf"></i>
+                        <p>PDF Certificate</p>
+                        <button class="mobile-view-btn" onclick="event.stopPropagation(); openPDF('Certificates/Digital Transformation.pdf')">View Certificate</button>
+                    </div>
+                </div>
+                <div class="preview-item" data-category="data" onclick="openPDF('Certificates/Business Analytics with Excel.pdf')">
+                    <h4>Business Analytics with Excel</h4>
+                    <embed src="Certificates/Business Analytics with Excel.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
+                    <div class="mobile-pdf-placeholder">
+                        <i class="fas fa-file-pdf"></i>
+                        <p>PDF Certificate</p>
+                        <button class="mobile-view-btn" onclick="event.stopPropagation(); openPDF('Certificates/Business Analytics with Excel.pdf')">View Certificate</button>
+                    </div>
+                </div>
+                <div class="preview-item" data-category="data" onclick="openPDF('Certificates/Tableau Desktop Specialist Certification Training.pdf')">
+                    <h4>Tableau Desktop Specialist</h4>
+                    <embed src="Certificates/Tableau Desktop Specialist Certification Training.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
+                    <div class="mobile-pdf-placeholder">
+                        <i class="fas fa-file-pdf"></i>
+                        <p>PDF Certificate</p>
+                        <button class="mobile-view-btn" onclick="event.stopPropagation(); openPDF('Certificates/Tableau Desktop Specialist Certification Training.pdf')">View Certificate</button>
+                    </div>
+                </div>
+                <div class="preview-item" data-category="aws" onclick="openPDF('Certificates/AWS Technical Essentials.pdf')">
+                    <h4>AWS Technical Essentials</h4>
+                    <embed src="Certificates/AWS Technical Essentials.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
+                    <div class="mobile-pdf-placeholder">
+                        <i class="fas fa-file-pdf"></i>
+                        <p>PDF Certificate</p>
+                        <button class="mobile-view-btn" onclick="event.stopPropagation(); openPDF('Certificates/AWS Technical Essentials.pdf')">View Certificate</button>
+                    </div>
+                </div>
+                <div class="preview-item" data-category="aws" onclick="openPDF('Certificates/AWS Database Migration.pdf')">
+                    <h4>AWS Database Migration</h4>
+                    <embed src="Certificates/AWS Database Migration.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
+                    <div class="mobile-pdf-placeholder">
+                        <i class="fas fa-file-pdf"></i>
+                        <p>PDF Certificate</p>
+                        <button class="mobile-view-btn" onclick="event.stopPropagation(); openPDF('Certificates/AWS Database Migration.pdf')">View Certificate</button>
+                    </div>
+                </div>
+                <div class="preview-item" data-category="aws" onclick="openPDF('Certificates/Big Data on AWS.pdf')">
+                    <h4>Big Data on AWS</h4>
+                    <embed src="Certificates/Big Data on AWS.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
+                    <div class="mobile-pdf-placeholder">
+                        <i class="fas fa-file-pdf"></i>
+                        <p>PDF Certificate</p>
+                        <button class="mobile-view-btn" onclick="event.stopPropagation(); openPDF('Certificates/Big Data on AWS.pdf')">View Certificate</button>
+                    </div>
+                </div>
+                <div class="preview-item" data-category="aws" onclick="openPDF('Certificates/Cloud Architect Capstone.pdf')">
+                    <h4>Cloud Architect Capstone</h4>
+                    <embed src="Certificates/Cloud Architect Capstone.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
+                    <div class="mobile-pdf-placeholder">
+                        <i class="fas fa-file-pdf"></i>
+                        <p>PDF Certificate</p>
+                        <button class="mobile-view-btn" onclick="event.stopPropagation(); openPDF('Certificates/Cloud Architect Capstone.pdf')">View Certificate</button>
+                    </div>
+                </div>
+                <div class="preview-item" data-category="azure" onclick="openPDF('Certificates/Designing Microsoft Azure Infrastructure Solutions.pdf')">
+                    <h4>Azure Infrastructure Solutions</h4>
+                    <embed src="Certificates/Designing Microsoft Azure Infrastructure Solutions.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
+                    <div class="mobile-pdf-placeholder">
+                        <i class="fas fa-file-pdf"></i>
+                        <p>PDF Certificate</p>
+                        <button class="mobile-view-btn" onclick="event.stopPropagation(); openPDF('Certificates/Designing Microsoft Azure Infrastructure Solutions.pdf')">View Certificate</button>
+                    </div>
+                </div>
+                <div class="preview-item" data-category="azure" onclick="openPDF('Certificates/Developing Solutions for Microsoft Azure.pdf')">
+                    <h4>Azure Solutions Development</h4>
+                    <embed src="Certificates/Developing Solutions for Microsoft Azure.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
+                    <div class="mobile-pdf-placeholder">
+                        <i class="fas fa-file-pdf"></i>
+                        <p>PDF Certificate</p>
+                        <button class="mobile-view-btn" onclick="event.stopPropagation(); openPDF('Certificates/Developing Solutions for Microsoft Azure.pdf')">View Certificate</button>
+                    </div>
+                </div>
+                <div class="preview-item" data-category="devops" onclick="openPDF('Certificates/DevOps Training.pdf')">
+                    <h4>DevOps Training</h4>
+                    <embed src="Certificates/DevOps Training.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
+                    <div class="mobile-pdf-placeholder">
+                        <i class="fas fa-file-pdf"></i>
+                        <p>PDF Certificate</p>
+                        <button class="mobile-view-btn" onclick="event.stopPropagation(); openPDF('Certificates/DevOps Training.pdf')">View Certificate</button>
+                    </div>
+                </div>
+                <div class="preview-item" data-category="others" onclick="openPDF('Certificates/GIT Training.pdf')">
+                    <h4>GIT Training</h4>
+                    <embed src="Certificates/GIT Training.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
+                    <div class="mobile-pdf-placeholder">
+                        <i class="fas fa-file-pdf"></i>
+                        <p>PDF Certificate</p>
+                        <button class="mobile-view-btn" onclick="event.stopPropagation(); openPDF('Certificates/GIT Training.pdf')">View Certificate</button>
+                    </div>
+                </div>
+                <div class="preview-item" data-category="data" onclick="openPDF('Certificates/Introduction to Data Analytics.pdf')">
+                    <h4>Introduction to Data Analytics</h4>
+                    <embed src="Certificates/Introduction to Data Analytics.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
+                    <div class="mobile-pdf-placeholder">
+                        <i class="fas fa-file-pdf"></i>
+                        <p>PDF Certificate</p>
+                        <button class="mobile-view-btn" onclick="event.stopPropagation(); openPDF('Certificates/Introduction to Data Analytics.pdf')">View Certificate</button>
+                    </div>
+                </div>
+                <div class="preview-item" data-category="ai" onclick="openPDF('Certificates/Introduction to Robotic Process Automation.pdf')">
+                    <h4>Robotic Process Automation</h4>
+                    <embed src="Certificates/Introduction to Robotic Process Automation.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
+                    <div class="mobile-pdf-placeholder">
+                        <i class="fas fa-file-pdf"></i>
+                        <p>PDF Certificate</p>
+                        <button class="mobile-view-btn" onclick="event.stopPropagation(); openPDF('Certificates/Introduction to Robotic Process Automation.pdf')">View Certificate</button>
+                    </div>
+                </div>
+                <div class="preview-item" data-category="others" onclick="openPDF('Certificates/Linux Training.pdf')">
+                    <h4>Linux Training</h4>
+                    <embed src="Certificates/Linux Training.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
+                    <div class="mobile-pdf-placeholder">
+                        <i class="fas fa-file-pdf"></i>
+                        <p>PDF Certificate</p>
+                        <button class="mobile-view-btn" onclick="event.stopPropagation(); openPDF('Certificates/Linux Training.pdf')">View Certificate</button>
+                    </div>
+                </div>
+                <div class="preview-item" data-category="azure" onclick="openPDF('Certificates/Microsoft Azure Fundamentals.pdf')">
+                    <h4>Microsoft Azure Fundamentals</h4>
+                    <embed src="Certificates/Microsoft Azure Fundamentals.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
+                    <div class="mobile-pdf-placeholder">
+                        <i class="fas fa-file-pdf"></i>
+                        <p>PDF Certificate</p>
+                        <button class="mobile-view-btn" onclick="event.stopPropagation(); openPDF('Certificates/Microsoft Azure Fundamentals.pdf')">View Certificate</button>
+                    </div>
+                </div>
+                <div class="preview-item" data-category="gcp" onclick="openPDF('Certificates/Google Cloud Platform Architect Training.pdf')">
+                    <h4>Google Cloud Platform Architect</h4>
+                    <embed src="Certificates/Google Cloud Platform Architect Training.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
+                    <div class="mobile-pdf-placeholder">
+                        <i class="fas fa-file-pdf"></i>
+                        <p>PDF Certificate</p>
+                        <button class="mobile-view-btn" onclick="event.stopPropagation(); openPDF('Certificates/Google Cloud Platform Architect Training.pdf')">View Certificate</button>
+                    </div>
+                </div>
+                <div class="preview-item" data-category="gcp" onclick="openPDF('Certificates/Introduction to Google Cloud Platform.pdf')">
+                    <h4>Introduction to Google Cloud</h4>
+                    <embed src="Certificates/Introduction to Google Cloud Platform.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
+                    <div class="mobile-pdf-placeholder">
+                        <i class="fas fa-file-pdf"></i>
+                        <p>PDF Certificate</p>
+                        <button class="mobile-view-btn" onclick="event.stopPropagation(); openPDF('Certificates/Introduction to Google Cloud Platform.pdf')">View Certificate</button>
+                    </div>
+                </div>
+                <div class="preview-item" data-category="gcp" onclick="openPDF('Certificates/Google Cloud Series.pdf')">
+                    <h4>Google Cloud Series</h4>
+                    <embed src="Certificates/Google Cloud Series.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
+                    <div class="mobile-pdf-placeholder">
+                        <i class="fas fa-file-pdf"></i>
+                        <p>PDF Certificate</p>
+                        <button class="mobile-view-btn" onclick="event.stopPropagation(); openPDF('Certificates/Google Cloud Series.pdf')">View Certificate</button>
+                    </div>
+                </div>
+                <div class="preview-item" data-category="ai" onclick="openPDF('Certificates/Be10X Certificate.pdf')">
+                    <h4>Be10X Certificate</h4>
+                    <embed src="Certificates/Be10X Certificate.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
+                    <div class="mobile-pdf-placeholder">
+                        <i class="fas fa-file-pdf"></i>
+                        <p>PDF Certificate</p>
+                        <button class="mobile-view-btn" onclick="event.stopPropagation(); openPDF('Certificates/Be10X Certificate.pdf')">View Certificate</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTop" class="scroll-to-top" aria-label="Scroll to top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <script>
+        // Apply theme from localStorage
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        document.body.setAttribute('data-theme', savedTheme);
+        
+        // Scroll to Top Button
+        const scrollToTopBtn = document.getElementById('scrollToTop');
+        if (scrollToTopBtn) {
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 300) {
+                    scrollToTopBtn.classList.add('visible');
+                } else {
+                    scrollToTopBtn.classList.remove('visible');
+                }
+            });
+            
+            scrollToTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        }
+        
+        // Magnetic Cursor Effect
+        if (!window.matchMedia('(pointer: coarse)').matches) {
+            const cursor = document.createElement('div');
+            cursor.className = 'cursor';
+            document.body.appendChild(cursor);
+            
+            document.addEventListener('mousemove', (e) => {
+                cursor.style.left = e.clientX - 10 + 'px';
+                cursor.style.top = e.clientY - 10 + 'px';
+            });
+            
+            const interactiveElements = document.querySelectorAll('a, button, .preview-item, .filter-btn');
+            interactiveElements.forEach(el => {
+                el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+                el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+            });
+        }
+        
+        function filterCerts(category) {
+            const items = document.querySelectorAll('.preview-item');
+            const buttons = document.querySelectorAll('.filter-btn');
+            
+            buttons.forEach(btn => btn.classList.remove('active'));
+            event.target.classList.add('active');
+            
+            items.forEach(item => {
+                if (category === 'all' || item.dataset.category === category) {
+                    item.style.display = 'block';
+                    item.style.animation = 'fadeInUp 0.5s ease';
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+        }
+
+        function openPDF(pdfPath) {
+            window.open(pdfPath, '_blank', 'width=900,height=700,scrollbars=yes,resizable=yes');
+        }
+
+
+    </script>
+</body>
+</html>

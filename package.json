@@ -1,0 +1,30 @@
+{
+  "name": "@santhuanand/portfolio",
+  "version": "1.0.0",
+  "description": "Professional portfolio website for Santhosh Anand",
+  "main": "index.html",
+  "scripts": {
+    "build": "node build.js",
+    "serve": "npx http-server . -p 3000 -c-1",
+    "validate": "npx html-validate index.html",
+    "lighthouse": "npx lighthouse http://localhost:3000 --output html --output-path ./lighthouse-report.html"
+  },
+  "keywords": [
+    "portfolio",
+    "resume",
+    "developer",
+    "senior-development-manager"
+  ],
+  "author": "Santhosh Anand <santhuanand7@gmail.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "http-server": "^14.1.1",
+    "html-validate": "^8.7.4",
+    "lighthouse": "^11.4.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/santhoshanand/portfolio.git"
+  },
+  "homepage": "https://santhuanand.github.io/Portfilio"
+}
