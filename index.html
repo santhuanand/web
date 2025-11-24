@@ -7,21 +7,21 @@
     <meta name="keywords" content="software developer, senior development manager, .NET developer, AWS architect, team leader, HRTech, HealthTech, enterprise solutions, Bengaluru">
     <meta name="author" content="Santhosh Anand">
     <meta name="robots" content="index, follow">
-    <link rel="canonical" href="https://santhuanand.github.io/Portfilio">
+    <link rel="canonical" href="https://www.asnrtech.com">
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://santhuanand.github.io/Portfilio">
+    <meta property="og:url" content="https://www.asnrtech.com">
     <meta property="og:title" content="Santhosh Anand - Senior Development Manager">
     <meta property="og:description" content="13+ years experience leading software development teams. Expert in .NET, AWS, and enterprise solutions.">
-    <meta property="og:image" content="https://santhuanand.github.io/Portfilio/Photo.jpeg">
+    <meta property="og:image" content="https://www.asnrtech.com/Photo.jpeg">
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
-    <meta property="twitter:url" content="https://santhuanand.github.io/Portfilio">
+    <meta property="twitter:url" content="https://www.asnrtech.com">
     <meta property="twitter:title" content="Santhosh Anand - Senior Development Manager">
     <meta property="twitter:description" content="13+ years experience leading software development teams. Expert in .NET, AWS, and enterprise solutions.">
-    <meta property="twitter:image" content="https://santhuanand.github.io/Portfilio/Photo.jpeg">
+    <meta property="twitter:image" content="https://www.asnrtech.com/Photo.jpeg">
     
     <!-- Security Headers -->
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
@@ -34,19 +34,16 @@
     <link rel="icon" type="image/x-icon" href="favicon.svg">
     <link rel="apple-touch-icon" sizes="180x180" href="favicon.svg">
     
-    <!-- PWA Manifest -->
-    <link rel="manifest" href="/manifest.json">
     <meta name="theme-color" content="#2563eb">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <meta name="apple-mobile-web-app-title" content="Santhosh Portfolio">
     
     <title>Santhosh Anand - Senior Development Manager | .NET & AWS Expert</title>
+    <link rel="preload" href="styles.css" as="style">
+    <link rel="preload" href="Photo.jpeg" as="image">
     <link rel="stylesheet" href="styles.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" crossorigin="anonymous">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" crossorigin="anonymous" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" media="print" onload="this.media='all'">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://unpkg.com/web-vitals@3/dist/web-vitals.iife.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     
     <!-- Structured Data -->
     <script type="application/ld+json">
@@ -59,7 +56,7 @@
         "@type": "Organization",
         "name": "TeamLease Services Ltd"
       },
-      "url": "https://santhuanand.github.io/Portfilio",
+      "url": "https://www.asnrtech.com",
       "sameAs": [
         "https://www.linkedin.com/in/santhoshanand"
       ],
@@ -76,16 +73,12 @@
     </script>
 </head>
 <body>
-    <!-- Preloader -->
-    <div class="preloader" id="preloader">
-        <div class="preloader-logo">Santhosh Anand</div>
-        <div class="progress-bar">
-            <div class="progress-fill"></div>
-        </div>
-    </div>
+
     
-    <!-- Animated Particles -->
-    <div class="particles" id="particles"></div>
+    <!-- Reading Progress Bar -->
+    <div class="reading-progress">
+        <div class="progress-bar-fill" id="progressBar"></div>
+    </div>
     
     <!-- Skip Navigation -->
     <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -148,9 +141,9 @@
     </section>
 
     <!-- About Section -->
-    <section id="about" class="about section-loading">
+    <section id="about" class="about">
         <div class="container">
-            <h2 class="section-title fade-in-up">About Me</h2>
+            <h2 class="section-title">About Me</h2>
             <div class="about-content">
                 <p>Seasoned Software Development Manager with over 13 years of experience leading high-impact software design, development, and team management initiatives across HRTech, HealthTech, Payment Gateway, ERP domains, Verification, and Utilities domains. Successfully delivered enterprise-grade applications serving huge enterprise clients and over 3L+ active users daily. Expert in Microsoft (.NET) technologies, SQL databases, and AWS cloud solutions with proven ability to optimize performance and design scalable architectures.</p>
                 <div class="about-stats">
@@ -173,11 +166,16 @@
 
     <!-- Experience Section -->
     <section id="experience" class="experience">
+        <div class="section-progress">
+            <div class="section-progress-fill" id="experienceProgress"></div>
+        </div>
         <div class="container">
             <h2 class="section-title">Professional Experience</h2>
             <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
+                <div class="timeline-item" data-duration="5+ years">
+                    <div class="timeline-dot">
+                        <div class="timeline-tooltip">Current Role</div>
+                    </div>
                     <div class="timeline-content">
                         <h3>Senior Development Manager</h3>
                         <h4>TeamLease Services Ltd, Bengaluru</h4>
@@ -188,10 +186,26 @@
                             <li>Collaborated using Agile Scrum methodologies, ensuring 95% sprint goal achievement</li>
                             <li>Enhanced user engagement and support response times by 35% through API-driven workflows</li>
                         </ul>
+                        <div class="timeline-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Team Size:</span>
+                                <span class="detail-value">10 members</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Technologies:</span>
+                                <span class="detail-value">.NET Core, React, AWS, n8n</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Key Metrics:</span>
+                                <span class="detail-value">95% sprint success, 40% efficiency gain</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
+                <div class="timeline-item" data-duration="2.8 years">
+                    <div class="timeline-dot">
+                        <div class="timeline-tooltip">HealthTech Expert</div>
+                    </div>
                     <div class="timeline-content">
                         <h3>Senior Software Engineer</h3>
                         <h4>Clario (BioClinica India Ltd), Bengaluru</h4>
@@ -202,10 +216,26 @@
                             <li>Accelerated clinical trial data availability by 20% through real-time analytics</li>
                             <li>Optimized complex query performances, resulting in 25% boost in system responsiveness</li>
                         </ul>
+                        <div class="timeline-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Clients:</span>
+                                <span class="detail-value">Abbott, AstraZeneca, Pfizer</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Focus:</span>
+                                <span class="detail-value">Clinical Trial Management</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Impact:</span>
+                                <span class="detail-value">25% performance boost, 20% faster data</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
+                <div class="timeline-item" data-duration="1.2 years">
+                    <div class="timeline-dot">
+                        <div class="timeline-tooltip">Verification Systems</div>
+                    </div>
                     <div class="timeline-content">
                         <h3>Software Engineer</h3>
                         <h4>Softtek India Pvt. Ltd, Bengaluru</h4>
@@ -216,10 +246,26 @@
                             <li>Automated reconciliation scripts, reducing manual effort by 35%</li>
                             <li>Processed 50,000+ background verification records daily with 99.9% accuracy</li>
                         </ul>
+                        <div class="timeline-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Daily Volume:</span>
+                                <span class="detail-value">50,000+ records</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">SLA:</span>
+                                <span class="detail-value">99% compliance rate</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Automation:</span>
+                                <span class="detail-value">35% manual effort reduction</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-                <div class="timeline-item">
-                    <div class="timeline-dot"></div>
+                <div class="timeline-item" data-duration="1 year">
+                    <div class="timeline-dot">
+                        <div class="timeline-tooltip">Dubai Consultant</div>
+                    </div>
                     <div class="timeline-content">
                         <h3>Senior Software Developer (Consultant)</h3>
                         <h4>ATG Solutions LLC, Dubai</h4>
@@ -230,6 +276,20 @@
                             <li>Implemented ERP suite improving operational effectiveness by 25%</li>
                             <li>Led onsite-offshore coordination for multi-million-dollar hospitality ERP implementation</li>
                         </ul>
+                        <div class="timeline-details">
+                            <div class="detail-item">
+                                <span class="detail-label">Location:</span>
+                                <span class="detail-value">Dubai, UAE</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Partners:</span>
+                                <span class="detail-value">Mashreq Bank, Mastercard</span>
+                            </div>
+                            <div class="detail-item">
+                                <span class="detail-label">Project Value:</span>
+                                <span class="detail-value">Multi-million dollar ERP</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="timeline-item">
@@ -252,103 +312,120 @@
 
     <!-- Skills Section -->
     <section id="skills" class="skills">
+        <div class="section-progress">
+            <div class="section-progress-fill" id="skillsProgress"></div>
+        </div>
         <div class="container">
             <h2 class="section-title">Technical Expertise</h2>
             <div class="skills-grid">
                 <div class="skill-category">
                     <h3>Technical Expertise</h3>
                     <div class="skill-item">
-                        <span>C# / ASP.NET / .NET Core</span>
+                        <span class="skill-name">C# / ASP.NET / .NET Core</span>
                         <div class="skill-bar">
                             <div class="skill-progress" data-width="95%"></div>
                         </div>
+                        <span class="skill-percentage">95%</span>
                     </div>
                     <div class="skill-item">
-                        <span>JavaScript / React / Node.js</span>
+                        <span class="skill-name">JavaScript / React / Node.js</span>
                         <div class="skill-bar">
                             <div class="skill-progress" data-width="90%"></div>
                         </div>
+                        <span class="skill-percentage">90%</span>
                     </div>
                     <div class="skill-item">
-                        <span>RESTful APIs / Microservices</span>
+                        <span class="skill-name">RESTful APIs / Microservices</span>
                         <div class="skill-bar">
                             <div class="skill-progress" data-width="88%"></div>
                         </div>
+                        <span class="skill-percentage">88%</span>
                     </div>
                     <div class="skill-item">
-                        <span>HTML/CSS / ADO.NET</span>
+                        <span class="skill-name">HTML/CSS / ADO.NET</span>
                         <div class="skill-bar">
                             <div class="skill-progress" data-width="85%"></div>
                         </div>
+                        <span class="skill-percentage">85%</span>
                     </div>
                 </div>
                 <div class="skill-category">
                     <h3>Cloud & DevOps</h3>
                     <div class="skill-item">
-                        <span>AWS (EC2, S3, SQS, SES, IAM, RDS)</span>
+                        <span class="skill-name">AWS (EC2, S3, SQS, SES, IAM, RDS)</span>
                         <div class="skill-bar">
                             <div class="skill-progress" data-width="90%"></div>
                         </div>
+                        <span class="skill-percentage">90%</span>
                     </div>
                     <div class="skill-item">
-                        <span>Azure / CI/CD Pipelines</span>
+                        <span class="skill-name">Azure / CI/CD Pipelines</span>
                         <div class="skill-bar">
                             <div class="skill-progress" data-width="85%"></div>
                         </div>
+                        <span class="skill-percentage">85%</span>
                     </div>
                     <div class="skill-item">
-                        <span>DevOps Best Practices</span>
+                        <span class="skill-name">DevOps Best Practices</span>
                         <div class="skill-bar">
                             <div class="skill-progress" data-width="80%"></div>
                         </div>
+                        <span class="skill-percentage">80%</span>
                     </div>
                 </div>
                 <div class="skill-category">
                     <h3>Data & Databases</h3>
                     <div class="skill-item">
-                        <span>Microsoft SQL Server</span>
+                        <span class="skill-name">Microsoft SQL Server</span>
                         <div class="skill-bar">
                             <div class="skill-progress" data-width="95%"></div>
                         </div>
+                        <span class="skill-percentage">95%</span>
                     </div>
                     <div class="skill-item">
-                        <span>PostgreSQL / MySQL</span>
+                        <span class="skill-name">PostgreSQL / MySQL</span>
                         <div class="skill-bar">
                             <div class="skill-progress" data-width="85%"></div>
                         </div>
+                        <span class="skill-percentage">85%</span>
                     </div>
                     <div class="skill-item">
-                        <span>Database Performance Optimization</span>
+                        <span class="skill-name">Database Performance Optimization</span>
                         <div class="skill-bar">
                             <div class="skill-progress" data-width="90%"></div>
                         </div>
+                        <span class="skill-percentage">90%</span>
                     </div>
                 </div>
                 <div class="skill-category">
                     <h3>AI & Leadership</h3>
                     <div class="skill-item">
-                        <span>Amazon Q / GitHub Copilot</span>
+                        <span class="skill-name">Amazon Q / GitHub Copilot</span>
                         <div class="skill-bar">
                             <div class="skill-progress" data-width="85%"></div>
                         </div>
+                        <span class="skill-percentage">85%</span>
                     </div>
                     <div class="skill-item">
-                        <span>n8n Workflow Automation</span>
+                        <span class="skill-name">n8n Workflow Automation</span>
                         <div class="skill-bar">
                             <div class="skill-progress" data-width="80%"></div>
                         </div>
+                        <span class="skill-percentage">80%</span>
                     </div>
                     <div class="skill-item">
-                        <span>Team Management (10 members)</span>
+                        <span class="skill-name">Team Management (10 members)</span>
                         <div class="skill-bar">
                             <div class="skill-progress" data-width="95%"></div>
                         </div>
+                        <span class="skill-percentage">95%</span>
                     </div>
                     <div class="skill-item">
-                        <span>Agile/Scrum Methodologies</span>
+                        <span class="skill-name">Agile/Scrum Methodologies</span>
                         <div class="skill-bar">
                             <div class="skill-progress" data-width="92%"></div>
                         </div>
+                        <span class="skill-percentage">92%</span>
                     </div>
                 </div>
             </div>
@@ -357,6 +434,9 @@
 
     <!-- Portfolio Section -->
     <section id="portfolio" class="portfolio">
+        <div class="section-progress">
+            <div class="section-progress-fill" id="portfolioProgress"></div>
+        </div>
         <div class="container">
             <h2 class="section-title">Featured Projects</h2>
             <div class="portfolio-grid">
@@ -705,26 +785,58 @@
                 </div>
                 
                 <div class="contact-form">
+                    <div class="success-animation" id="successAnimation" style="display: none;">
+                        <div class="success-checkmark">
+                            <div class="check-icon">
+                                <span class="icon-line line-tip"></span>
+                                <span class="icon-line line-long"></span>
+                                <div class="icon-circle"></div>
+                                <div class="icon-fix"></div>
+                            </div>
+                        </div>
+                        <h3>Message Sent Successfully!</h3>
+                        <p>Thank you for reaching out. I'll get back to you soon.</p>
+                    </div>
                     <form id="contactForm" novalidate>
                         <div class="form-group">
                             <label for="name" class="sr-only">Your Name</label>
-                            <input type="text" id="name" name="name" placeholder="Your Name" required aria-describedby="name-error" autocomplete="name">
+                            <div class="input-wrapper">
+                                <i class="fas fa-user input-icon"></i>
+                                <input type="text" id="name" name="name" placeholder="Your Name" required aria-describedby="name-error" autocomplete="name">
+                            </div>
                             <div id="name-error" class="error-message" role="alert"></div>
                         </div>
                         <div class="form-group">
                             <label for="email" class="sr-only">Your Email</label>
-                            <input type="email" id="email" name="email" placeholder="Your Email" required aria-describedby="email-error" autocomplete="email">
+                            <div class="input-wrapper">
+                                <i class="fas fa-envelope input-icon"></i>
+                                <input type="email" id="email" name="email" placeholder="Your Email" required aria-describedby="email-error" autocomplete="email">
+                            </div>
                             <div id="email-error" class="error-message" role="alert"></div>
                         </div>
                         <div class="form-group">
                             <label for="subject" class="sr-only">Subject</label>
-                            <input type="text" id="subject" name="subject" placeholder="Subject" required aria-describedby="subject-error">
+                            <div class="input-wrapper">
+                                <i class="fas fa-tag input-icon"></i>
+                                <input type="text" id="subject" name="subject" placeholder="Subject" required aria-describedby="subject-error">
+                            </div>
                             <div id="subject-error" class="error-message" role="alert"></div>
                         </div>
                         <div class="form-group">
                             <label for="message" class="sr-only">Your Message</label>
-                            <textarea id="message" name="message" rows="5" placeholder="Your Message" required aria-describedby="message-error"></textarea>
+                            <div class="input-wrapper">
+                                <i class="fas fa-comment input-icon"></i>
+                                <textarea id="message" name="message" rows="5" placeholder="Your Message" required aria-describedby="message-error"></textarea>
+                            </div>
                             <div id="message-error" class="error-message" role="alert"></div>
+                        </div>
+                        <div class="form-group">
+                            <label for="captcha">Security Check: <span id="mathQuestion"></span></label>
+                            <div class="input-wrapper">
+                                <i class="fas fa-calculator input-icon"></i>
+                                <input type="number" id="captcha" name="captcha" placeholder="Enter the answer" required aria-describedby="captcha-error">
+                            </div>
+                            <div id="captcha-error" class="error-message" role="alert"></div>
                         </div>
                         <button type="submit" class="btn btn-primary" id="submit-btn">
                             <span class="btn-text">Send Message</span>

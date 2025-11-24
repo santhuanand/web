@@ -26,6 +26,11 @@
             <ul class="nav-menu">
                 <li><a href="index.html" class="nav-link">Home</a></li>
             </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
     </nav>
 
@@ -378,23 +383,207 @@
         function filterCerts(category) {
             const items = document.querySelectorAll('.preview-item');
             const buttons = document.querySelectorAll('.filter-btn');
+            const activeButton = event.target;
             
-            buttons.forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
+            // Show loading state on button
+            activeButton.style.opacity = '0.7';
+            activeButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading...';
             
-            items.forEach(item => {
-                if (category === 'all' || item.dataset.category === category) {
-                    item.style.display = 'block';
-                    item.style.animation = 'fadeInUp 0.5s ease';
-                } else {
-                    item.style.display = 'none';
-                }
-            });
+            // Small delay for visual feedback
+            setTimeout(() => {
+                buttons.forEach(btn => {
+                    btn.classList.remove('active');
+                    // Reset button text
+                    if (btn !== activeButton) {
+                        btn.innerHTML = btn.getAttribute('data-original-text') || btn.textContent;
+                    }
+                });
+                
+                activeButton.classList.add('active');
+                activeButton.style.opacity = '1';
+                
+                // Reset button text based on category
+                const buttonTexts = {
+                    'all': 'All Certificates',
+                    'aws': 'AWS',
+                    'azure': 'Azure',
+                    'gcp': 'Google Cloud',
+                    'data': 'Data & Analytics',
+                    'devops': 'DevOps',
+                    'ai': 'AI',
+                    'others': 'Others'
+                };
+                activeButton.innerHTML = buttonTexts[category] || 'All Certificates';
+                
+                items.forEach(item => {
+                    if (category === 'all' || item.dataset.category === category) {
+                        item.style.display = 'block';
+                        item.style.animation = 'fadeInUp 0.5s ease';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            }, 300);
         }
 
         function openPDF(pdfPath) {
+            // Show loading state
+            const clickedItem = event.currentTarget;
+            const originalContent = clickedItem.innerHTML;
+            clickedItem.style.opacity = '0.7';
+            clickedItem.style.pointerEvents = 'none';
+            
+            // Add loading indicator
+            const loadingDiv = document.createElement('div');
+            loadingDiv.style.cssText = `
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                color: #2563eb;
+                font-size: 1.5rem;
+                z-index: 10;
+            `;
+            loadingDiv.innerHTML = '<i class="fas fa-spinner fa-spin"></i>';
+            clickedItem.style.position = 'relative';
+            clickedItem.appendChild(loadingDiv);
+            
+            // Open PDF
             window.open(pdfPath, '_blank', 'width=900,height=700,scrollbars=yes,resizable=yes');
+            
+            // Reset after short delay
+            setTimeout(() => {
+                clickedItem.style.opacity = '1';
+                clickedItem.style.pointerEvents = 'auto';
+                if (loadingDiv.parentNode) {
+                    loadingDiv.parentNode.removeChild(loadingDiv);
+                }
+            }, 1000);
         }
+        
+        // Mobile Navigation
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        if (hamburger && navMenu) {
+            hamburger.addEventListener('click', (e) => {
+                e.preventDefault();
+                hamburger.classList.toggle('active');
+                navMenu.classList.toggle('active');
+                
+                if (navMenu.classList.contains('active')) {
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    document.body.style.overflow = '';
+                }
+            });
+            
+            document.addEventListener('click', (e) => {
+                if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            });
+        }
+        
+        // Keyboard Navigation & Accessibility
+        document.addEventListener('keydown', (e) => {
+            // Escape key closes mobile menu
+            if (e.key === 'Escape') {
+                const hamburger = document.querySelector('.hamburger');
+                const navMenu = document.querySelector('.nav-menu');
+                if (hamburger && navMenu && navMenu.classList.contains('active')) {
+                    hamburger.classList.remove('active');
+                    navMenu.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            }
+        });
+        
+        // Make certificates keyboard accessible
+        document.querySelectorAll('.preview-item').forEach(item => {
+            // Add tabindex for keyboard focus
+            item.setAttribute('tabindex', '0');
+            item.setAttribute('role', 'button');
+            item.setAttribute('aria-label', 'Open ' + item.querySelector('h4').textContent + ' certificate');
+            
+            // Handle keyboard events
+            item.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    item.click();
+                }
+            });
+        });
+        
+        // Make filter buttons keyboard accessible
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+            btn.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    btn.click();
+                }
+            });
+        });
+        
+        // Simple Lazy Loading for PDFs
+        const lazyLoadPDFs = () => {
+            const pdfEmbeds = document.querySelectorAll('embed[src*=".pdf"]');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const embed = entry.target;
+                        const src = embed.getAttribute('src');
+                        
+                        // Only load if not already loaded
+                        if (src && !embed.classList.contains('loaded')) {
+                            embed.classList.add('loaded');
+                            // Add loading indicator
+                            embed.style.background = 'linear-gradient(45deg, #f0f0f0 25%, transparent 25%), linear-gradient(-45deg, #f0f0f0 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #f0f0f0 75%), linear-gradient(-45deg, transparent 75%, #f0f0f0 75%)';
+                            embed.style.backgroundSize = '20px 20px';
+                            embed.style.backgroundPosition = '0 0, 0 10px, 10px -10px, -10px 0px';
+                            embed.style.animation = 'loading 1s linear infinite';
+                            
+                            // Reload the embed to trigger loading
+                            const newSrc = src;
+                            embed.src = '';
+                            setTimeout(() => {
+                                embed.src = newSrc;
+                                embed.onload = () => {
+                                    embed.style.background = '';
+                                    embed.style.animation = '';
+                                };
+                            }, 100);
+                        }
+                        observer.unobserve(embed);
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '50px'
+            });
+            
+            pdfEmbeds.forEach(embed => {
+                observer.observe(embed);
+            });
+        };
+        
+        // Initialize lazy loading after page load
+        window.addEventListener('load', () => {
+            setTimeout(lazyLoadPDFs, 500);
+        });
+        
+        // Add CSS animation for loading effect
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes loading {
+                0% { background-position: 0 0, 0 10px, 10px -10px, -10px 0px; }
+                100% { background-position: 20px 20px, 20px 30px, 30px 10px, 10px 20px; }
+            }
+        `;
+        document.head.appendChild(style);
 
 
     </script>

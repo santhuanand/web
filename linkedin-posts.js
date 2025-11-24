@@ -257,7 +257,7 @@ class LinkedInPostsManager {
     // Sanitize text content
     sanitizeText(text) {
         if (typeof text !== 'string') return '';
-        return text.replace(/[<>\"'&]/g, function(match) {
+        return text.replace(/[<>\\"'&]/g, function(match) {
             const escapeMap = {
                 '<': '&lt;',
                 '>': '&gt;',

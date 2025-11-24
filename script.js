@@ -1,51 +1,6 @@
-// Core Web Vitals Tracking
-if (typeof webVitals !== 'undefined') {
-    function sendToAnalytics(metric) {
-        console.log('Core Web Vital:', metric.name, metric.value);
-        // Send to your analytics service here
-    }
-    
-    webVitals.getCLS(sendToAnalytics);
-    webVitals.getFID(sendToAnalytics);
-    webVitals.getFCP(sendToAnalytics);
-    webVitals.getLCP(sendToAnalytics);
-    webVitals.getTTFB(sendToAnalytics);
-}
 
-// Service Worker Registration with offline functionality
-if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-        try {
-            navigator.serviceWorker.register('/sw.js', {
-                scope: '/',
-                updateViaCache: 'none'
-            })
-            .then(registration => {
-                console.log('SW registered: ', registration);
-                // Show offline capability notification
-                setTimeout(() => {
-                    if (!navigator.onLine) {
-                        ToastManager.show('Website available offline', 'info');
-                    }
-                }, 2000);
-            })
-            .catch(registrationError => {
-                console.warn('SW registration failed: ', registrationError);
-            });
-        } catch (error) {
-            console.warn('Service Worker not supported:', error);
-        }
-    });
-    
-    // Online/offline status
-    window.addEventListener('online', () => {
-        ToastManager.show('Back online', 'success');
-    });
-    
-    window.addEventListener('offline', () => {
-        ToastManager.show('Offline mode - cached content available', 'info');
-    });
-}
+
+
 
 // Mobile Navigation Toggle with security validation
 const hamburger = document.querySelector('.hamburger');
@@ -61,9 +16,25 @@ if (hamburger && navMenu) {
             if (hamburger && navMenu) {
                 hamburger.classList.toggle('active');
                 navMenu.classList.toggle('active');
+                
+                // Prevent body scroll when menu is open
+                if (navMenu.classList.contains('active')) {
+                    document.body.style.overflow = 'hidden';
+                } else {
+                    document.body.style.overflow = '';
+                }
             }
         } catch (error) {
             console.warn('Navigation toggle failed:', error);
+        }
+    });
+    
+    // Close menu when clicking outside
+    document.addEventListener('click', (e) => {
+        if (!hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+            document.body.style.overflow = '';
         }
     });
 }
@@ -299,26 +270,7 @@ try {
     console.warn('Parallax effect failed:', error);
 }
 
-// Magnetic Cursor Effect
-try {
-    const cursor = document.createElement('div');
-    cursor.className = 'cursor';
-    document.body.appendChild(cursor);
-    
-    document.addEventListener('mousemove', (e) => {
-        cursor.style.left = e.clientX - 10 + 'px';
-        cursor.style.top = e.clientY - 10 + 'px';
-    });
-    
-    // Hover effects for interactive elements
-    const interactiveElements = document.querySelectorAll('a, button, .portfolio-item, .cert-item, .timeline-dot');
-    interactiveElements.forEach(el => {
-        el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
-        el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
-    });
-} catch (error) {
-    console.warn('Cursor effect failed:', error);
-}
+
 
 // Interactive Micro-Animations
 try {
@@ -615,11 +567,25 @@ const FormValidator = {
     }
 };
 
+// Math Captcha Generation
+function generateMathCaptcha() {
+    const num1 = Math.floor(Math.random() * 10) + 1;
+    const num2 = Math.floor(Math.random() * 10) + 1;
+    const answer = num1 + num2;
+    
+    document.getElementById('mathQuestion').textContent = `${num1} + ${num2} = ?`;
+    document.getElementById('captcha').dataset.answer = answer;
+    document.getElementById('captcha').value = '';
+}
+
 // Contact form handling with enhanced validation
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
+    // Generate initial math captcha
+    generateMathCaptcha();
+    
     // Real-time validation
-    ['name', 'email', 'subject', 'message'].forEach(field => {
+    ['name', 'email', 'subject', 'message', 'captcha'].forEach(field => {
         const input = document.getElementById(field);
         if (input) {
             input.addEventListener('blur', function() {
@@ -672,22 +638,6 @@ if (contactForm) {
                 submitBtn.disabled = true;
             }
             
-            // Enhanced EmailJS validation
-            if (typeof emailjs === 'undefined' || !EMAIL_CONFIG.serviceId || !EMAIL_CONFIG.templateId) {
-                ToastManager.show('Email service not available. Please contact directly at santhuanand7@gmail.com', 'error');
-                resetSubmitButton();
-                return;
-            }
-            
-            const templateParams = {
-                from_name: sanitizeInput(formData.get('name')),
-                from_email: sanitizeInput(formData.get('email')),
-                subject: sanitizeInput(formData.get('subject')),
-                message: sanitizeInput(formData.get('message')),
-                to_name: 'Santhosh Anand',
-                timestamp: new Date().toISOString()
-            };
-            
             function resetSubmitButton() {
                 try {
                     if (submitBtn) {
@@ -699,6 +649,36 @@ if (contactForm) {
                 }
             }
             
+            // Enhanced EmailJS validation
+            if (typeof emailjs === 'undefined' || !EMAIL_CONFIG.serviceId || !EMAIL_CONFIG.templateId) {
+                ToastManager.show('Email service not available. Please contact directly at santhuanand7@gmail.com', 'error');
+                resetSubmitButton();
+                return;
+            }
+            
+            // Validate math captcha
+            const captchaAnswer = parseInt(formData.get('captcha'));
+            const correctAnswer = parseInt(document.getElementById('captcha').dataset.answer);
+            if (captchaAnswer !== correctAnswer) {
+                document.getElementById('captcha-error').textContent = 'Incorrect answer. Please try again.';
+                ToastManager.show('Please solve the math problem correctly', 'error');
+                generateMathCaptcha();
+                resetSubmitButton();
+                return;
+            } else {
+                document.getElementById('captcha-error').textContent = '';
+            }
+            
+            const templateParams = {
+                from_name: sanitizeInput(formData.get('name')),
+                from_email: sanitizeInput(formData.get('email')),
+                subject: sanitizeInput(formData.get('subject')),
+                message: sanitizeInput(formData.get('message')),
+                to_name: 'Santhosh Anand',
+                timestamp: new Date().toISOString(),
+                captcha_verified: true
+            };
+            
             // Enhanced email sending with timeout
             const emailPromise = emailjs.send(EMAIL_CONFIG.serviceId, EMAIL_CONFIG.templateId, templateParams);
             const timeoutPromise = new Promise((_, reject) => 
@@ -708,12 +688,28 @@ if (contactForm) {
             Promise.race([emailPromise, timeoutPromise])
                 .then(function(response) {
                     if (response && response.status === 200) {
-                        ToastManager.show('Message sent successfully! I will get back to you soon.', 'success');
-                        contactForm.reset();
-                        // Clear all error states
-                        ['name', 'email', 'subject', 'message'].forEach(field => {
-                            FormValidator.clearError(field);
-                        });
+                        // Show success animation
+                        const successAnimation = document.getElementById('successAnimation');
+                        if (successAnimation && contactForm) {
+                            contactForm.style.display = 'none';
+                            successAnimation.style.display = 'block';
+                            
+                            // Reset form after animation
+                            setTimeout(() => {
+                                contactForm.reset();
+                                generateMathCaptcha();
+                                ['name', 'email', 'subject', 'message', 'captcha'].forEach(field => {
+                                    FormValidator.clearError(field);
+                                });
+                                document.getElementById('captcha-error').textContent = '';
+                                
+                                // Hide animation and show form again after 3 seconds
+                                setTimeout(() => {
+                                    successAnimation.style.display = 'none';
+                                    contactForm.style.display = 'block';
+                                }, 3000);
+                            }, 100);
+                        }
                     } else {
                         throw new Error('Email service returned error');
                     }
@@ -724,6 +720,13 @@ if (contactForm) {
                         ? 'Request timed out. Please try again or contact directly at santhuanand7@gmail.com'
                         : 'Failed to send message. Please try again or contact directly at santhuanand7@gmail.com';
                     ToastManager.show(errorMessage, 'error');
+                    
+                    // Ensure form is visible on error
+                    const successAnimation = document.getElementById('successAnimation');
+                    if (successAnimation && contactForm) {
+                        successAnimation.style.display = 'none';
+                        contactForm.style.display = 'block';
+                    }
                 })
                 .finally(function() {
                     resetSubmitButton();
@@ -764,38 +767,27 @@ if (scrollToTopBtn) {
     });
 }
 
-// Enhanced Preloader
-try {
-    const preloader = document.getElementById('preloader');
-    if (preloader) {
-        setTimeout(() => {
-            preloader.style.opacity = '0';
-            setTimeout(() => {
-                preloader.style.display = 'none';
-                document.body.classList.add('loaded');
-            }, 500);
-        }, 3000);
-    }
-} catch (error) {
-    console.warn('Preloader failed:', error);
-}
 
-// Animated Particles
+
+// Magnetic Cursor Effect
 try {
-    const particlesContainer = document.getElementById('particles');
-    if (particlesContainer) {
-        for (let i = 0; i < 50; i++) {
-            const particle = document.createElement('div');
-            particle.className = 'particle';
-            particle.style.left = Math.random() * 100 + '%';
-            particle.style.top = Math.random() * 100 + '%';
-            particle.style.animationDelay = Math.random() * 6 + 's';
-            particle.style.animationDuration = (Math.random() * 3 + 3) + 's';
-            particlesContainer.appendChild(particle);
-        }
-    }
+    const cursor = document.createElement('div');
+    cursor.className = 'cursor';
+    document.body.appendChild(cursor);
+    
+    document.addEventListener('mousemove', (e) => {
+        cursor.style.left = e.clientX - 10 + 'px';
+        cursor.style.top = e.clientY - 10 + 'px';
+    });
+    
+    // Hover effects for interactive elements
+    const interactiveElements = document.querySelectorAll('a, button, .portfolio-item, .cert-item, .timeline-dot');
+    interactiveElements.forEach(el => {
+        el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+        el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+    });
 } catch (error) {
-    console.warn('Particles failed:', error);
+    console.warn('Cursor effect failed:', error);
 }
 
 // Intersection Observer for Animations
@@ -854,27 +846,7 @@ const ToastManager = {
     }
 };
 
-// Testimonial Carousel Auto-play
-try {
-    const testimonials = document.querySelectorAll('.recommendation-card');
-    if (testimonials.length > 0) {
-        let currentIndex = 0;
-        
-        // Hide all except first
-        testimonials.forEach((card, index) => {
-            card.style.display = index === 0 ? 'block' : 'none';
-        });
-        
-        // Auto-play function
-        setInterval(() => {
-            testimonials[currentIndex].style.display = 'none';
-            currentIndex = (currentIndex + 1) % testimonials.length;
-            testimonials[currentIndex].style.display = 'block';
-        }, 4000);
-    }
-} catch (error) {
-    console.warn('Testimonial carousel failed:', error);
-}
+
 
 // Dark Mode Toggle Functionality
 const themeToggle = document.getElementById('theme-toggle');
@@ -934,4 +906,145 @@ if (themeToggle && body) {
         }
     });
 }
+
+// Keyboard Navigation & Accessibility
+document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        if (hamburger && navMenu && navMenu.classList.contains('active')) {
+            hamburger.classList.remove('active');
+            navMenu.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+    }
+});
+
+// Make interactive elements keyboard accessible
+document.querySelectorAll('.portfolio-item, .cert-item').forEach(item => {
+    item.setAttribute('tabindex', '0');
+    item.setAttribute('role', 'button');
+    
+    item.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            item.click();
+        }
+    });
+});
+
+// Reading Progress Bar
+const progressBar = document.getElementById('progressBar');
+if (progressBar) {
+    window.addEventListener('scroll', () => {
+        const scrolled = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+        progressBar.style.width = Math.min(scrolled, 100) + '%';
+    }, { passive: true });
+}
+
+// Calculate Experience Duration
+function calculateExperienceDuration() {
+    const timelineItems = document.querySelectorAll('.timeline-item');
+    
+    timelineItems.forEach(item => {
+        const dateElement = item.querySelector('.timeline-date');
+        if (dateElement) {
+            const dateText = dateElement.textContent;
+            
+            if (dateText.includes('Present')) {
+                // Current position
+                const startDate = dateText.split(' - ')[0];
+                const years = calculateYearsFromStart(startDate);
+                item.setAttribute('data-duration', `${years}+ years`);
+            } else if (dateText.includes(' - ')) {
+                // Past position
+                const [startDate, endDate] = dateText.split(' - ');
+                const years = calculateYearsBetween(startDate, endDate);
+                item.setAttribute('data-duration', `${years} year${years > 1 ? 's' : ''}`);
+            }
+        }
+    });
+}
+
+function calculateYearsFromStart(startDateStr) {
+    try {
+        const [month, year] = startDateStr.split(' ');
+        const monthMap = {
+            'Jan': 0, 'Feb': 1, 'Mar': 2, 'Apr': 3, 'May': 4, 'Jun': 5,
+            'Jul': 6, 'Aug': 7, 'Sep': 8, 'Oct': 9, 'Nov': 10, 'Dec': 11
+        };
+        
+        const startDate = new Date(parseInt(year), monthMap[month], 1);
+        const currentDate = new Date();
+        
+        const diffTime = currentDate - startDate;
+        const diffYears = diffTime / (1000 * 60 * 60 * 24 * 365.25);
+        
+        return Math.floor(diffYears);
+    } catch (error) {
+        console.warn('Date calculation failed:', error);
+        return 5;
+    }
+}
+
+function calculateYearsBetween(startDateStr, endDateStr) {
+    try {
+        const monthMap = {
+            'Jan': 0, 'Feb': 1, 'Mar': 2, 'Apr': 3, 'May': 4, 'Jun': 5,
+            'Jul': 6, 'Aug': 7, 'Sep': 8, 'Oct': 9, 'Nov': 10, 'Dec': 11
+        };
+        
+        const [startMonth, startYear] = startDateStr.split(' ');
+        const [endMonth, endYear] = endDateStr.split(' ');
+        
+        const startMonthNum = monthMap[startMonth];
+        const endMonthNum = monthMap[endMonth];
+        
+        // Calculate total months (add 1 to include the end month)
+        const totalMonths = (parseInt(endYear) - parseInt(startYear)) * 12 + (endMonthNum - startMonthNum) + 1;
+        
+        // Convert to years with 1 decimal place
+        const years = Math.round((totalMonths / 12) * 10) / 10;
+        
+        return years;
+    } catch (error) {
+        console.warn('Date calculation failed:', error);
+        return 2;
+    }
+}
+
+// Initialize experience duration calculation
+calculateExperienceDuration();
+
+// Section Progress Indicators
+const sectionProgressObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            const sectionId = entry.target.id;
+            const progressElement = document.getElementById(sectionId + 'Progress');
+            
+            if (progressElement) {
+                const rect = entry.target.getBoundingClientRect();
+                const viewportHeight = window.innerHeight;
+                const sectionHeight = entry.target.offsetHeight;
+                const visibleHeight = Math.min(rect.bottom, viewportHeight) - Math.max(rect.top, 0);
+                const progress = Math.max(0, Math.min(100, (visibleHeight / Math.min(sectionHeight, viewportHeight)) * 100));
+                
+                progressElement.style.height = progress + '%';
+            }
+        }
+    });
+}, {
+    threshold: [0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1.0]
+});
+
+// Observe sections with progress indicators
+['experience', 'skills', 'portfolio'].forEach(sectionId => {
+    const section = document.getElementById(sectionId);
+    if (section) {
+        sectionProgressObserver.observe(section);
+    }
+});
+
+
 

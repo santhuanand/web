@@ -1,8 +1,4 @@
 User-agent: *
 Allow: /
 
-# Sitemap
-Sitemap: https://santhoshanand.dev/sitemap.xml
-
-# Crawl-delay
-Crawl-delay: 1
+Sitemap: https://www.asnrtech.com/sitemap.xml
