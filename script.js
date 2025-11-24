@@ -581,8 +581,17 @@ function generateMathCaptcha() {
 // Contact form handling with enhanced validation
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
-    // Generate initial math captcha
-    generateMathCaptcha();
+    // Generate initial math captcha after DOM is ready
+    document.addEventListener('DOMContentLoaded', () => {
+        generateMathCaptcha();
+    });
+    
+    // Also generate immediately if DOM is already loaded
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', generateMathCaptcha);
+    } else {
+        generateMathCaptcha();
+    }
     
     // Real-time validation
     ['name', 'email', 'subject', 'message', 'captcha'].forEach(field => {
