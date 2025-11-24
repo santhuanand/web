@@ -1,14 +1,13 @@
-const CACHE_NAME = 'portfolio-v1';
+const CACHE_NAME = 'santhosh-portfolio-v1';
 const urlsToCache = [
   '/',
   '/index.html',
-  '/certificates.html',
   '/styles.css',
   '/script.js',
+  '/linkedin-posts.js',
   '/Photo.jpeg',
   '/Portfolio.pdf',
-  'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css',
-  'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap'
+  '/certificates.html'
 ];
 
 self.addEventListener('install', event => {

@@ -41,8 +41,8 @@
     <link rel="preload" href="Photo.jpeg" as="image">
     <link rel="stylesheet" href="styles.css">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" crossorigin="anonymous" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" media="print" onload="this.media='all'">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" crossorigin="anonymous" referrerpolicy="no-referrer" integrity="sha384-I9Zjhqf3gBKEhvJNgF8lZVFvXzKhKGEuGVHAuGzKhKGEuGVHAuGzKhKGEuGVHAuGz"></script>
 
     
     <!-- Structured Data -->
@@ -106,6 +106,8 @@
             </div>
         </div>
     </nav>
+    
+
 
     <!-- Hero Section -->
     <main id="main-content">
@@ -113,12 +115,12 @@
         <div class="hero-container">
             <div class="hero-content">
                 <div class="hero-text">
-                    <h1 class="hero-title">Santhosh Anand</h1>
-                    <h2 class="hero-subtitle">Senior Development Manager @ TeamLease</h2>
-                    <p class="hero-description">13+ years of experience leading high-impact software design, development, and team management across HRTech, HealthTech, Payment Gateway, ERP, and Utilities domains.</p>
+                    <h1 class="hero-title font-extrabold">Santhosh Anand</h1>
+                    <h2 class="hero-subtitle font-medium">Senior Development Manager @ TeamLease</h2>
+                    <p class="hero-description text-large font-light" style="color: #1f2937;">13+ years of experience leading high-impact software design, development, and team management across HRTech, HealthTech, Payment Gateway, ERP, and Utilities domains.</p>
                     <div class="hero-buttons">
                         <a href="#contact" class="btn btn-primary">Get In Touch</a>
-                        <a href="Portfolio.pdf" target="_blank" class="btn btn-secondary" aria-label="View Santhosh Anand's portfolio document">
+                        <a href="Portfolio.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" aria-label="View Santhosh Anand's portfolio document">
                             <i class="fas fa-file-pdf" aria-hidden="true"></i> View Portfolio
                         </a>
                     </div>
@@ -143,19 +145,20 @@
     <!-- About Section -->
     <section id="about" class="about">
         <div class="container">
-            <h2 class="section-title">About Me</h2>
+            <h2 class="section-title font-bold scroll-animate-fade">About Me</h2>
             <div class="about-content">
-                <p>Seasoned Software Development Manager with over 13 years of experience leading high-impact software design, development, and team management initiatives across HRTech, HealthTech, Payment Gateway, ERP domains, Verification, and Utilities domains. Successfully delivered enterprise-grade applications serving huge enterprise clients and over 3L+ active users daily. Expert in Microsoft (.NET) technologies, SQL databases, and AWS cloud solutions with proven ability to optimize performance and design scalable architectures.</p>
-                <div class="about-stats">
-                    <div class="stat-item">
+                <p class="text-large font-normal scroll-animate">Seasoned Software Development Manager with over 13 years of experience leading high-impact software design, development, and team management initiatives across HRTech, HealthTech, Payment Gateway, ERP, Verification, and Utilities domains.</p>
+                <p class="text-large font-normal scroll-animate">Successfully delivered enterprise-grade applications serving major enterprise clients and over 3L+ active users daily. Expert in Microsoft (.NET) technologies, SQL databases, and AWS cloud solutions with proven ability to optimize performance and design scalable architectures.</p>
+                <div class="about-stats scroll-animate-zoom">
+                    <div class="stat-item scroll-animate-slide-up">
                         <h3>13+</h3>
                         <p>Years Experience</p>
                     </div>
-                    <div class="stat-item">
+                    <div class="stat-item scroll-animate-slide-up">
                         <h3>3L+</h3>
                         <p>Active Users Daily</p>
                     </div>
-                    <div class="stat-item">
+                    <div class="stat-item scroll-animate-slide-up">
                         <h3>10</h3>
                         <p>Team Members Led</p>
                     </div>
@@ -170,15 +173,15 @@
             <div class="section-progress-fill" id="experienceProgress"></div>
         </div>
         <div class="container">
-            <h2 class="section-title">Professional Experience</h2>
+            <h2 class="section-title font-bold scroll-animate-fade">Professional Experience</h2>
             <div class="timeline">
-                <div class="timeline-item" data-duration="5+ years">
+                <div class="timeline-item scroll-animate-left" data-duration="5+ years">
                     <div class="timeline-dot">
                         <div class="timeline-tooltip">Current Role</div>
                     </div>
-                    <div class="timeline-content">
-                        <h3>Senior Development Manager</h3>
-                        <h4>TeamLease Services Ltd, Bengaluru</h4>
+                    <div class="timeline-content glass hover-lift">
+                        <h3 class="font-semibold">Senior Development Manager</h3>
+                        <h4 class="font-medium">TeamLease Services Ltd, Bengaluru</h4>
                         <span class="timeline-date">Oct 2019 - Present</span>
                         <p>Domain: HRTech, Staffing & Compliance (3,500+ clients). Led a cross-functional development team of 10 members to deliver high-performance applications with assured scalability & availability.</p>
                         <ul class="achievements">
@@ -202,7 +205,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="timeline-item" data-duration="2.8 years">
+                <div class="timeline-item scroll-animate-right" data-duration="2.8 years">
                     <div class="timeline-dot">
                         <div class="timeline-tooltip">HealthTech Expert</div>
                     </div>
@@ -232,7 +235,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="timeline-item" data-duration="1.2 years">
+                <div class="timeline-item scroll-animate-left" data-duration="1.2 years">
                     <div class="timeline-dot">
                         <div class="timeline-tooltip">Verification Systems</div>
                     </div>
@@ -262,7 +265,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="timeline-item" data-duration="1 year">
+                <div class="timeline-item scroll-animate-right" data-duration="1 year">
                     <div class="timeline-dot">
                         <div class="timeline-tooltip">Dubai Consultant</div>
                     </div>
@@ -292,7 +295,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="timeline-item">
+                <div class="timeline-item scroll-animate-left">
                     <div class="timeline-dot"></div>
                     <div class="timeline-content">
                         <h3>Software Engineer</h3>
@@ -311,14 +314,15 @@
     </section>
 
     <!-- Skills Section -->
-    <section id="skills" class="skills">
+    <section id="skills" class="skills gradient-bg-2">
+        <div class="parallax-bg" style="background: linear-gradient(45deg, rgba(240, 147, 251, 0.1), rgba(245, 87, 108, 0.1));"></div>
         <div class="section-progress">
             <div class="section-progress-fill" id="skillsProgress"></div>
         </div>
         <div class="container">
-            <h2 class="section-title">Technical Expertise</h2>
+            <h2 class="section-title font-bold">Technical Expertise</h2>
             <div class="skills-grid">
-                <div class="skill-category">
+                <div class="skill-category scroll-animate-left">
                     <h3>Technical Expertise</h3>
                     <div class="skill-item">
                         <span class="skill-name">C# / ASP.NET / .NET Core</span>
@@ -349,7 +353,7 @@
                         <span class="skill-percentage">85%</span>
                     </div>
                 </div>
-                <div class="skill-category">
+                <div class="skill-category scroll-animate-right">
                     <h3>Cloud & DevOps</h3>
                     <div class="skill-item">
                         <span class="skill-name">AWS (EC2, S3, SQS, SES, IAM, RDS)</span>
@@ -373,7 +377,7 @@
                         <span class="skill-percentage">80%</span>
                     </div>
                 </div>
-                <div class="skill-category">
+                <div class="skill-category scroll-animate-left">
                     <h3>Data & Databases</h3>
                     <div class="skill-item">
                         <span class="skill-name">Microsoft SQL Server</span>
@@ -397,7 +401,7 @@
                         <span class="skill-percentage">90%</span>
                     </div>
                 </div>
-                <div class="skill-category">
+                <div class="skill-category scroll-animate-right">
                     <h3>AI & Leadership</h3>
                     <div class="skill-item">
                         <span class="skill-name">Amazon Q / GitHub Copilot</span>
@@ -438,57 +442,57 @@
             <div class="section-progress-fill" id="portfolioProgress"></div>
         </div>
         <div class="container">
-            <h2 class="section-title">Featured Projects</h2>
+            <h2 class="section-title font-bold scroll-animate-fade">Featured Projects</h2>
             <div class="portfolio-grid">
-                <div class="portfolio-item">
+                <div class="portfolio-item glass hover-lift scroll-animate-zoom">
                     <div class="portfolio-image">
                         <div class="portfolio-overlay">
                             <h3>HRTech Platform</h3>
                             <p>Enterprise-grade staffing solution serving 3,500+ clients</p>
                             <div class="portfolio-tech">
-                                <span>.NET Core</span>
-                                <span>React</span>
-                                <span>AWS</span>
+                                <span class="hover-scale">.NET Core</span>
+                                <span class="hover-scale">React</span>
+                                <span class="hover-scale">AWS</span>
                             </div>
                         </div>
                     </div>
                     <div class="portfolio-metrics">
                         <div class="metric">
-                            <span class="metric-value">3,500+</span>
+                            <span class="metric-value pulse">3,500+</span>
                             <span class="metric-label">Clients</span>
                         </div>
                         <div class="metric">
-                            <span class="metric-value">40%</span>
+                            <span class="metric-value pulse">40%</span>
                             <span class="metric-label">Efficiency Gain</span>
                         </div>
                     </div>
                 </div>
                 
-                <div class="portfolio-item">
+                <div class="portfolio-item glass hover-lift scroll-animate-zoom">
                     <div class="portfolio-image">
                         <div class="portfolio-overlay">
                             <h3>Clinical Trial Management</h3>
                             <p>Global pharmaceutical software for Abbott, AstraZeneca, Pfizer</p>
                             <div class="portfolio-tech">
-                                <span>C#</span>
-                                <span>SQL Server</span>
-                                <span>Azure</span>
+                                <span class="hover-scale">C#</span>
+                                <span class="hover-scale">SQL Server</span>
+                                <span class="hover-scale">Azure</span>
                             </div>
                         </div>
                     </div>
                     <div class="portfolio-metrics">
                         <div class="metric">
-                            <span class="metric-value">25%</span>
+                            <span class="metric-value pulse">25%</span>
                             <span class="metric-label">Performance Boost</span>
                         </div>
                         <div class="metric">
-                            <span class="metric-value">15%</span>
+                            <span class="metric-value pulse">15%</span>
                             <span class="metric-label">Data Accuracy</span>
                         </div>
                     </div>
                 </div>
                 
-                <div class="portfolio-item">
+                <div class="portfolio-item scroll-animate-zoom">
                     <div class="portfolio-image">
                         <div class="portfolio-overlay">
                             <h3>Background Verification System</h3>
@@ -512,7 +516,7 @@
                     </div>
                 </div>
                 
-                <div class="portfolio-item">
+                <div class="portfolio-item scroll-animate-zoom">
                     <div class="portfolio-image">
                         <div class="portfolio-overlay">
                             <h3>ERP & Payment Gateway</h3>
@@ -536,7 +540,7 @@
                     </div>
                 </div>
                 
-                <div class="portfolio-item">
+                <div class="portfolio-item scroll-animate-zoom">
                     <div class="portfolio-image">
                         <div class="portfolio-overlay">
                             <h3>Utility Management Platform</h3>
@@ -560,7 +564,7 @@
                     </div>
                 </div>
                 
-                <div class="portfolio-item">
+                <div class="portfolio-item scroll-animate-zoom">
                     <div class="portfolio-image">
                         <div class="portfolio-overlay">
                             <h3>Various Freelancing Projects</h3>
@@ -590,39 +594,59 @@
     <!-- Certifications Section -->
     <section id="certifications" class="certifications">
         <div class="container">
-            <h2 class="section-title">Certifications & Education</h2>
+            <h2 class="section-title font-bold scroll-animate-fade">Certifications & Education</h2>
             <div class="cert-grid">
-                <div class="cert-item" onclick="window.open('https://success.simplilearn.com/9dc101c1-2342-435b-a452-7e0e80a3a0b4#acc.rTfkDV8R', '_blank')" style="cursor: pointer;">
-                    <div class="cert-icon">
-                        <i class="fas fa-cloud"></i>
+                <div class="cert-item glass hover-lift scroll-animate-rotate" onclick="window.open('https://success.simplilearn.com/9dc101c1-2342-435b-a452-7e0e80a3a0b4#acc.rTfkDV8R', '_blank', 'noopener,noreferrer')" style="cursor: pointer;">
+                    <div class="cert-icon pulse">
+                        <svg width="30" height="30" viewBox="0 0 100 100" fill="none">
+                            <path d="M20 60C20 60 30 50 50 50C70 50 80 60 80 60V80C80 85 75 90 70 90H30C25 90 20 85 20 80V60Z" fill="currentColor" opacity="0.3"/>
+                            <path d="M15 40C15 40 25 30 50 30C75 30 85 40 85 40V60C85 65 80 70 75 70H25C20 70 15 65 15 60V40Z" fill="currentColor" opacity="0.6"/>
+                            <path d="M10 20C10 20 20 10 50 10C80 10 90 20 90 20V40C90 45 85 50 80 50H20C15 50 10 45 10 40V20Z" fill="currentColor"/>
+                        </svg>
                     </div>
                     <h3>Cloud Architect Master Program</h3>
                     <p>Simplilearn - Oct 2024</p>
                 </div>
-                <div class="cert-item" onclick="window.location.href='certificates.html'" style="cursor: pointer;">
-                    <div class="cert-icon">
-                        <i class="fas fa-award"></i>
+                <div class="cert-item glass hover-lift scroll-animate-rotate" onclick="window.location.href='certificates.html'" style="cursor: pointer;">
+                    <div class="cert-icon float">
+                        <svg width="30" height="30" viewBox="0 0 100 100" fill="none">
+                            <circle cx="50" cy="35" r="25" fill="currentColor" opacity="0.2"/>
+                            <path d="M25 35L35 45L50 30L65 45L75 35L65 25L50 40L35 25Z" fill="currentColor"/>
+                            <rect x="40" y="55" width="20" height="30" rx="2" fill="currentColor" opacity="0.6"/>
+                            <path d="M30 85L70 85" stroke="currentColor" stroke-width="3" stroke-linecap="round"/>
+                        </svg>
                     </div>
                     <h3>Various Professional Certifications</h3>
                     <p>Cloud, DevOps, Data Analytics, AI & Participation</p>
                 </div>
-                <div class="cert-item">
+                <div class="cert-item glass hover-lift scroll-animate-rotate">
                     <div class="cert-icon">
-                        <i class="fas fa-graduation-cap"></i>
+                        <svg width="30" height="30" viewBox="0 0 100 100" fill="none">
+                            <path d="M20 40L50 25L80 40V60L50 75L20 60V40Z" fill="currentColor" opacity="0.3"/>
+                            <path d="M15 45L50 30L85 45L50 60L15 45Z" fill="currentColor"/>
+                            <circle cx="50" cy="45" r="8" fill="white"/>
+                            <path d="M45 20L50 10L55 20L65 15L60 25L70 30L55 30L50 40L45 30L30 30L40 25L35 15Z" fill="currentColor" opacity="0.8"/>
+                        </svg>
                     </div>
                     <h3>Master of Computer Applications</h3>
                     <p>VTU Bengaluru - 75% (2012)</p>
                 </div>
-                <div class="cert-item">
+                <div class="cert-item glass hover-lift scroll-animate-rotate">
                     <div class="cert-icon">
-                        <i class="fas fa-user-graduate"></i>
+                        <svg width="30" height="30" viewBox="0 0 100 100" fill="none">
+                            <rect x="20" y="30" width="60" height="40" rx="5" fill="currentColor" opacity="0.3"/>
+                            <rect x="15" y="25" width="70" height="50" rx="5" fill="currentColor" opacity="0.6"/>
+                            <rect x="10" y="20" width="80" height="60" rx="5" fill="currentColor"/>
+                            <circle cx="50" cy="50" r="15" fill="white" opacity="0.9"/>
+                            <path d="M45 45L50 40L55 45L60 40L55 50L50 55L45 50L40 55Z" fill="currentColor"/>
+                        </svg>
                     </div>
                     <h3>Bachelor of Computer Applications</h3>
                     <p>Tumkur University - 81% (2009)</p>
                 </div>
             </div>
             
-            <div class="cert-link">
+            <div class="cert-link scroll-animate">
                 <a href="certificates.html" class="btn btn-primary">View All Certificates</a>
             </div>
         </div>
@@ -630,21 +654,21 @@
     <!-- Recommendations Section -->
     <section id="recommendations" class="recommendations">
         <div class="container">
-            <h2 class="section-title">Recommendations</h2>
+            <h2 class="section-title font-bold scroll-animate-fade">Recommendations</h2>
             <div class="recommendations-grid">
-                <div class="recommendation-card">
+                <div class="recommendation-card glass hover-lift scroll-animate-left">
                     <div class="recommendation-content">
-                        <p>"I've had the pleasure of working with Santhosh, and I can confidently say he is one of the most hardworking and dedicated professionals I've come across. He is always available to support the team, whether it's addressing production issues or lending a hand to resolve challenges. Santhosh's friendly nature and eagerness to learn new things make him a valuable team player. One of his strongest qualities is his logical thinking, which consistently helps in identifying solutions and making sound decisions under pressure."</p>
+                        <p class="text-large font-normal">"I've had the pleasure of working with Santhosh, and I can confidently say he is one of the most hardworking and dedicated professionals I've come across. He is always available to support the team, whether it's addressing production issues or lending a hand to resolve challenges. Santhosh's friendly nature and eagerness to learn new things make him a valuable team player. One of his strongest qualities is his logical thinking, which consistently helps in identifying solutions and making sound decisions under pressure."</p>
                     </div>
                     <div class="recommendation-author">
                         <div class="author-info">
-                            <h4>Kabir Ahmed</h4>
-                            <p>Senior QA Manager at TeamLease Services Limited</p>
+                            <h4 class="font-semibold">Kabir Ahmed</h4>
+                            <p class="text-small font-medium">Senior QA Manager at TeamLease Services Limited</p>
                         </div>
                     </div>
                 </div>
                 
-                <div class="recommendation-card">
+                <div class="recommendation-card scroll-animate-right">
                     <div class="recommendation-content">
                         <p>"I am writing to highly recommend Santhosh, whom I have had the pleasure of working with for several years. As a Senior Development Manager, he consistently demonstrated exceptional leadership and a profound understanding of the .NET ecosystem. Santhosh's technical acumen is matched only by his ability to inspire and mentor his team. He has a remarkable track record of successfully delivering complex projects on schedule, while maintaining a collaborative and positive team environment."</p>
                     </div>
@@ -656,7 +680,7 @@
                     </div>
                 </div>
                 
-                <div class="recommendation-card">
+                <div class="recommendation-card scroll-animate-left">
                     <div class="recommendation-content">
                         <p>"I feel truly privileged to write this recommendation for Santosh. From the very beginning, Santosh stood out as one of the brightest minds among us. Over the past 13+ years of knowing him, I have seen Santosh grow into not just an innovative and creative professional but also a thoughtful, impactful problem solver. He has this rare ability to simplify complex challenges and bring clarity to situations that seem daunting to others."</p>
                     </div>
@@ -668,7 +692,7 @@
                     </div>
                 </div>
                 
-                <div class="recommendation-card">
+                <div class="recommendation-card scroll-animate-right">
                     <div class="recommendation-content">
                         <p>"At the core of his approach is a commitment to team empowerment and innovation. By leveraging the strengths of each team member, he has facilitated the successful launch of multiple products ahead of schedule and earned repeated client commendations for exceptional quality and delivery. He thrives in environments that challenge boundaries, and consistently seeks opportunities to collaborate, share insights, and deliver transformative solutions."</p>
                     </div>
@@ -680,7 +704,7 @@
                     </div>
                 </div>
                 
-                <div class="recommendation-card">
+                <div class="recommendation-card scroll-animate-left">
                     <div class="recommendation-content">
                         <p>"I had the opportunity to work with Santhosh in Dubai on a government project, and I was consistently impressed by his dedication and professionalism. He is a sincere, hardworking, and highly skilled software engineer who always goes the extra mile to ensure a project is completed to the highest standard. Santhosh has a strong command of technologies like .NET, Java, Oracle, and SQL Server, and he combines that technical expertise with excellent problem-solving skills."</p>
                     </div>
@@ -692,7 +716,7 @@
                     </div>
                 </div>
                 
-                <div class="recommendation-card">
+                <div class="recommendation-card scroll-animate-right">
                     <div class="recommendation-content">
                         <p>"Santhosh and I had worked in a development project, he is an excellent team player and easy to work with and his abilities to think outside the box had helped our team to work on many solutions better. He will be great asset to any team."</p>
                     </div>
@@ -710,15 +734,15 @@
     <!-- Insights Section -->
     <section id="insights" class="insights">
         <div class="container">
-            <h2 class="section-title">Latest Insights</h2>
+            <h2 class="section-title font-bold scroll-animate-fade">Latest Insights</h2>
             <div class="insights-grid">
-                <article class="insight-card">
+                <article class="insight-card glass hover-lift scroll-animate-zoom">
                     <div class="insight-meta">
-                        <span class="insight-date">Dec 2024</span>
-                        <span class="insight-category">AI & Automation</span>
+                        <span class="insight-date text-small font-medium">Dec 2024</span>
+                        <span class="insight-category text-small font-semibold">AI & Automation</span>
                     </div>
-                    <h3>Leveraging AI Tools for Development Team Productivity</h3>
-                    <p>How we achieved 40% reduction in manual tasks using Amazon Q, GitHub Copilot, and n8n workflow automation in our development process.</p>
+                    <h3 class="font-semibold">Leveraging AI Tools for Development Team Productivity</h3>
+                    <p class="font-normal">How we achieved 40% reduction in manual tasks using Amazon Q, GitHub Copilot, and n8n workflow automation in our development process.</p>
                     <div class="insight-tags">
                         <span>AI</span>
                         <span>Productivity</span>
@@ -726,7 +750,7 @@
                     </div>
                 </article>
                 
-                <article class="insight-card">
+                <article class="insight-card scroll-animate-zoom">
                     <div class="insight-meta">
                         <span class="insight-date">Nov 2024</span>
                         <span class="insight-category">Leadership</span>
@@ -740,7 +764,7 @@
                     </div>
                 </article>
                 
-                <article class="insight-card">
+                <article class="insight-card scroll-animate-zoom">
                     <div class="insight-meta">
                         <span class="insight-date">Oct 2024</span>
                         <span class="insight-category">Cloud Architecture</span>
@@ -758,33 +782,34 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="contact">
+    <section id="contact" class="contact gradient-bg-3">
+        <div class="parallax-bg" style="background: linear-gradient(135deg, rgba(79, 172, 254, 0.1), rgba(0, 242, 254, 0.1));"></div>
         <div class="container">
-            <h2 class="section-title">Get In Touch</h2>
+            <h2 class="section-title font-bold scroll-animate-fade">Get In Touch</h2>
             <div class="contact-content">
-                <div class="contact-info">
-                    <h3>Let's Connect</h3>
-                    <p>I'm always interested in discussing new opportunities, innovative projects, and ways to drive technological excellence. Feel free to reach out!</p>
+                <div class="contact-info scroll-animate-left">
+                    <h3 class="font-semibold">Let's Connect</h3>
+                    <p class="text-large font-normal">I'm always interested in discussing new opportunities, innovative projects, and ways to drive technological excellence. Feel free to reach out!</p>
                     
-                    <div class="contact-item">
-                        <i class="fas fa-envelope"></i>
+                    <div class="contact-item scroll-animate">
+                        <i class="fas fa-envelope" aria-hidden="true"></i>
                         <span>santhuanand7@gmail.com</span>
                     </div>
-                    <div class="contact-item">
-                        <i class="fas fa-phone"></i>
+                    <div class="contact-item scroll-animate">
+                        <i class="fas fa-phone" aria-hidden="true"></i>
                         <span>+91 9036046342</span>
                     </div>
-                    <div class="contact-item">
-                        <i class="fas fa-map-marker-alt"></i>
+                    <div class="contact-item scroll-animate">
+                        <i class="fas fa-map-marker-alt" aria-hidden="true"></i>
                         <span>Bengaluru, India</span>
                     </div>
-                    <div class="contact-item">
-                        <i class="fab fa-linkedin"></i>
+                    <div class="contact-item scroll-animate">
+                        <i class="fab fa-linkedin" aria-hidden="true"></i>
                         <span>linkedin.com/in/santhoshanand</span>
                     </div>
                 </div>
                 
-                <div class="contact-form">
+                <div class="contact-form glass scroll-animate-right">
                     <div class="success-animation" id="successAnimation" style="display: none;">
                         <div class="success-checkmark">
                             <div class="check-icon">
@@ -794,14 +819,17 @@
                                 <div class="icon-fix"></div>
                             </div>
                         </div>
-                        <h3>Message Sent Successfully!</h3>
-                        <p>Thank you for reaching out. I'll get back to you soon.</p>
+                        <h3 class="font-semibold">Message Sent Successfully!</h3>
+                        <p class="font-normal">Thank you for reaching out. I'll get back to you soon.</p>
                     </div>
                     <form id="contactForm" novalidate>
                         <div class="form-group">
                             <label for="name" class="sr-only">Your Name</label>
                             <div class="input-wrapper">
-                                <i class="fas fa-user input-icon"></i>
+                                <svg class="input-icon" width="16" height="16" viewBox="0 0 100 100" fill="none">
+                                    <circle cx="50" cy="30" r="20" fill="currentColor" opacity="0.6"/>
+                                    <path d="M20 80C20 65 35 50 50 50C65 50 80 65 80 80" stroke="currentColor" stroke-width="8" fill="none"/>
+                                </svg>
                                 <input type="text" id="name" name="name" placeholder="Your Name" required aria-describedby="name-error" autocomplete="name">
                             </div>
                             <div id="name-error" class="error-message" role="alert"></div>
@@ -809,7 +837,10 @@
                         <div class="form-group">
                             <label for="email" class="sr-only">Your Email</label>
                             <div class="input-wrapper">
-                                <i class="fas fa-envelope input-icon"></i>
+                                <svg class="input-icon" width="16" height="16" viewBox="0 0 100 100" fill="none">
+                                    <rect x="10" y="25" width="80" height="50" rx="8" fill="currentColor" opacity="0.3"/>
+                                    <path d="M10 35L50 55L90 35" stroke="currentColor" stroke-width="4" fill="none"/>
+                                </svg>
                                 <input type="email" id="email" name="email" placeholder="Your Email" required aria-describedby="email-error" autocomplete="email">
                             </div>
                             <div id="email-error" class="error-message" role="alert"></div>
@@ -817,7 +848,10 @@
                         <div class="form-group">
                             <label for="subject" class="sr-only">Subject</label>
                             <div class="input-wrapper">
-                                <i class="fas fa-tag input-icon"></i>
+                                <svg class="input-icon" width="16" height="16" viewBox="0 0 100 100" fill="none">
+                                    <path d="M20 30L50 20L80 30L70 50L50 60L30 50Z" fill="currentColor" opacity="0.6"/>
+                                    <circle cx="65" cy="35" r="8" fill="currentColor"/>
+                                </svg>
                                 <input type="text" id="subject" name="subject" placeholder="Subject" required aria-describedby="subject-error">
                             </div>
                             <div id="subject-error" class="error-message" role="alert"></div>
@@ -825,7 +859,12 @@
                         <div class="form-group">
                             <label for="message" class="sr-only">Your Message</label>
                             <div class="input-wrapper">
-                                <i class="fas fa-comment input-icon"></i>
+                                <svg class="input-icon" width="16" height="16" viewBox="0 0 100 100" fill="none">
+                                    <path d="M15 20C15 15 20 10 25 10H75C80 10 85 15 85 20V60C85 65 80 70 75 70H35L15 85V20Z" fill="currentColor" opacity="0.6"/>
+                                    <circle cx="35" cy="35" r="3" fill="currentColor"/>
+                                    <circle cx="50" cy="35" r="3" fill="currentColor"/>
+                                    <circle cx="65" cy="35" r="3" fill="currentColor"/>
+                                </svg>
                                 <textarea id="message" name="message" rows="5" placeholder="Your Message" required aria-describedby="message-error"></textarea>
                             </div>
                             <div id="message-error" class="error-message" role="alert"></div>
@@ -833,7 +872,13 @@
                         <div class="form-group">
                             <label for="captcha">Security Check: <span id="mathQuestion"></span></label>
                             <div class="input-wrapper">
-                                <i class="fas fa-calculator input-icon"></i>
+                                <svg class="input-icon" width="16" height="16" viewBox="0 0 100 100" fill="none">
+                                    <rect x="15" y="15" width="70" height="70" rx="8" fill="currentColor" opacity="0.3"/>
+                                    <path d="M25 35H75M25 50H75M25 65H75" stroke="currentColor" stroke-width="3"/>
+                                    <circle cx="35" cy="35" r="2" fill="currentColor"/>
+                                    <circle cx="50" cy="35" r="2" fill="currentColor"/>
+                                    <circle cx="65" cy="35" r="2" fill="currentColor"/>
+                                </svg>
                                 <input type="number" id="captcha" name="captcha" placeholder="Enter the answer" required aria-describedby="captcha-error">
                             </div>
                             <div id="captcha-error" class="error-message" role="alert"></div>
@@ -862,11 +907,26 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p>&copy; 2025 Santhosh Anand. All rights reserved.</p>
+            <p style="color: white;">Made with ❤️ by Santhosh Anand © 2025</p>
         </div>
     </footer>
 
     <script src="script.js"></script>
     <script src="linkedin-posts.js"></script>
+    
+    <!-- Service Worker Registration -->
+    <script>
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('/sw.js')
+                .then(registration => {
+                    console.log('SW registered: ', registration);
+                })
+                .catch(registrationError => {
+                    console.log('SW registration failed: ', registrationError);
+                });
+        });
+    }
+    </script>
 </body>
 </html>

@@ -9,18 +9,8 @@
     <script src="https://unpkg.com/web-vitals@3/dist/web-vitals.iife.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body>
-    <!-- Preloader -->
-    <div class="preloader" id="preloader">
-        <div class="preloader-logo">Certificates</div>
-        <div class="progress-bar">
-            <div class="progress-fill"></div>
-        </div>
-    </div>
     
-    <!-- Animated Particles -->
-    <div class="particles" id="particles"></div>
-    
-    <nav class="navbar">
+    <nav class="navbar glass">
         <div class="nav-container">
             <div class="nav-logo" onclick="window.location.href='index.html'" style="cursor: pointer;">Santhosh Anand</div>
             <ul class="nav-menu">
@@ -33,24 +23,27 @@
             </div>
         </div>
     </nav>
+    
 
-    <section class="certifications section-loading" style="padding-top: 120px; background: #f8fafc;">
+
+    <section class="certifications gradient-bg-1" style="padding-top: 120px;">
+        <div class="parallax-bg" style="background: linear-gradient(45deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));"></div>
         <div class="container">
-            <h2 class="section-title fade-in-up">Professional Certifications</h2>
-            <p style="text-align: center; color: #6b7280; margin-bottom: 40px; font-size: 1.1rem;">Comprehensive Collection of Cloud, DevOps, Data Analytics, and AI Certifications</p>
+            <h2 class="section-title font-bold">Professional Certifications</h2>
+            <p class="text-large scroll-animate" style="text-align: center; color: #1f2937; margin-bottom: 40px;">Comprehensive Collection of Cloud, DevOps, Data Analytics, and AI Certifications</p>
             
-            <div class="cert-filter" style="text-align: center; margin-bottom: 40px;">
-                <button class="filter-btn active" onclick="filterCerts('all')">All Certificates</button>
-                <button class="filter-btn" onclick="filterCerts('aws')">AWS</button>
-                <button class="filter-btn" onclick="filterCerts('azure')">Azure</button>
-                <button class="filter-btn" onclick="filterCerts('gcp')">Google Cloud</button>
-                <button class="filter-btn" onclick="filterCerts('data')">Data & Analytics</button>
-                <button class="filter-btn" onclick="filterCerts('devops')">DevOps</button>
-                <button class="filter-btn" onclick="filterCerts('ai')">AI</button>
-                <button class="filter-btn" onclick="filterCerts('others')">Others</button>
+            <div class="cert-filter scroll-animate" style="text-align: center; margin-bottom: 40px;">
+                <button class="filter-btn glass active hover-lift" onclick="filterCerts('all')">All Certificates</button>
+                <button class="filter-btn glass hover-lift" onclick="filterCerts('aws')">AWS</button>
+                <button class="filter-btn glass hover-lift" onclick="filterCerts('azure')">Azure</button>
+                <button class="filter-btn glass hover-lift" onclick="filterCerts('gcp')">Google Cloud</button>
+                <button class="filter-btn glass hover-lift" onclick="filterCerts('data')">Data & Analytics</button>
+                <button class="filter-btn glass hover-lift" onclick="filterCerts('devops')">DevOps</button>
+                <button class="filter-btn glass hover-lift" onclick="filterCerts('ai')">AI</button>
+                <button class="filter-btn glass hover-lift" onclick="filterCerts('others')">Others</button>
             </div>
             <div class="preview-grid" id="certificatesGrid">
-                <div class="preview-item enhanced-card fade-in-up" data-category="aws" onclick="openPDF('Certificates/AWS Solutions Architect Associate.pdf')">
+                <div class="preview-item glass hover-lift scroll-animate" data-category="aws" onclick="openPDF('Certificates/AWS Solutions Architect Associate.pdf')">
                     <h4>AWS Solutions Architect Associate</h4>
                     <embed src="Certificates/AWS Solutions Architect Associate.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
                     <div class="mobile-pdf-placeholder">
@@ -59,7 +52,7 @@
                         <button class="mobile-view-btn" onclick="event.stopPropagation(); openPDF('Certificates/AWS Solutions Architect Associate.pdf')">View Certificate</button>
                     </div>
                 </div>
-                <div class="preview-item" data-category="aws" onclick="openPDF('Certificates/AWS Developer Associate.pdf')">
+                <div class="preview-item glass hover-lift scroll-animate" data-category="aws" onclick="openPDF('Certificates/AWS Developer Associate.pdf')">
                     <h4>AWS Developer Associate</h4>
                     <embed src="Certificates/AWS Developer Associate.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
                     <div class="mobile-pdf-placeholder">
@@ -68,7 +61,7 @@
                         <button class="mobile-view-btn" onclick="event.stopPropagation(); openPDF('Certificates/AWS Developer Associate.pdf')">View Certificate</button>
                     </div>
                 </div>
-                <div class="preview-item" data-category="aws" onclick="openPDF('Certificates/AWS SysOps Associate Certification Training.pdf')">
+                <div class="preview-item glass hover-lift" data-category="aws" onclick="openPDF('Certificates/AWS SysOps Associate Certification Training.pdf')">
                     <h4>AWS SysOps Associate</h4>
                     <embed src="Certificates/AWS SysOps Associate Certification Training.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
                     <div class="mobile-pdf-placeholder">
@@ -77,7 +70,7 @@
                         <button class="mobile-view-btn" onclick="event.stopPropagation(); openPDF('Certificates/AWS SysOps Associate Certification Training.pdf')">View Certificate</button>
                     </div>
                 </div>
-                <div class="preview-item" data-category="azure" onclick="openPDF('Certificates/Microsoft Certified Azure Administrator Associate.pdf')">
+                <div class="preview-item glass hover-lift" data-category="azure" onclick="openPDF('Certificates/Microsoft Certified Azure Administrator Associate.pdf')">
                     <h4>Microsoft Azure Administrator</h4>
                     <embed src="Certificates/Microsoft Certified Azure Administrator Associate.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
                     <div class="mobile-pdf-placeholder">
@@ -86,7 +79,7 @@
                         <button class="mobile-view-btn" onclick="event.stopPropagation(); openPDF('Certificates/Microsoft Certified Azure Administrator Associate.pdf')">View Certificate</button>
                     </div>
                 </div>
-                <div class="preview-item" data-category="azure" onclick="openPDF('Certificates/Microsoft Certified Azure Developer Associate.pdf')">
+                <div class="preview-item glass hover-lift" data-category="azure" onclick="openPDF('Certificates/Microsoft Certified Azure Developer Associate.pdf')">
                     <h4>Microsoft Azure Developer</h4>
                     <embed src="Certificates/Microsoft Certified Azure Developer Associate.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
                     <div class="mobile-pdf-placeholder">
@@ -95,7 +88,7 @@
                         <button class="mobile-view-btn" onclick="event.stopPropagation(); openPDF('Certificates/Microsoft Certified Azure Developer Associate.pdf')">View Certificate</button>
                     </div>
                 </div>
-                <div class="preview-item" data-category="devops" onclick="openPDF('Certificates/DevOps on AWS.pdf')">
+                <div class="preview-item glass hover-lift" data-category="devops" onclick="openPDF('Certificates/DevOps on AWS.pdf')">
                     <h4>DevOps on AWS</h4>
                     <embed src="Certificates/DevOps on AWS.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
                     <div class="mobile-pdf-placeholder">
@@ -104,7 +97,7 @@
                         <button class="mobile-view-btn" onclick="event.stopPropagation(); openPDF('Certificates/DevOps on AWS.pdf')">View Certificate</button>
                     </div>
                 </div>
-                <div class="preview-item" data-category="devops" onclick="openPDF('Certificates/DevOps on Azure.pdf')">
+                <div class="preview-item glass hover-lift" data-category="devops" onclick="openPDF('Certificates/DevOps on Azure.pdf')">
                     <h4>DevOps on Azure</h4>
                     <embed src="Certificates/DevOps on Azure.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
                     <div class="mobile-pdf-placeholder">
@@ -113,7 +106,7 @@
                         <button class="mobile-view-btn" onclick="event.stopPropagation(); openPDF('Certificates/DevOps on Azure.pdf')">View Certificate</button>
                     </div>
                 </div>
-                <div class="preview-item" data-category="aws" onclick="openPDF('Certificates/Cloud Security.pdf')">
+                <div class="preview-item glass hover-lift" data-category="aws" onclick="openPDF('Certificates/Cloud Security.pdf')">
                     <h4>Cloud Security</h4>
                     <embed src="Certificates/Cloud Security.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
                     <div class="mobile-pdf-placeholder">
@@ -122,7 +115,7 @@
                         <button class="mobile-view-btn" onclick="event.stopPropagation(); openPDF('Certificates/Cloud Security.pdf')">View Certificate</button>
                     </div>
                 </div>
-                <div class="preview-item" data-category="data" onclick="openPDF('Certificates/Big Data Hadoop and Spark Developer OSL.pdf')">
+                <div class="preview-item glass hover-lift" data-category="data" onclick="openPDF('Certificates/Big Data Hadoop and Spark Developer OSL.pdf')">
                     <h4>Big Data Hadoop and Spark</h4>
                     <embed src="Certificates/Big Data Hadoop and Spark Developer OSL.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
                     <div class="mobile-pdf-placeholder">
@@ -131,7 +124,7 @@
                         <button class="mobile-view-btn" onclick="event.stopPropagation(); openPDF('Certificates/Big Data Hadoop and Spark Developer OSL.pdf')">View Certificate</button>
                     </div>
                 </div>
-                <div class="preview-item" data-category="data" onclick="openPDF('Certificates/Microsoft Power BI Certification Training.pdf')">
+                <div class="preview-item glass hover-lift" data-category="data" onclick="openPDF('Certificates/Microsoft Power BI Certification Training.pdf')">
                     <h4>Microsoft Power BI</h4>
                     <embed src="Certificates/Microsoft Power BI Certification Training.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
                     <div class="mobile-pdf-placeholder">
@@ -140,7 +133,7 @@
                         <button class="mobile-view-btn" onclick="event.stopPropagation(); openPDF('Certificates/Microsoft Power BI Certification Training.pdf')">View Certificate</button>
                     </div>
                 </div>
-                <div class="preview-item" data-category="others" onclick="openPDF('Certificates/Agile Scrum Master.pdf')">
+                <div class="preview-item glass hover-lift" data-category="others" onclick="openPDF('Certificates/Agile Scrum Master.pdf')">
                     <h4>Agile Scrum Master</h4>
                     <embed src="Certificates/Agile Scrum Master.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
                     <div class="mobile-pdf-placeholder">
@@ -149,7 +142,7 @@
                         <button class="mobile-view-btn" onclick="event.stopPropagation(); openPDF('Certificates/Agile Scrum Master.pdf')">View Certificate</button>
                     </div>
                 </div>
-                <div class="preview-item" data-category="ai" onclick="openPDF('Certificates/Introduction to Artificial Intelligence.pdf')">
+                <div class="preview-item glass hover-lift" data-category="ai" onclick="openPDF('Certificates/Introduction to Artificial Intelligence.pdf')">
                     <h4>Introduction to Artificial Intelligence</h4>
                     <embed src="Certificates/Introduction to Artificial Intelligence.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
                     <div class="mobile-pdf-placeholder">
@@ -158,7 +151,7 @@
                         <button class="mobile-view-btn" onclick="event.stopPropagation(); openPDF('Certificates/Introduction to Artificial Intelligence.pdf')">View Certificate</button>
                     </div>
                 </div>
-                <div class="preview-item" data-category="ai" onclick="openPDF('Certificates/Digital Transformation.pdf')">
+                <div class="preview-item glass hover-lift" data-category="ai" onclick="openPDF('Certificates/Digital Transformation.pdf')">
                     <h4>Digital Transformation</h4>
                     <embed src="Certificates/Digital Transformation.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
                     <div class="mobile-pdf-placeholder">
@@ -167,7 +160,7 @@
                         <button class="mobile-view-btn" onclick="event.stopPropagation(); openPDF('Certificates/Digital Transformation.pdf')">View Certificate</button>
                     </div>
                 </div>
-                <div class="preview-item" data-category="data" onclick="openPDF('Certificates/Business Analytics with Excel.pdf')">
+                <div class="preview-item glass hover-lift scroll-animate" data-category="data" onclick="openPDF('Certificates/Business Analytics with Excel.pdf')">
                     <h4>Business Analytics with Excel</h4>
                     <embed src="Certificates/Business Analytics with Excel.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
                     <div class="mobile-pdf-placeholder">
@@ -176,7 +169,7 @@
                         <button class="mobile-view-btn" onclick="event.stopPropagation(); openPDF('Certificates/Business Analytics with Excel.pdf')">View Certificate</button>
                     </div>
                 </div>
-                <div class="preview-item" data-category="data" onclick="openPDF('Certificates/Tableau Desktop Specialist Certification Training.pdf')">
+                <div class="preview-item glass hover-lift scroll-animate" data-category="data" onclick="openPDF('Certificates/Tableau Desktop Specialist Certification Training.pdf')">
                     <h4>Tableau Desktop Specialist</h4>
                     <embed src="Certificates/Tableau Desktop Specialist Certification Training.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
                     <div class="mobile-pdf-placeholder">
@@ -331,7 +324,7 @@
                 </div>
                 <div class="preview-item" data-category="ai" onclick="openPDF('Certificates/AI Outskill Mastermind.pdf')">
                     <h4>AI Outskill Mastermind</h4>
-                    <embed src="Certificates/AI Outskill Mastermind.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
+                    <embed src="Certificates/AI Outskill Mastermind.pdf#toolbar=0&navpanes=0&scrollbar=0&v=1" type="application/pdf" />
                     <div class="mobile-pdf-placeholder">
                         <i class="fas fa-file-pdf"></i>
                         <p>PDF Certificate</p>
@@ -348,9 +341,43 @@
     </button>
 
     <script>
+        // Initialize scroll animations
+        function initScrollAnimations() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate');
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            document.querySelectorAll('.scroll-animate').forEach(el => {
+                observer.observe(el);
+            });
+        }
+        
+        // Initialize parallax
+        function initParallax() {
+            const parallaxElements = document.querySelectorAll('.parallax-bg');
+            
+            window.addEventListener('scroll', () => {
+                const scrolled = window.pageYOffset;
+                
+                parallaxElements.forEach((element, index) => {
+                    const speed = 0.5 + (index * 0.2);
+                    const yPos = -(scrolled * speed);
+                    element.style.transform = `translateY(${yPos}px)`;
+                });
+            }, { passive: true });
+        }
+        
         // Apply theme from localStorage
         const savedTheme = localStorage.getItem('theme') || 'light';
         document.body.setAttribute('data-theme', savedTheme);
+        
+        // Initialize animations
+        initScrollAnimations();
+        initParallax();
         
         // Scroll to Top Button
         const scrollToTopBtn = document.getElementById('scrollToTop');
