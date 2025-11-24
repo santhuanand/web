@@ -59,32 +59,25 @@ try {
     console.warn('Nav links setup failed:', error);
 }
 
-// Smooth scrolling for navigation links with security validation
+// Smooth scrolling for navigation links
 try {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        if (anchor) {
-            anchor.addEventListener('click', function (e) {
-                try {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    
-                    const href = this.getAttribute('href');
-                    if (href && typeof href === 'string' && href.startsWith('#') && href.length > 1) {
-                        // Sanitize href to prevent XSS
-                        const sanitizedHref = href.replace(/[^#a-zA-Z0-9_-]/g, '');
-                        const target = document.querySelector(sanitizedHref);
-                        if (target) {
-                            target.scrollIntoView({
-                                behavior: 'smooth',
-                                block: 'start'
-                            });
-                        }
-                    }
-                } catch (error) {
-                    console.warn('Smooth scroll failed:', error);
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                let offset = 60;
+                // Special offset for portfolio section
+                if (target.id === 'portfolio') {
+                    offset = 20;
                 }
-            });
-        }
+                const targetPosition = target.offsetTop - offset;
+                window.scrollTo({
+                    top: targetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        });
     });
 } catch (error) {
     console.warn('Smooth scroll setup failed:', error);
@@ -242,6 +235,8 @@ function hideSkeletons() {
 // Initialize loading sequence
 showSkeletons();
 hideSkeletons();
+
+
 
 // Initialize typing animation
 try {
@@ -1181,6 +1176,111 @@ initScrollAnimations();
 initParallax();
 initSkillAnimations();
 
+// Recommendation Cards Navigation - FIXED
+let currentRecommendationIndex = 0;
+
+setTimeout(() => {
+    const cards = document.querySelectorAll('.recommendation-card');
+    const radioButtons = document.querySelectorAll('input[name="recommendation"]');
+    
+    if (cards.length === 0) {
+        console.error('No recommendation cards found!');
+        return;
+    }
+    
+    function showRecommendationCard(index) {
+        // Hide all cards
+        cards.forEach(card => {
+            card.style.display = 'none';
+            card.classList.remove('active');
+        });
+        
+        // Show selected card
+        cards[index].style.display = 'block';
+        cards[index].classList.add('active');
+        
+        // Update radio buttons
+        radioButtons.forEach((radio, i) => {
+            radio.checked = (i === index);
+        });
+        
+        // Update counter
+        const counter = document.getElementById('currentCard');
+        if (counter) counter.textContent = index + 1;
+    }
+    
+    let autoScrollInterval;
+    let isHovered = false;
+    
+    function getRandomIndex() {
+        let newIndex;
+        do {
+            newIndex = Math.floor(Math.random() * cards.length);
+        } while (newIndex === currentRecommendationIndex && cards.length > 1);
+        return newIndex;
+    }
+    
+    function resetAutoScroll() {
+        if (autoScrollInterval) {
+            clearInterval(autoScrollInterval);
+        }
+        if (!isHovered) {
+            autoScrollInterval = setInterval(() => {
+                if (!isHovered) {
+                    currentRecommendationIndex = getRandomIndex();
+                    showRecommendationCard(currentRecommendationIndex);
+                }
+            }, 10000);
+        }
+    }
+    
+    // Radio button navigation
+    radioButtons.forEach((radio, index) => {
+        radio.addEventListener('change', () => {
+            if (radio.checked) {
+                currentRecommendationIndex = index;
+                showRecommendationCard(currentRecommendationIndex);
+                resetAutoScroll();
+            }
+        });
+    });
+    
+    // Start auto-scroll
+    autoScrollInterval = setInterval(() => {
+        if (!isHovered) {
+            currentRecommendationIndex = getRandomIndex();
+            showRecommendationCard(currentRecommendationIndex);
+        }
+    }, 10000);
+    
+    // Pause auto-scroll on hover
+    const section = document.getElementById('recommendations');
+    if (section) {
+        section.addEventListener('mouseenter', () => {
+            isHovered = true;
+            if (autoScrollInterval) {
+                clearInterval(autoScrollInterval);
+                autoScrollInterval = null;
+            }
+        });
+        
+        section.addEventListener('mouseleave', () => {
+            isHovered = false;
+            autoScrollInterval = setInterval(() => {
+                if (!isHovered) {
+                    currentRecommendationIndex = getRandomIndex();
+                    showRecommendationCard(currentRecommendationIndex);
+                }
+            }, 10000);
+        });
+    }
+    
+    // Initialize first card
+    showRecommendationCard(0);
+    
+    console.log(`Recommendation navigation initialized with ${cards.length} cards`);
+}, 500);
+
 // Observe sections with progress indicators
 ['experience', 'skills', 'portfolio'].forEach(sectionId => {
     const section = document.getElementById(sectionId);
@@ -1188,6 +1288,12 @@ initSkillAnimations();
         sectionProgressObserver.observe(section);
     }
 });
+
+
+
+
+
+
 
 
 
