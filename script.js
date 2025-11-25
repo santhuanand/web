@@ -694,7 +694,7 @@ if (contactForm) {
             const timestamp = Date.now();
             const lastSubmit = parseInt(sessionStorage.getItem('lastSubmit') || '0');
             if (timestamp - lastSubmit < 3000) {
-                ToastManager.show('Please wait before submitting again', 'error');
+                NotificationManager.show('Please wait before submitting again', 'error');
                 return;
             }
             sessionStorage.setItem('lastSubmit', timestamp.toString());
@@ -702,7 +702,7 @@ if (contactForm) {
             // Validate form
             const validation = FormValidator.validateForm(formData);
             if (!validation.isValid) {
-                ToastManager.show('Please fix the errors above', 'error');
+                NotificationManager.show('Please fix the errors above', 'error');
                 return;
             }
             
@@ -725,7 +725,7 @@ if (contactForm) {
             
             // Enhanced EmailJS validation
             if (typeof emailjs === 'undefined' || !EMAIL_CONFIG.serviceId || !EMAIL_CONFIG.templateId) {
-                ToastManager.show('Email service not available. Please contact directly at santhuanand7@gmail.com', 'error');
+                NotificationManager.show('Email service not available. Please contact directly at santhuanand7@gmail.com', 'error');
                 resetSubmitButton();
                 return;
             }
@@ -735,7 +735,7 @@ if (contactForm) {
             const correctAnswer = parseInt(document.getElementById('captcha').dataset.answer);
             if (captchaAnswer !== correctAnswer) {
                 document.getElementById('captcha-error').textContent = 'Incorrect answer. Please try again.';
-                ToastManager.show('Please solve the math problem correctly', 'error');
+                NotificationManager.show('Please solve the math problem correctly', 'error');
                 generateMathCaptcha();
                 resetSubmitButton();
                 return;
@@ -793,7 +793,7 @@ if (contactForm) {
                     const errorMessage = error.message === 'Request timeout' 
                         ? 'Request timed out. Please try again or contact directly at santhuanand7@gmail.com'
                         : 'Failed to send message. Please try again or contact directly at santhuanand7@gmail.com';
-                    ToastManager.show(errorMessage, 'error');
+                    NotificationManager.show(errorMessage, 'error');
                     
                     // Ensure form is visible on error
                     const successAnimation = document.getElementById('successAnimation');
@@ -807,7 +807,7 @@ if (contactForm) {
                 });
         } catch (error) {
             console.error('Form submission error:', error);
-            ToastManager.show('Form submission failed. Please contact directly at santhuanand7@gmail.com', 'error');
+            NotificationManager.show('Form submission failed. Please contact directly at santhuanand7@gmail.com', 'error');
             try {
                 const submitBtn = document.getElementById('submit-btn');
                 if (submitBtn) {
