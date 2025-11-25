@@ -2398,6 +2398,10 @@ body {
     }
     
     .mobile-pdf-placeholder {
+        display: flex !important;
+    }
+    
+    .preview-item embed {
         display: none !important;
     }
     
