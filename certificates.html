@@ -378,38 +378,127 @@
         const savedTheme = localStorage.getItem('theme') || 'light';
         document.body.setAttribute('data-theme', savedTheme);
         
-        // Mobile PDF fallback detection
-        function initMobilePDFFallback() {
-            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) || window.innerWidth <= 768;
+        // Comprehensive PDF support detection
+        function initPDFFallback() {
+            // Multiple detection methods for better accuracy
+            const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+            const isSmallScreen = window.innerWidth <= 768;
             
-            if (isMobile) {
-                // Test PDF support
-                const testEmbed = document.createElement('embed');
-                testEmbed.src = 'data:application/pdf;base64,JVBERi0xLjQKJdPr6eEKMSAwIG9iago8PAovVHlwZSAvQ2F0YWxvZwovUGFnZXMgMiAwIFIKPj4KZW5kb2JqCjIgMCBvYmoKPDwKL1R5cGUgL1BhZ2VzCi9LaWRzIFszIDAgUl0KL0NvdW50IDEKPD4KZW5kb2JqCjMgMCBvYmoKPDwKL1R5cGUgL1BhZ2UKL1BhcmVudCAyIDAgUgovTWVkaWFCb3ggWzAgMCA2MTIgNzkyXQo+PgplbmRvYmoKeHJlZgowIDQKMDAwMDAwMDAwMCA2NTUzNSBmIAowMDAwMDAwMDA5IDAwMDAwIG4gCjAwMDAwMDAwNzQgMDAwMDAgbiAKMDAwMDAwMDEyMCAwMDAwMCBuIAp0cmFpbGVyCjw8Ci9TaXplIDQKL1Jvb3QgMSAwIFIKPj4Kc3RhcnR4cmVmCjE3OQolJUVPRgo=';
-                testEmbed.style.width = '1px';
-                testEmbed.style.height = '1px';
-                testEmbed.style.position = 'absolute';
-                testEmbed.style.left = '-9999px';
-                document.body.appendChild(testEmbed);
+            // Check if PDF plugin is available
+            const hasPDFPlugin = navigator.plugins && Array.from(navigator.plugins).some(plugin => 
+                plugin.name.toLowerCase().includes('pdf') || 
+                plugin.name.toLowerCase().includes('adobe')
+            );
+            
+            // Check MIME type support
+            const supportsPDFMime = navigator.mimeTypes && navigator.mimeTypes['application/pdf'];
+            
+            // Test actual PDF rendering capability
+            function testPDFSupport() {
+                return new Promise((resolve) => {
+                    const testEmbed = document.createElement('embed');
+                    testEmbed.src = 'data:application/pdf;base64,JVBERi0xLjQKJdPr6eEKMSAwIG9iago8PAovVHlwZSAvQ2F0YWxvZwovUGFnZXMgMiAwIFIKPj4KZW5kb2JqCjIgMCBvYmoKPDwKL1R5cGUgL1BhZ2VzCi9LaWRzIFszIDAgUl0KL0NvdW50IDEKPD4KZW5kb2JqCjMgMCBvYmoKPDwKL1R5cGUgL1BhZ2UKL1BhcmVudCAyIDAgUgovTWVkaWFCb3ggWzAgMCA2MTIgNzkyXQo+PgplbmRvYmoKeHJlZgowIDQKMDAwMDAwMDAwMCA2NTUzNSBmIAowMDAwMDAwMDA5IDAwMDAwIG4gCjAwMDAwMDAwNzQgMDAwMDAgbiAKMDAwMDAwMDEyMCAwMDAwMCBuIAp0cmFpbGVyCjw8Ci9TaXplIDQKL1Jvb3QgMSAwIFIKPj4Kc3RhcnR4cmVmCjE3OQolJUVPRgo=';
+                    testEmbed.type = 'application/pdf';
+                    testEmbed.style.width = '10px';
+                    testEmbed.style.height = '10px';
+                    testEmbed.style.position = 'absolute';
+                    testEmbed.style.left = '-9999px';
+                    testEmbed.style.visibility = 'hidden';
+                    
+                    document.body.appendChild(testEmbed);
+                    
+                    setTimeout(() => {
+                        const hasContent = testEmbed.offsetHeight > 0 && testEmbed.offsetWidth > 0;
+                        const hasValidType = testEmbed.type === 'application/pdf';
+                        document.body.removeChild(testEmbed);
+                        resolve(hasContent && hasValidType);
+                    }, 200);
+                });
+            }
+            
+            // Apply fallback based on detection results
+            async function applyPDFFallback() {
+                const pdfSupported = await testPDFSupport();
+                const shouldUseFallback = !pdfSupported || (!hasPDFPlugin && !supportsPDFMime) || (isMobile && !pdfSupported);
+                
+                console.log('PDF Support Detection:', {
+                    pdfSupported,
+                    hasPDFPlugin,
+                    supportsPDFMime,
+                    isMobile,
+                    shouldUseFallback
+                });
+                
+                if (shouldUseFallback) {
+                    document.querySelectorAll('.preview-item').forEach(item => {
+                        item.classList.add('mobile-fallback');
+                        
+                        // Add click handler for fallback items
+                        const placeholder = item.querySelector('.mobile-pdf-placeholder');
+                        if (placeholder) {
+                            placeholder.addEventListener('click', (e) => {
+                                e.stopPropagation();
+                                const pdfPath = item.getAttribute('onclick').match(/'([^']+)'/)[1];
+                                window.open(pdfPath, '_blank');
+                            });
+                        }
+                    });
+                    
+                    // Show notification to user
+                    showPDFNotification();
+                }
+            }
+            
+            function showPDFNotification() {
+                const notification = document.createElement('div');
+                notification.style.cssText = `
+                    position: fixed;
+                    top: 80px;
+                    left: 50%;
+                    transform: translateX(-50%);
+                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                    color: white;
+                    padding: 12px 20px;
+                    border-radius: 8px;
+                    font-size: 0.9rem;
+                    z-index: 10000;
+                    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                    animation: slideDown 0.3s ease;
+                `;
+                notification.innerHTML = `
+                    <i class="fas fa-info-circle" style="margin-right: 8px;"></i>
+                    Click certificates to view in new tab
+                `;
+                
+                document.body.appendChild(notification);
                 
                 setTimeout(() => {
-                    const pdfSupported = testEmbed.offsetHeight > 0;
-                    document.body.removeChild(testEmbed);
-                    
-                    if (!pdfSupported) {
-                        // PDF not supported, show placeholders
-                        document.querySelectorAll('.preview-item').forEach(item => {
-                            item.classList.add('mobile-fallback');
-                        });
-                    }
-                }, 100);
+                    notification.style.animation = 'slideUp 0.3s ease forwards';
+                    setTimeout(() => notification.remove(), 300);
+                }, 3000);
             }
+            
+            // Add CSS animations for notification
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes slideDown {
+                    from { transform: translateX(-50%) translateY(-100%); opacity: 0; }
+                    to { transform: translateX(-50%) translateY(0); opacity: 1; }
+                }
+                @keyframes slideUp {
+                    from { transform: translateX(-50%) translateY(0); opacity: 1; }
+                    to { transform: translateX(-50%) translateY(-100%); opacity: 0; }
+                }
+            `;
+            document.head.appendChild(style);
+            
+            applyPDFFallback();
         }
         
         // Initialize animations
         initScrollAnimations();
         initParallax();
-        initMobilePDFFallback();
+        initPDFFallback();
         
         // Scroll to Top Button
         const scrollToTopBtn = document.getElementById('scrollToTop');
