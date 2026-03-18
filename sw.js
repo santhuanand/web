@@ -1,4 +1,4 @@
-const CACHE_NAME = 'santhosh-portfolio-v20250714';
+const CACHE_NAME = 'santhosh-portfolio-v20250714b';
 const urlsToCache = [
   './',
   './index.html',
