@@ -4,12 +4,14 @@
 const fs = require('fs');
 const path = require('path');
 
-// Async wrapper for better error handling
+let CleanCSS, UglifyJS;
+try { CleanCSS = require('clean-css'); } catch { CleanCSS = null; }
+try { UglifyJS = require('uglify-js'); } catch { UglifyJS = null; }
+
 async function buildProject() {
     try {
         console.log('🚀 Building production version...');
         
-        // Validate required files exist
         const requiredFiles = ['sw.js', 'index.html', 'script.js'];
         for (const file of requiredFiles) {
             const filePath = path.join(__dirname, file);
@@ -18,13 +20,9 @@ async function buildProject() {
             }
         }
         
-        // Update cache version in service worker
         await updateServiceWorkerVersion();
-        
-        // Validate HTML structure
+        await minifyAssets();
         await validateHtmlStructure();
-        
-        // Check for placeholder values
         await checkPlaceholders();
         
         console.log('✅ Build completed successfully!');
@@ -59,7 +57,6 @@ async function validateHtmlStructure() {
         const htmlPath = path.join(__dirname, 'index.html');
         const htmlContent = await fs.promises.readFile(htmlPath, 'utf8');
         
-        // Basic HTML validation
         const requiredElements = [
             '<title>',
             '<meta name="description"',
@@ -112,5 +109,45 @@ async function checkPlaceholders() {
     }
 }
 
-// Run the build process
+async function minifyAssets() {
+    // Only minify in CI environment to avoid destroying source files locally
+    if (!process.env.CI) {
+        console.log('ℹ️  Skipping minification (not in CI). Set CI=true to enable.');
+        return;
+    }
+
+    if (CleanCSS) {
+        const cssPath = path.join(__dirname, 'styles.css');
+        if (fs.existsSync(cssPath)) {
+            const css = await fs.promises.readFile(cssPath, 'utf8');
+            const minified = new CleanCSS({ level: 2 }).minify(css);
+            if (minified.styles) {
+                await fs.promises.writeFile(cssPath, minified.styles);
+                const saved = ((1 - minified.styles.length / css.length) * 100).toFixed(1);
+                console.log(`✅ CSS minified (${saved}% reduction)`);
+            }
+        }
+    } else {
+        console.warn('⚠️  clean-css not installed, skipping CSS minification');
+    }
+
+    if (UglifyJS) {
+        const jsFiles = ['script.js', 'linkedin-posts.js', 'youtube-videos.js'];
+        for (const file of jsFiles) {
+            const jsPath = path.join(__dirname, file);
+            if (fs.existsSync(jsPath)) {
+                const js = await fs.promises.readFile(jsPath, 'utf8');
+                const result = UglifyJS.minify(js);
+                if (result.code) {
+                    await fs.promises.writeFile(jsPath, result.code);
+                    const saved = ((1 - result.code.length / js.length) * 100).toFixed(1);
+                    console.log(`✅ ${file} minified (${saved}% reduction)`);
+                }
+            }
+        }
+    } else {
+        console.warn('⚠️  uglify-js not installed, skipping JS minification');
+    }
+}
+
 buildProject();

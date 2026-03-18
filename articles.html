@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
+    <meta name="view-transition" content="same-origin">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <meta name="description" content="Read all LinkedIn articles and insights by Santhosh Anand on technology, leadership, and cloud architecture">
+    <meta name="author" content="Santhosh Anand">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.asnrtech.com/articles.html">
+    <link rel="preconnect" href="https://sheets.googleapis.com" crossorigin>
+    <link rel="dns-prefetch" href="https://sheets.googleapis.com">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon.svg">
+    <meta name="theme-color" content="#2563eb">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.asnrtech.com/articles.html">
+    <meta property="og:title" content="All Posts - Santhosh Anand">
+    <meta property="og:description" content="Read all LinkedIn articles and insights by Santhosh Anand on technology, leadership, and cloud architecture">
+    <meta property="og:image" content="https://www.asnrtech.com/Photo.webp">
+    <title>All Posts - Santhosh Anand | LinkedIn</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="vendor/fontawesome/css/all.min.css">
+    <link href="vendor/fonts/inter.css" rel="stylesheet">
+</head>
+<body>
+    <script>document.body.setAttribute('data-theme', localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));</script>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo" onclick="window.location.href='index.html'" style="cursor: pointer;">Santhosh Anand</div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="index.html#about" class="nav-link">About</a></li>
+                <li><a href="index.html#experience" class="nav-link">Experience</a></li>
+                <li><a href="index.html#skills" class="nav-link">Skills</a></li>
+                <li><a href="index.html#portfolio" class="nav-link">Projects</a></li>
+                <li><a href="certificates.html" class="nav-link">Certifications</a></li>
+                <li><a href="index.html#recommendations" class="nav-link">Recommendations</a></li>
+                <li><a href="index.html#insights" class="nav-link">Insights</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content">
+        <section class="articles-page">
+            <div class="container">
+                <div class="page-header">
+                    <a href="index.html#insights" class="back-link"><i class="fas fa-arrow-left"></i> Back</a>
+                    <h1 class="section-title font-bold">All Posts</h1>
+                    <p class="page-subtitle">Insights on technology, leadership, cloud architecture, and more</p>
+                </div>
+
+                <div class="linkedin-grid" id="allArticlesGrid">
+                    <div class="youtube-loading">Loading posts...</div>
+                </div>
+
+                <div class="youtube-cta">
+                    <a href="https://www.linkedin.com/in/santhoshanand" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                        <i class="fab fa-linkedin"></i> Follow on LinkedIn
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p style="color: white;">Made with ❤️ by Santhosh Anand © <script>document.write(new Date().getFullYear())</script></p>
+        </div>
+    </footer>
+
+    <button id="scrollToTop" class="scroll-to-top" aria-label="Scroll to top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <script src="config.js"></script>
+    <script>
+        class AllArticlesManager {
+            constructor() {
+                this.sheetId = '12DsWwpdqIcNTPyusaPuINW6_BAPtRrVdA-s9ZFPGWKc';
+                this.apiKey = window.__GOOGLE_API_KEY__ || '';
+                this.range = 'LinkedIn Articles!A:D';
+
+                this.categories = [
+                    { keywords: ['leadership', 'team', 'management', 'leader', 'mentor'], icon: 'fas fa-users-cog', colors: ['#667eea', '#764ba2'] },
+                    { keywords: ['ai', 'artificial', 'machine', 'automation', 'copilot', 'chatgpt'], icon: 'fas fa-robot', colors: ['#f093fb', '#f5576c'] },
+                    { keywords: ['cloud', 'aws', 'azure', 'devops', 'infrastructure'], icon: 'fas fa-cloud', colors: ['#4facfe', '#00f2fe'] },
+                    { keywords: ['code', 'developer', 'programming', 'software', 'tech', '.net'], icon: 'fas fa-code', colors: ['#43e97b', '#38f9d7'] },
+                    { keywords: ['data', 'analytics', 'database', 'sql'], icon: 'fas fa-chart-bar', colors: ['#fa709a', '#fee140'] },
+                    { keywords: ['security', 'cyber', 'protect'], icon: 'fas fa-shield-alt', colors: ['#a8edea', '#fed6e3'] },
+                    { keywords: ['career', 'growth', 'success', 'journey', 'personal'], icon: 'fas fa-rocket', colors: ['#ff9a9e', '#fecfef'] },
+                    { keywords: ['agile', 'scrum', 'sprint', 'project'], icon: 'fas fa-tasks', colors: ['#a18cd1', '#fbc2eb'] },
+                    { keywords: ['social', 'community', 'network', 'connect'], icon: 'fas fa-handshake', colors: ['#ffecd2', '#fcb69f'] },
+                ];
+                this.fallbacks = [
+                    { icon: 'fas fa-lightbulb', colors: ['#0077b5', '#00a0dc'] },
+                    { icon: 'fas fa-pen-fancy', colors: ['#667eea', '#764ba2'] },
+                    { icon: 'fas fa-bullhorn', colors: ['#f093fb', '#f5576c'] },
+                    { icon: 'fas fa-compass', colors: ['#4facfe', '#00f2fe'] },
+                    { icon: 'fas fa-star', colors: ['#43e97b', '#38f9d7'] },
+                    { icon: 'fas fa-gem', colors: ['#fa709a', '#fee140'] }
+                ];
+            }
+
+            async init() {
+                if (!this.apiKey) return;
+                try {
+                    await this.loadArticles();
+                } catch (error) {
+                    console.error('Failed to load posts:', error);
+                    document.getElementById('allArticlesGrid').innerHTML = '<div class="youtube-loading">Failed to load posts</div>';
+                }
+            }
+
+            async loadArticles() {
+                const url = `https://sheets.googleapis.com/v4/spreadsheets/${this.sheetId}/values/${encodeURIComponent(this.range)}?key=${this.apiKey}`;
+                const response = await fetch(url);
+                if (!response.ok) throw new Error('API error');
+                const data = await response.json();
+                if (!data.values || data.values.length < 2) return;
+                const posts = this.parseSheetData(data.values);
+                this.renderArticles(posts);
+            }
+
+            parseSheetData(rows) {
+                const posts = [];
+                for (let i = 1; i < rows.length; i++) {
+                    const row = rows[i];
+                    if (!row || row.length < 4) continue;
+                    const postUrl = row[3] || '';
+                    if (!postUrl) continue;
+                    posts.push({
+                        rawDate: row[1] || '',
+                        date: this.formatDate(row[1] || ''),
+                        title: row[2] || 'LinkedIn Post',
+                        url: postUrl
+                    });
+                }
+                posts.sort((a, b) => new Date(b.rawDate) - new Date(a.rawDate));
+                return posts;
+            }
+
+            formatDate(dateString) {
+                if (!dateString) return '';
+                try {
+                    let date;
+                    if (dateString.includes('/') || dateString.includes('-')) date = new Date(dateString);
+                    else if (!isNaN(dateString)) {
+                        const epoch = new Date(1900, 0, 1);
+                        date = new Date(epoch.getTime() + (dateString - 2) * 86400000);
+                    } else date = new Date(dateString);
+                    if (isNaN(date.getTime())) return dateString;
+                    return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+                } catch { return dateString; }
+            }
+
+            getCategory(title, index) {
+                const lower = title.toLowerCase();
+                for (const cat of this.categories) {
+                    if (cat.keywords.some(kw => lower.includes(kw))) return cat;
+                }
+                return this.fallbacks[index % this.fallbacks.length];
+            }
+
+            renderArticles(posts) {
+                const container = document.getElementById('allArticlesGrid');
+                container.innerHTML = '';
+                posts.forEach((post, index) => {
+                    const card = document.createElement('article');
+                    card.className = 'linkedin-card glass hover-lift';
+                    card.style.cursor = 'pointer';
+                    card.setAttribute('role', 'link');
+                    card.setAttribute('tabindex', '0');
+                    card.setAttribute('aria-label', `Read LinkedIn post: ${post.title}`);
+                    card.onclick = () => window.open(post.url, '_blank', 'noopener,noreferrer');
+                    card.onkeydown = (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); window.open(post.url, '_blank', 'noopener,noreferrer'); } };
+
+                    const cat = this.getCategory(post.title, index);
+                    const [c1, c2] = cat.colors;
+
+                    const thumbDiv = document.createElement('div');
+                    thumbDiv.className = 'linkedin-thumbnail';
+                    thumbDiv.innerHTML = `
+                        <div class="linkedin-gradient" style="background: linear-gradient(135deg, ${c1} 0%, ${c2} 100%);">
+                            <div class="gradient-pattern"></div>
+                            <span class="gradient-date">${post.date}</span>
+                            <div class="category-icon"><i class="${cat.icon}"></i></div>
+                            <p class="gradient-title">${this.escapeHtml(post.title)}</p>
+                        </div>
+                        <div class="linkedin-button"><i class="fab fa-linkedin-in"></i></div>
+                    `;
+
+                    card.appendChild(thumbDiv);
+                    container.appendChild(card);
+                });
+            }
+
+            escapeHtml(text) {
+                const div = document.createElement('div');
+                div.textContent = text;
+                return div.innerHTML;
+            }
+        }
+
+        // Mobile menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        hamburger?.addEventListener('click', function(e) {
+            e.preventDefault();
+            this.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+        });
+        document.addEventListener('click', (e) => {
+            if (hamburger && navMenu && !hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && navMenu?.classList.contains('active')) {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Scroll to top
+        const scrollBtn = document.getElementById('scrollToTop');
+        window.addEventListener('scroll', () => {
+            scrollBtn.classList.toggle('visible', window.scrollY > 300);
+        });
+        scrollBtn?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+        // Init
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => new AllArticlesManager().init(), 100);
+        });
+    </script>
+</body>
+</html>

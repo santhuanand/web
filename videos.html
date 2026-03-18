@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
+    <meta name="view-transition" content="same-origin">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <meta name="description" content="Watch all videos from Creative Smart Tech YouTube channel by Santhosh Anand">
+    <meta name="author" content="Santhosh Anand">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.asnrtech.com/videos.html">
+    <link rel="preconnect" href="https://www.googleapis.com" crossorigin>
+    <link rel="dns-prefetch" href="https://www.googleapis.com">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <link rel="apple-touch-icon" sizes="180x180" href="favicon.svg">
+    <meta name="theme-color" content="#2563eb">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.asnrtech.com/videos.html">
+    <meta property="og:title" content="All Videos - Santhosh Anand">
+    <meta property="og:description" content="Watch all videos from Creative Smart Tech YouTube channel by Santhosh Anand">
+    <meta property="og:image" content="https://www.asnrtech.com/Photo.webp">
+    <title>All Videos - Santhosh Anand | Creative Smart Tech</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="vendor/fontawesome/css/all.min.css">
+    <link href="vendor/fonts/inter.css" rel="stylesheet">
+</head>
+<body>
+    <script>document.body.setAttribute('data-theme', localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));</script>
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo" onclick="window.location.href='index.html'" style="cursor: pointer;">Santhosh Anand</div>
+            <ul class="nav-menu">
+                <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="index.html#about" class="nav-link">About</a></li>
+                <li><a href="index.html#experience" class="nav-link">Experience</a></li>
+                <li><a href="index.html#skills" class="nav-link">Skills</a></li>
+                <li><a href="index.html#portfolio" class="nav-link">Projects</a></li>
+                <li><a href="certificates.html" class="nav-link">Certifications</a></li>
+                <li><a href="index.html#recommendations" class="nav-link">Recommendations</a></li>
+                <li><a href="index.html#insights" class="nav-link">Insights</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <main id="main-content">
+        <section class="videos-page">
+            <div class="container">
+                <div class="page-header">
+                    <a href="index.html#insights" class="back-link"><i class="fas fa-arrow-left"></i> Back</a>
+                    <h1 class="section-title font-bold">All Videos</h1>
+                    <p class="page-subtitle">Watch tutorials, tech insights, and more from Creative Smart Tech</p>
+                </div>
+                
+                <div class="youtube-grid" id="allVideosGrid">
+                    <div class="youtube-loading">Loading videos...</div>
+                </div>
+                
+                <div class="load-more-container" id="loadMoreContainer" style="display: none;">
+                    <button class="btn btn-primary" id="loadMoreBtn">
+                        <i class="fas fa-plus"></i> Load More Videos
+                    </button>
+                </div>
+                
+                <div class="youtube-cta">
+                    <a href="https://www.youtube.com/@creativesmarttech" target="_blank" rel="noopener noreferrer" class="btn btn-primary">
+                        <i class="fab fa-youtube"></i> Subscribe on YouTube
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p style="color: white;">Made with ❤️ by Santhosh Anand © <script>document.write(new Date().getFullYear())</script></p>
+        </div>
+    </footer>
+
+    <button id="scrollToTop" class="scroll-to-top" aria-label="Scroll to top">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+
+    <script src="config.js"></script>
+    <script>
+        class AllVideosManager {
+            constructor() {
+                this.apiKey = window.__GOOGLE_API_KEY__ || '';
+                this.channelId = 'UCL5u4u2kAytov22ITSXFI0g';
+                this.videosPerPage = 9;
+                this.nextPageToken = null;
+                this.isLoading = false;
+            }
+
+            async init() {
+                if (!this.apiKey) return;
+                await this.loadVideos();
+                this.setupLoadMore();
+            }
+
+            async loadVideos(append = false) {
+                if (this.isLoading) return;
+                this.isLoading = true;
+                
+                const btn = document.getElementById('loadMoreBtn');
+                if (btn) btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Loading...';
+
+                let url = `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${this.channelId}&maxResults=${this.videosPerPage}&order=date&type=video&key=${this.apiKey}`;
+                if (this.nextPageToken) url += `&pageToken=${this.nextPageToken}`;
+
+                try {
+                    const response = await fetch(url);
+                    if (!response.ok) throw new Error('API error');
+                    const data = await response.json();
+                    
+                    this.nextPageToken = data.nextPageToken || null;
+                    document.getElementById('loadMoreContainer').style.display = this.nextPageToken ? 'flex' : 'none';
+                    
+                    const videos = (data.items || []).map(item => ({
+                        id: item.id.videoId,
+                        title: item.snippet.title,
+                        thumbnail: item.snippet.thumbnails?.high?.url || item.snippet.thumbnails?.medium?.url,
+                        publishedAt: new Date(item.snippet.publishedAt)
+                    }));
+                    
+                    this.renderVideos(videos, append);
+                } catch (error) {
+                    console.error('Failed to load videos:', error);
+                } finally {
+                    this.isLoading = false;
+                    if (btn) btn.innerHTML = '<i class="fas fa-plus"></i> Load More Videos';
+                }
+            }
+
+            renderVideos(videos, append) {
+                const container = document.getElementById('allVideosGrid');
+                if (!append) container.innerHTML = '';
+                
+                videos.forEach(video => {
+                    const card = document.createElement('article');
+                    card.className = 'youtube-card glass hover-lift';
+                    card.style.cursor = 'pointer';
+                    card.setAttribute('role', 'link');
+                    card.setAttribute('tabindex', '0');
+                    card.setAttribute('aria-label', `Watch video: ${video.title}`);
+                    card.onclick = () => window.open(`https://www.youtube.com/watch?v=${video.id}`, '_blank', 'noopener,noreferrer');
+                    card.onkeydown = (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); window.open(`https://www.youtube.com/watch?v=${video.id}`, '_blank', 'noopener,noreferrer'); } };
+
+                    const thumbDiv = document.createElement('div');
+                    thumbDiv.className = 'youtube-thumbnail';
+                    const img = document.createElement('img');
+                    img.src = video.thumbnail;
+                    img.alt = video.title;
+                    img.loading = 'lazy';
+                    const playBtn = document.createElement('div');
+                    playBtn.className = 'play-button';
+                    playBtn.innerHTML = '<i class="fas fa-play"></i>';
+                    thumbDiv.appendChild(img);
+                    thumbDiv.appendChild(playBtn);
+
+                    const contentDiv = document.createElement('div');
+                    contentDiv.className = 'youtube-content';
+                    const h3 = document.createElement('h3');
+                    h3.textContent = video.title;
+                    const dateSpan = document.createElement('span');
+                    dateSpan.className = 'youtube-date';
+                    dateSpan.textContent = video.publishedAt.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
+                    contentDiv.appendChild(h3);
+                    contentDiv.appendChild(dateSpan);
+
+                    card.appendChild(thumbDiv);
+                    card.appendChild(contentDiv);
+                    container.appendChild(card);
+                });
+            }
+
+            setupLoadMore() {
+                document.getElementById('loadMoreBtn')?.addEventListener('click', () => this.loadVideos(true));
+            }
+        }
+
+        // Mobile menu toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+        hamburger?.addEventListener('click', function(e) {
+            e.preventDefault();
+            this.classList.toggle('active');
+            navMenu.classList.toggle('active');
+            document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
+        });
+        document.addEventListener('click', (e) => {
+            if (hamburger && navMenu && !hamburger.contains(e.target) && !navMenu.contains(e.target)) {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && navMenu?.classList.contains('active')) {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+        });
+
+        // Scroll to top
+        const scrollBtn = document.getElementById('scrollToTop');
+        window.addEventListener('scroll', () => {
+            scrollBtn.classList.toggle('visible', window.scrollY > 300);
+        });
+        scrollBtn?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+        // Init
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => new AllVideosManager().init(), 100);
+        });
+    </script>
+</body>
+</html>

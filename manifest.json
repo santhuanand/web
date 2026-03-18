@@ -1,16 +1,31 @@
 {
-  "name": "Santhosh Anand Portfolio",
-  "short_name": "Portfolio",
-  "description": "Senior Development Manager Portfolio",
-  "start_url": "/",
+  "name": "Santhosh Anand - Senior Development Manager Portfolio",
+  "short_name": "SA Portfolio",
+  "description": "Senior Development Manager with 13+ years experience in .NET, AWS, and team leadership",
+  "start_url": "./",
   "display": "standalone",
   "background_color": "#ffffff",
   "theme_color": "#2563eb",
+  "orientation": "portrait-primary",
+  "categories": ["business", "education"],
   "icons": [
     {
       "src": "favicon.svg",
-      "sizes": "192x192",
-      "type": "image/svg+xml"
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Contact",
+      "url": "./index.html#contact",
+      "description": "Get in touch"
+    },
+    {
+      "name": "Certificates",
+      "url": "./certificates.html",
+      "description": "View certifications"
     }
   ]
 }

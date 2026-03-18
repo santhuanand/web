@@ -1,0 +1,16 @@
+# API keys and secrets
+config.js
+
+# OS files
+Thumbs.db
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
+
+# Node
+node_modules/
+
+# Build artifacts
+lighthouse-report.html

@@ -3,21 +3,47 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
+    <meta name="view-transition" content="same-origin">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
     <title>Certificates - Santhosh Anand</title>
+    <meta name="description" content="Professional certifications in AWS, Azure, Google Cloud, DevOps, Data Analytics, and AI by Santhosh Anand">
+    <meta name="author" content="Santhosh Anand">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://www.asnrtech.com/certificates.html">
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
     <link rel="icon" type="image/x-icon" href="favicon.svg">
     <link rel="apple-touch-icon" sizes="180x180" href="favicon.svg">
     <link rel="stylesheet" href="styles.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <script src="https://unpkg.com/web-vitals@3/dist/web-vitals.iife.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="vendor/fontawesome/css/all.min.css">
+    <link href="vendor/fonts/inter.css" rel="stylesheet">
+    <meta name="theme-color" content="#2563eb">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://www.asnrtech.com/certificates.html">
+    <meta property="og:title" content="Certificates - Santhosh Anand">
+    <meta property="og:description" content="Professional certifications in AWS, Azure, Google Cloud, DevOps, Data Analytics, and AI by Santhosh Anand">
+    <meta property="og:image" content="https://www.asnrtech.com/Photo.webp">
+
 </head>
 <body>
+    <script>document.body.setAttribute('data-theme', localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));</script>
     
-    <nav class="navbar glass">
+    <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo" onclick="window.location.href='index.html'" style="cursor: pointer;">Santhosh Anand</div>
             <ul class="nav-menu">
                 <li><a href="index.html" class="nav-link">Home</a></li>
+                <li><a href="index.html#about" class="nav-link">About</a></li>
+                <li><a href="index.html#experience" class="nav-link">Experience</a></li>
+                <li><a href="index.html#skills" class="nav-link">Skills</a></li>
+                <li><a href="index.html#portfolio" class="nav-link">Projects</a></li>
+                <li><a href="certificates.html" class="nav-link">Certifications</a></li>
+                <li><a href="index.html#recommendations" class="nav-link">Recommendations</a></li>
+                <li><a href="index.html#insights" class="nav-link">Insights</a></li>
+                <li><a href="index.html#contact" class="nav-link">Contact</a></li>
             </ul>
             <div class="hamburger">
                 <span></span>
@@ -29,6 +55,7 @@
     
 
 
+    <main id="main-content">
     <section class="certifications gradient-bg-1" style="padding-top: 120px;">
         <div class="parallax-bg" style="background: linear-gradient(45deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));"></div>
         <div class="container">
@@ -46,18 +73,18 @@
                 <button class="filter-btn glass hover-lift" onclick="filterCerts('others')">Others</button>
             </div>
             <div class="preview-grid" id="certificatesGrid">
-                <div class="preview-item glass hover-lift scroll-animate" data-category="aws" onclick="openPDF('Certificates/AWS Solutions Architect Associate.pdf')">
+                <div class="preview-item glass hover-lift" data-category="aws" onclick="openPDF('Certificates/AWS Solutions Architect Associate.pdf')">
                     <h4>AWS Solutions Architect Associate</h4>
-                    <embed src="Certificates/AWS Solutions Architect Associate.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
+                    <embed data-src="Certificates/AWS Solutions Architect Associate.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
                     <div class="mobile-pdf-placeholder">
                         <i class="fas fa-file-pdf"></i>
                         <p>PDF Certificate</p>
                         <button class="mobile-view-btn" onclick="event.stopPropagation(); openPDF('Certificates/AWS Solutions Architect Associate.pdf')">View Certificate</button>
                     </div>
                 </div>
-                <div class="preview-item glass hover-lift scroll-animate" data-category="aws" onclick="openPDF('Certificates/AWS Developer Associate.pdf')">
+                <div class="preview-item glass hover-lift" data-category="aws" onclick="openPDF('Certificates/AWS Developer Associate.pdf')">
                     <h4>AWS Developer Associate</h4>
-                    <embed src="Certificates/AWS Developer Associate.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
+                    <embed data-src="Certificates/AWS Developer Associate.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
                     <div class="mobile-pdf-placeholder">
                         <i class="fas fa-file-pdf"></i>
                         <p>PDF Certificate</p>
@@ -66,7 +93,7 @@
                 </div>
                 <div class="preview-item glass hover-lift" data-category="aws" onclick="openPDF('Certificates/AWS SysOps Associate Certification Training.pdf')">
                     <h4>AWS SysOps Associate</h4>
-                    <embed src="Certificates/AWS SysOps Associate Certification Training.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
+                    <embed data-src="Certificates/AWS SysOps Associate Certification Training.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
                     <div class="mobile-pdf-placeholder">
                         <i class="fas fa-file-pdf"></i>
                         <p>PDF Certificate</p>
@@ -75,7 +102,7 @@
                 </div>
                 <div class="preview-item glass hover-lift" data-category="azure" onclick="openPDF('Certificates/Microsoft Certified Azure Administrator Associate.pdf')">
                     <h4>Microsoft Azure Administrator</h4>
-                    <embed src="Certificates/Microsoft Certified Azure Administrator Associate.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
+                    <embed data-src="Certificates/Microsoft Certified Azure Administrator Associate.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
                     <div class="mobile-pdf-placeholder">
                         <i class="fas fa-file-pdf"></i>
                         <p>PDF Certificate</p>
@@ -84,7 +111,7 @@
                 </div>
                 <div class="preview-item glass hover-lift" data-category="azure" onclick="openPDF('Certificates/Microsoft Certified Azure Developer Associate.pdf')">
                     <h4>Microsoft Azure Developer</h4>
-                    <embed src="Certificates/Microsoft Certified Azure Developer Associate.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
+                    <embed data-src="Certificates/Microsoft Certified Azure Developer Associate.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
                     <div class="mobile-pdf-placeholder">
                         <i class="fas fa-file-pdf"></i>
                         <p>PDF Certificate</p>
@@ -93,7 +120,7 @@
                 </div>
                 <div class="preview-item glass hover-lift" data-category="devops" onclick="openPDF('Certificates/DevOps on AWS.pdf')">
                     <h4>DevOps on AWS</h4>
-                    <embed src="Certificates/DevOps on AWS.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
+                    <embed data-src="Certificates/DevOps on AWS.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
                     <div class="mobile-pdf-placeholder">
                         <i class="fas fa-file-pdf"></i>
                         <p>PDF Certificate</p>
@@ -102,7 +129,7 @@
                 </div>
                 <div class="preview-item glass hover-lift" data-category="devops" onclick="openPDF('Certificates/DevOps on Azure.pdf')">
                     <h4>DevOps on Azure</h4>
-                    <embed src="Certificates/DevOps on Azure.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
+                    <embed data-src="Certificates/DevOps on Azure.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
                     <div class="mobile-pdf-placeholder">
                         <i class="fas fa-file-pdf"></i>
                         <p>PDF Certificate</p>
@@ -111,7 +138,7 @@
                 </div>
                 <div class="preview-item glass hover-lift" data-category="aws" onclick="openPDF('Certificates/Cloud Security.pdf')">
                     <h4>Cloud Security</h4>
-                    <embed src="Certificates/Cloud Security.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
+                    <embed data-src="Certificates/Cloud Security.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
                     <div class="mobile-pdf-placeholder">
                         <i class="fas fa-file-pdf"></i>
                         <p>PDF Certificate</p>
@@ -120,7 +147,7 @@
                 </div>
                 <div class="preview-item glass hover-lift" data-category="data" onclick="openPDF('Certificates/Big Data Hadoop and Spark Developer OSL.pdf')">
                     <h4>Big Data Hadoop and Spark</h4>
-                    <embed src="Certificates/Big Data Hadoop and Spark Developer OSL.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
+                    <embed data-src="Certificates/Big Data Hadoop and Spark Developer OSL.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
                     <div class="mobile-pdf-placeholder">
                         <i class="fas fa-file-pdf"></i>
                         <p>PDF Certificate</p>
@@ -129,7 +156,7 @@
                 </div>
                 <div class="preview-item glass hover-lift" data-category="data" onclick="openPDF('Certificates/Microsoft Power BI Certification Training.pdf')">
                     <h4>Microsoft Power BI</h4>
-                    <embed src="Certificates/Microsoft Power BI Certification Training.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
+                    <embed data-src="Certificates/Microsoft Power BI Certification Training.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
                     <div class="mobile-pdf-placeholder">
                         <i class="fas fa-file-pdf"></i>
                         <p>PDF Certificate</p>
@@ -138,7 +165,7 @@
                 </div>
                 <div class="preview-item glass hover-lift" data-category="others" onclick="openPDF('Certificates/Agile Scrum Master.pdf')">
                     <h4>Agile Scrum Master</h4>
-                    <embed src="Certificates/Agile Scrum Master.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
+                    <embed data-src="Certificates/Agile Scrum Master.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
                     <div class="mobile-pdf-placeholder">
                         <i class="fas fa-file-pdf"></i>
                         <p>PDF Certificate</p>
@@ -147,7 +174,7 @@
                 </div>
                 <div class="preview-item glass hover-lift" data-category="ai" onclick="openPDF('Certificates/Introduction to Artificial Intelligence.pdf')">
                     <h4>Introduction to Artificial Intelligence</h4>
-                    <embed src="Certificates/Introduction to Artificial Intelligence.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
+                    <embed data-src="Certificates/Introduction to Artificial Intelligence.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
                     <div class="mobile-pdf-placeholder">
                         <i class="fas fa-file-pdf"></i>
                         <p>PDF Certificate</p>
@@ -156,25 +183,25 @@
                 </div>
                 <div class="preview-item glass hover-lift" data-category="ai" onclick="openPDF('Certificates/Digital Transformation.pdf')">
                     <h4>Digital Transformation</h4>
-                    <embed src="Certificates/Digital Transformation.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
+                    <embed data-src="Certificates/Digital Transformation.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
                     <div class="mobile-pdf-placeholder">
                         <i class="fas fa-file-pdf"></i>
                         <p>PDF Certificate</p>
                         <button class="mobile-view-btn" onclick="event.stopPropagation(); openPDF('Certificates/Digital Transformation.pdf')">View Certificate</button>
                     </div>
                 </div>
-                <div class="preview-item glass hover-lift scroll-animate" data-category="data" onclick="openPDF('Certificates/Business Analytics with Excel.pdf')">
+                <div class="preview-item glass hover-lift" data-category="data" onclick="openPDF('Certificates/Business Analytics with Excel.pdf')">
                     <h4>Business Analytics with Excel</h4>
-                    <embed src="Certificates/Business Analytics with Excel.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
+                    <embed data-src="Certificates/Business Analytics with Excel.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
                     <div class="mobile-pdf-placeholder">
                         <i class="fas fa-file-pdf"></i>
                         <p>PDF Certificate</p>
                         <button class="mobile-view-btn" onclick="event.stopPropagation(); openPDF('Certificates/Business Analytics with Excel.pdf')">View Certificate</button>
                     </div>
                 </div>
-                <div class="preview-item glass hover-lift scroll-animate" data-category="data" onclick="openPDF('Certificates/Tableau Desktop Specialist Certification Training.pdf')">
+                <div class="preview-item glass hover-lift" data-category="data" onclick="openPDF('Certificates/Tableau Desktop Specialist Certification Training.pdf')">
                     <h4>Tableau Desktop Specialist</h4>
-                    <embed src="Certificates/Tableau Desktop Specialist Certification Training.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
+                    <embed data-src="Certificates/Tableau Desktop Specialist Certification Training.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
                     <div class="mobile-pdf-placeholder">
                         <i class="fas fa-file-pdf"></i>
                         <p>PDF Certificate</p>
@@ -183,7 +210,7 @@
                 </div>
                 <div class="preview-item" data-category="aws" onclick="openPDF('Certificates/AWS Technical Essentials.pdf')">
                     <h4>AWS Technical Essentials</h4>
-                    <embed src="Certificates/AWS Technical Essentials.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
+                    <embed data-src="Certificates/AWS Technical Essentials.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
                     <div class="mobile-pdf-placeholder">
                         <i class="fas fa-file-pdf"></i>
                         <p>PDF Certificate</p>
@@ -192,7 +219,7 @@
                 </div>
                 <div class="preview-item" data-category="aws" onclick="openPDF('Certificates/AWS Database Migration.pdf')">
                     <h4>AWS Database Migration</h4>
-                    <embed src="Certificates/AWS Database Migration.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
+                    <embed data-src="Certificates/AWS Database Migration.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
                     <div class="mobile-pdf-placeholder">
                         <i class="fas fa-file-pdf"></i>
                         <p>PDF Certificate</p>
@@ -201,7 +228,7 @@
                 </div>
                 <div class="preview-item" data-category="aws" onclick="openPDF('Certificates/Big Data on AWS.pdf')">
                     <h4>Big Data on AWS</h4>
-                    <embed src="Certificates/Big Data on AWS.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
+                    <embed data-src="Certificates/Big Data on AWS.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
                     <div class="mobile-pdf-placeholder">
                         <i class="fas fa-file-pdf"></i>
                         <p>PDF Certificate</p>
@@ -210,7 +237,7 @@
                 </div>
                 <div class="preview-item" data-category="aws" onclick="openPDF('Certificates/Cloud Architect Capstone.pdf')">
                     <h4>Cloud Architect Capstone</h4>
-                    <embed src="Certificates/Cloud Architect Capstone.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
+                    <embed data-src="Certificates/Cloud Architect Capstone.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
                     <div class="mobile-pdf-placeholder">
                         <i class="fas fa-file-pdf"></i>
                         <p>PDF Certificate</p>
@@ -219,7 +246,7 @@
                 </div>
                 <div class="preview-item" data-category="azure" onclick="openPDF('Certificates/Designing Microsoft Azure Infrastructure Solutions.pdf')">
                     <h4>Azure Infrastructure Solutions</h4>
-                    <embed src="Certificates/Designing Microsoft Azure Infrastructure Solutions.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
+                    <embed data-src="Certificates/Designing Microsoft Azure Infrastructure Solutions.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
                     <div class="mobile-pdf-placeholder">
                         <i class="fas fa-file-pdf"></i>
                         <p>PDF Certificate</p>
@@ -228,7 +255,7 @@
                 </div>
                 <div class="preview-item" data-category="azure" onclick="openPDF('Certificates/Developing Solutions for Microsoft Azure.pdf')">
                     <h4>Azure Solutions Development</h4>
-                    <embed src="Certificates/Developing Solutions for Microsoft Azure.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
+                    <embed data-src="Certificates/Developing Solutions for Microsoft Azure.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
                     <div class="mobile-pdf-placeholder">
                         <i class="fas fa-file-pdf"></i>
                         <p>PDF Certificate</p>
@@ -237,7 +264,7 @@
                 </div>
                 <div class="preview-item" data-category="devops" onclick="openPDF('Certificates/DevOps Training.pdf')">
                     <h4>DevOps Training</h4>
-                    <embed src="Certificates/DevOps Training.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
+                    <embed data-src="Certificates/DevOps Training.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
                     <div class="mobile-pdf-placeholder">
                         <i class="fas fa-file-pdf"></i>
                         <p>PDF Certificate</p>
@@ -246,7 +273,7 @@
                 </div>
                 <div class="preview-item" data-category="others" onclick="openPDF('Certificates/GIT Training.pdf')">
                     <h4>GIT Training</h4>
-                    <embed src="Certificates/GIT Training.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
+                    <embed data-src="Certificates/GIT Training.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
                     <div class="mobile-pdf-placeholder">
                         <i class="fas fa-file-pdf"></i>
                         <p>PDF Certificate</p>
@@ -255,7 +282,7 @@
                 </div>
                 <div class="preview-item" data-category="data" onclick="openPDF('Certificates/Introduction to Data Analytics.pdf')">
                     <h4>Introduction to Data Analytics</h4>
-                    <embed src="Certificates/Introduction to Data Analytics.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
+                    <embed data-src="Certificates/Introduction to Data Analytics.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
                     <div class="mobile-pdf-placeholder">
                         <i class="fas fa-file-pdf"></i>
                         <p>PDF Certificate</p>
@@ -264,7 +291,7 @@
                 </div>
                 <div class="preview-item" data-category="ai" onclick="openPDF('Certificates/Introduction to Robotic Process Automation.pdf')">
                     <h4>Robotic Process Automation</h4>
-                    <embed src="Certificates/Introduction to Robotic Process Automation.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
+                    <embed data-src="Certificates/Introduction to Robotic Process Automation.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
                     <div class="mobile-pdf-placeholder">
                         <i class="fas fa-file-pdf"></i>
                         <p>PDF Certificate</p>
@@ -273,7 +300,7 @@
                 </div>
                 <div class="preview-item" data-category="others" onclick="openPDF('Certificates/Linux Training.pdf')">
                     <h4>Linux Training</h4>
-                    <embed src="Certificates/Linux Training.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
+                    <embed data-src="Certificates/Linux Training.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
                     <div class="mobile-pdf-placeholder">
                         <i class="fas fa-file-pdf"></i>
                         <p>PDF Certificate</p>
@@ -282,7 +309,7 @@
                 </div>
                 <div class="preview-item" data-category="azure" onclick="openPDF('Certificates/Microsoft Azure Fundamentals.pdf')">
                     <h4>Microsoft Azure Fundamentals</h4>
-                    <embed src="Certificates/Microsoft Azure Fundamentals.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
+                    <embed data-src="Certificates/Microsoft Azure Fundamentals.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
                     <div class="mobile-pdf-placeholder">
                         <i class="fas fa-file-pdf"></i>
                         <p>PDF Certificate</p>
@@ -291,7 +318,7 @@
                 </div>
                 <div class="preview-item" data-category="gcp" onclick="openPDF('Certificates/Google Cloud Platform Architect Training.pdf')">
                     <h4>Google Cloud Platform Architect</h4>
-                    <embed src="Certificates/Google Cloud Platform Architect Training.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
+                    <embed data-src="Certificates/Google Cloud Platform Architect Training.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
                     <div class="mobile-pdf-placeholder">
                         <i class="fas fa-file-pdf"></i>
                         <p>PDF Certificate</p>
@@ -300,7 +327,7 @@
                 </div>
                 <div class="preview-item" data-category="gcp" onclick="openPDF('Certificates/Introduction to Google Cloud Platform.pdf')">
                     <h4>Introduction to Google Cloud</h4>
-                    <embed src="Certificates/Introduction to Google Cloud Platform.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
+                    <embed data-src="Certificates/Introduction to Google Cloud Platform.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
                     <div class="mobile-pdf-placeholder">
                         <i class="fas fa-file-pdf"></i>
                         <p>PDF Certificate</p>
@@ -309,7 +336,7 @@
                 </div>
                 <div class="preview-item" data-category="gcp" onclick="openPDF('Certificates/Google Cloud Series.pdf')">
                     <h4>Google Cloud Series</h4>
-                    <embed src="Certificates/Google Cloud Series.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
+                    <embed data-src="Certificates/Google Cloud Series.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
                     <div class="mobile-pdf-placeholder">
                         <i class="fas fa-file-pdf"></i>
                         <p>PDF Certificate</p>
@@ -318,7 +345,7 @@
                 </div>
                 <div class="preview-item" data-category="ai" onclick="openPDF('Certificates/Be10X Certificate.pdf')">
                     <h4>Be10X Certificate</h4>
-                    <embed src="Certificates/Be10X Certificate.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
+                    <embed data-src="Certificates/Be10X Certificate.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
                     <div class="mobile-pdf-placeholder">
                         <i class="fas fa-file-pdf"></i>
                         <p>PDF Certificate</p>
@@ -327,21 +354,37 @@
                 </div>
                 <div class="preview-item" data-category="ai" onclick="openPDF('Certificates/AI Outskill Mastermind.pdf')">
                     <h4>AI Outskill Mastermind</h4>
-                    <embed src="Certificates/AI Outskill Mastermind.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
+                    <embed data-src="Certificates/AI Outskill Mastermind.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
                     <div class="mobile-pdf-placeholder">
                         <i class="fas fa-file-pdf"></i>
                         <p>PDF Certificate</p>
                         <button class="mobile-view-btn" onclick="event.stopPropagation(); openPDF('Certificates/AI Outskill Mastermind.pdf')">View Certificate</button>
                     </div>
                 </div>
+                <div class="preview-item" data-category="ai" onclick="openPDF('Certificates/Python Using AI Workshop.pdf')">
+                    <h4>Python Using AI Workshop</h4>
+                    <embed data-src="Certificates/Python Using AI Workshop.pdf#toolbar=0&navpanes=0&scrollbar=0" type="application/pdf" />
+                    <div class="mobile-pdf-placeholder">
+                        <i class="fas fa-file-pdf"></i>
+                        <p>PDF Certificate</p>
+                        <button class="mobile-view-btn" onclick="event.stopPropagation(); openPDF('Certificates/Python Using AI Workshop.pdf')">View Certificate</button>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
+    </main>
 
     <!-- Scroll to Top Button -->
     <button id="scrollToTop" class="scroll-to-top" aria-label="Scroll to top">
         <i class="fas fa-chevron-up"></i>
     </button>
+
+    <footer class="footer">
+        <div class="container">
+            <p style="color: white;">Made with ❤️ by Santhosh Anand © <script>document.write(new Date().getFullYear())</script></p>
+        </div>
+    </footer>
 
     <script>
         // Initialize scroll animations
@@ -359,24 +402,24 @@
             });
         }
         
-        // Initialize parallax
+        // Initialize parallax (throttled)
         function initParallax() {
             const parallaxElements = document.querySelectorAll('.parallax-bg');
-            
+            if (!parallaxElements.length) return;
+            let ticking = false;
             window.addEventListener('scroll', () => {
-                const scrolled = window.pageYOffset;
-                
-                parallaxElements.forEach((element, index) => {
-                    const speed = 0.5 + (index * 0.2);
-                    const yPos = -(scrolled * speed);
-                    element.style.transform = `translateY(${yPos}px)`;
+                if (ticking) return;
+                ticking = true;
+                requestAnimationFrame(() => {
+                    const scrolled = window.pageYOffset;
+                    parallaxElements.forEach((el, i) => {
+                        el.style.transform = `translateY(${-(scrolled * (0.5 + i * 0.2))}px)`;
+                    });
+                    ticking = false;
                 });
             }, { passive: true });
         }
         
-        // Apply theme from localStorage
-        const savedTheme = localStorage.getItem('theme') || 'light';
-        document.body.setAttribute('data-theme', savedTheme);
         
         // Comprehensive PDF support detection
         function initPDFFallback() {
@@ -525,9 +568,15 @@
             cursor.className = 'cursor';
             document.body.appendChild(cursor);
             
+            let cursorTicking = false;
             document.addEventListener('mousemove', (e) => {
-                cursor.style.left = e.clientX - 10 + 'px';
-                cursor.style.top = e.clientY - 10 + 'px';
+                if (cursorTicking) return;
+                cursorTicking = true;
+                requestAnimationFrame(() => {
+                    cursor.style.left = e.clientX - 10 + 'px';
+                    cursor.style.top = e.clientY - 10 + 'px';
+                    cursorTicking = false;
+                });
             });
             
             const interactiveElements = document.querySelectorAll('a, button, .preview-item, .filter-btn');
@@ -584,7 +633,7 @@
         }
 
         function openPDF(pdfPath) {
-            window.open(pdfPath, '_blank');
+            window.open(pdfPath, '_blank', 'noopener,noreferrer');
         }
         
         // Mobile Navigation
@@ -653,63 +702,23 @@
             });
         });
         
-        // Simple Lazy Loading for PDFs
-        const lazyLoadPDFs = () => {
-            const pdfEmbeds = document.querySelectorAll('embed[src*=".pdf"]');
-            
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const embed = entry.target;
-                        const src = embed.getAttribute('src');
-                        
-                        // Only load if not already loaded
-                        if (src && !embed.classList.contains('loaded')) {
-                            embed.classList.add('loaded');
-                            // Add loading indicator
-                            embed.style.background = 'linear-gradient(45deg, #f0f0f0 25%, transparent 25%), linear-gradient(-45deg, #f0f0f0 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #f0f0f0 75%), linear-gradient(-45deg, transparent 75%, #f0f0f0 75%)';
-                            embed.style.backgroundSize = '20px 20px';
-                            embed.style.backgroundPosition = '0 0, 0 10px, 10px -10px, -10px 0px';
-                            embed.style.animation = 'loading 1s linear infinite';
-                            
-                            // Reload the embed to trigger loading
-                            const newSrc = src;
-                            embed.src = '';
-                            setTimeout(() => {
-                                embed.src = newSrc;
-                                embed.onload = () => {
-                                    embed.style.background = '';
-                                    embed.style.animation = '';
-                                };
-                            }, 100);
-                        }
-                        observer.unobserve(embed);
+        // Lazy Loading for PDFs via IntersectionObserver
+        const pdfObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const embed = entry.target.querySelector('embed[data-src]');
+                    if (embed) {
+                        embed.src = embed.getAttribute('data-src');
+                        embed.removeAttribute('data-src');
                     }
-                });
-            }, {
-                threshold: 0.1,
-                rootMargin: '50px'
+                    pdfObserver.unobserve(entry.target);
+                }
             });
-            
-            pdfEmbeds.forEach(embed => {
-                observer.observe(embed);
-            });
-        };
-        
-        // Initialize lazy loading after page load
-        window.addEventListener('load', () => {
-            setTimeout(lazyLoadPDFs, 500);
+        }, { rootMargin: '200px' });
+
+        document.querySelectorAll('.preview-item').forEach(item => {
+            pdfObserver.observe(item);
         });
-        
-        // Add CSS animation for loading effect
-        const style = document.createElement('style');
-        style.textContent = `
-            @keyframes loading {
-                0% { background-position: 0 0, 0 10px, 10px -10px, -10px 0px; }
-                100% { background-position: 20px 20px, 20px 30px, 30px 10px, 10px 20px; }
-            }
-        `;
-        document.head.appendChild(style);
 
 
     </script>
