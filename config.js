@@ -13,4 +13,6 @@
         'RV9F'
     ];
     window.__GOOGLE_API_KEY__ = atob(_k.join(''));
+    window.__YT_SHEET_ID__ = '12DsWwpdqIcNTPyusaPuINW6_BAPtRrVdA-s9ZFPGWKc';
+    window.__YT_SHEET_RANGE__ = 'YouTube Videos!A:D';
 })();

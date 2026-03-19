@@ -95,19 +95,70 @@
             constructor() {
                 this.apiKey = window.__GOOGLE_API_KEY__ || '';
                 this.channelId = 'UCL5u4u2kAytov22ITSXFI0g';
+                this.sheetId = window.__YT_SHEET_ID__ || '';
+                this.sheetRange = window.__YT_SHEET_RANGE__ || '';
                 this.videosPerPage = 9;
                 this.nextPageToken = null;
                 this.isLoading = false;
+                this.usingSheet = false;
             }
 
             async init() {
                 if (!this.apiKey) return;
-                await this.loadVideos();
+                try {
+                    await this.loadVideos();
+                } catch (error) {
+                    console.error('API failed, trying Sheet fallback:', error);
+                    try {
+                        await this.loadFromSheet();
+                    } catch (sheetError) {
+                        console.error('Sheet fallback also failed:', sheetError);
+                        this.showError();
+                    }
+                }
                 this.setupLoadMore();
             }
 
+            showError() {
+                const container = document.getElementById('allVideosGrid');
+                if (container) container.innerHTML = '<div class="youtube-loading"><p>Unable to load videos right now</p><a href="https://www.youtube.com/@creativesmarttech" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="margin-top:15px"><i class="fab fa-youtube"></i> Visit Channel</a></div>';
+            }
+
+            extractVideoId(url) {
+                if (!url) return null;
+                const match = url.match(/(?:v=|youtu\.be\/|\/embed\/|\/v\/)([a-zA-Z0-9_-]{11})/);
+                return match ? match[1] : null;
+            }
+
+            async loadFromSheet() {
+                if (!this.sheetId || !this.sheetRange) throw new Error('No sheet config');
+                const url = `https://sheets.googleapis.com/v4/spreadsheets/${this.sheetId}/values/${encodeURIComponent(this.sheetRange)}?key=${this.apiKey}`;
+                const res = await fetch(url);
+                if (!res.ok) throw new Error('Sheet API error');
+                const data = await res.json();
+                if (!data.values || data.values.length < 2) throw new Error('No sheet data');
+
+                const videos = [];
+                for (let i = 1; i < data.values.length; i++) {
+                    const row = data.values[i];
+                    if (!row || row.length < 4 || !row[3]) continue;
+                    const videoId = this.extractVideoId(row[3]);
+                    if (!videoId) continue;
+                    videos.push({
+                        id: videoId,
+                        title: row[2] || 'YouTube Video',
+                        thumbnail: `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`,
+                        publishedAt: new Date(row[1] || '')
+                    });
+                }
+                videos.sort((a, b) => b.publishedAt - a.publishedAt);
+                this.usingSheet = true;
+                document.getElementById('loadMoreContainer').style.display = 'none';
+                this.renderVideos(videos, false);
+            }
+
             async loadVideos(append = false) {
-                if (this.isLoading) return;
+                if (this.isLoading || this.usingSheet) return;
                 this.isLoading = true;
                 
                 const btn = document.getElementById('loadMoreBtn');
@@ -133,9 +184,7 @@
                     
                     this.renderVideos(videos, append);
                 } catch (error) {
-                    console.error('Failed to load videos:', error);
-                    const container = document.getElementById('allVideosGrid');
-                    if (container) container.innerHTML = '<div class="youtube-loading"><p>Unable to load videos right now</p><a href="https://www.youtube.com/@creativesmarttech" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="margin-top:15px"><i class="fab fa-youtube"></i> Visit Channel</a></div>';
+                    throw error;
                 } finally {
                     this.isLoading = false;
                     if (btn) btn.innerHTML = '<i class="fas fa-plus"></i> Load More Videos';

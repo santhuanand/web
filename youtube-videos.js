@@ -1,9 +1,11 @@
-// YouTube Videos Integration
+// YouTube Videos Integration with Google Sheet Fallback
 class YouTubeVideosManager {
     constructor() {
         this.apiKey = window.__GOOGLE_API_KEY__ || '';
         this.channelHandle = 'creativesmarttech';
         this.maxVideos = 6;
+        this.sheetId = window.__YT_SHEET_ID__ || '';
+        this.sheetRange = window.__YT_SHEET_RANGE__ || '';
         this.DEBUG = false;
     }
 
@@ -20,8 +22,13 @@ class YouTubeVideosManager {
         try {
             await this.loadVideos();
         } catch (error) {
-            this.log('Failed to load videos:', error);
-            this.showError();
+            this.log('API failed, trying Sheet fallback:', error);
+            try {
+                await this.loadFromSheet();
+            } catch (sheetError) {
+                this.log('Sheet fallback also failed:', sheetError);
+                this.showError();
+            }
         }
     }
 
@@ -34,28 +41,30 @@ class YouTubeVideosManager {
         }
     }
 
+    extractVideoId(url) {
+        if (!url) return null;
+        const match = url.match(/(?:v=|youtu\.be\/|\/embed\/|\/v\/)([a-zA-Z0-9_-]{11})/);
+        return match ? match[1] : null;
+    }
+
     async loadVideos() {
         const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=UCL5u4u2kAytov22ITSXFI0g&maxResults=${this.maxVideos}&order=date&type=video&key=${this.apiKey}`;
         this.log('Fetching:', url);
-        
+
         const response = await fetch(url);
         this.log('Response status:', response.status);
-        
+
         if (!response.ok) {
             const err = await response.json();
             this.log('API Error:', err);
-            this.showError();
-            return;
+            throw new Error(`API ${response.status}`);
         }
-        
+
         const data = await response.json();
         this.log('Data:', data);
-        
-        if (!data.items || data.items.length === 0) {
-            this.showError();
-            return;
-        }
-        
+
+        if (!data.items || data.items.length === 0) throw new Error('No items');
+
         const videos = data.items
             .filter(item => item.id?.videoId && item.snippet?.title)
             .map(item => ({
@@ -64,8 +73,36 @@ class YouTubeVideosManager {
                 thumbnail: item.snippet.thumbnails?.high?.url || item.snippet.thumbnails?.medium?.url || '',
                 publishedAt: new Date(item.snippet.publishedAt)
             }));
-        
+
         this.renderVideos(videos);
+    }
+
+    async loadFromSheet() {
+        if (!this.sheetId || !this.sheetRange) throw new Error('No sheet config');
+        const url = `https://sheets.googleapis.com/v4/spreadsheets/${this.sheetId}/values/${encodeURIComponent(this.sheetRange)}?key=${this.apiKey}`;
+        this.log('Fetching sheet:', url);
+
+        const res = await fetch(url);
+        if (!res.ok) throw new Error('Sheet API error');
+        const data = await res.json();
+        if (!data.values || data.values.length < 2) throw new Error('No sheet data');
+
+        const videos = [];
+        for (let i = 1; i < data.values.length; i++) {
+            const row = data.values[i];
+            if (!row || row.length < 4 || !row[3]) continue;
+            const videoId = this.extractVideoId(row[3]);
+            if (!videoId) continue;
+            videos.push({
+                id: videoId,
+                title: row[2] || 'YouTube Video',
+                thumbnail: `https://i.ytimg.com/vi/${videoId}/hqdefault.jpg`,
+                publishedAt: new Date(row[1] || '')
+            });
+        }
+
+        videos.sort((a, b) => b.publishedAt - a.publishedAt);
+        this.renderVideos(videos.slice(0, this.maxVideos));
     }
 
     renderVideos(videos) {
@@ -118,6 +155,5 @@ class YouTubeVideosManager {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Wait briefly for config.js to set the API key
     setTimeout(() => new YouTubeVideosManager().init(), 100);
 });
