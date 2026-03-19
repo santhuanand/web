@@ -439,7 +439,7 @@ p {
 .nav-menu {
     display: flex;
     list-style: none;
-    gap: 2rem;
+    gap: clamp(0.5rem, 1.5vw, 2rem);
 }
 
 .nav-link {
@@ -707,7 +707,9 @@ p {
 
 .profile-photo {
     width: 300px;
-    height: 300px;
+    max-width: 100%;
+    aspect-ratio: 1;
+    height: auto;
     border-radius: 50%;
     overflow: hidden;
     margin: 0 auto;
@@ -1623,7 +1625,7 @@ input[name="recommendation"]:checked + .card-radio-btn {
 
 .insights-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(350px, 100%), 1fr));
     gap: 30px;
     margin-top: 60px;
 }
@@ -2228,7 +2230,7 @@ body {
 
 .preview-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
     gap: 30px;
     max-width: 1200px;
     margin: 0 auto;
@@ -2470,7 +2472,7 @@ body {
     }
     
     .btn:active, .filter-btn:active {
-        transform: scale(0.98);
+        transform: scale(0.98) !important;
     }
     
     .mobile-pdf-placeholder {
@@ -2541,9 +2543,14 @@ body {
     
     .hero-content {
         grid-template-columns: 1fr;
-        grid-template-areas: "text" "image";
+        grid-template-areas: none;
         text-align: center;
         gap: 2rem;
+    }
+    
+    .hero-text,
+    .hero-image {
+        grid-area: auto;
     }
     
     .hero-buttons {
@@ -2568,13 +2575,25 @@ body {
     
     .skills-grid {
         grid-template-columns: 1fr;
-        grid-template-areas: "tech" "cloud" "data" "ai";
+        grid-template-areas: none;
+    }
+    
+    .skill-category:nth-child(1),
+    .skill-category:nth-child(2),
+    .skill-category:nth-child(3),
+    .skill-category:nth-child(4) {
+        grid-area: auto;
     }
     
     .contact-content {
         grid-template-columns: 1fr;
-        grid-template-areas: "info" "form";
+        grid-template-areas: none;
         gap: 2rem;
+    }
+    
+    .contact-info,
+    .contact-form {
+        grid-area: auto;
     }
     
     .section-title {
@@ -2587,8 +2606,14 @@ body {
     
     .about-stats {
         grid-template-columns: repeat(2, 1fr);
-        grid-template-areas: "stat1 stat2" "stat3 stat3";
+        grid-template-areas: none;
         gap: 20px;
+    }
+    
+    .stat-item:nth-child(1),
+    .stat-item:nth-child(2),
+    .stat-item:nth-child(3) {
+        grid-area: auto;
     }
 
     .cert-grid {
@@ -2686,8 +2711,17 @@ body {
     
     .portfolio-grid {
         grid-template-columns: 1fr;
-        grid-template-areas: "project1" "project2" "project3" "project4" "project5" "project6";
+        grid-template-areas: none;
         gap: 20px;
+    }
+    
+    .portfolio-item:nth-child(1),
+    .portfolio-item:nth-child(2),
+    .portfolio-item:nth-child(3),
+    .portfolio-item:nth-child(4),
+    .portfolio-item:nth-child(5),
+    .portfolio-item:nth-child(6) {
+        grid-area: auto;
     }
     
     .insights-grid {
@@ -2745,6 +2779,13 @@ body {
     
     .about-stats {
         grid-template-columns: 1fr;
+        grid-template-areas: none;
+    }
+    
+    .stat-item:nth-child(1),
+    .stat-item:nth-child(2),
+    .stat-item:nth-child(3) {
+        grid-area: auto;
     }
     
     .cert-grid {
@@ -2763,7 +2804,8 @@ body {
     
     .social-links {
         justify-content: center;
-        gap: 20px;
+        gap: 12px;
+        flex-wrap: wrap;
     }
     
     .recommendations-container {
@@ -3051,7 +3093,7 @@ body {
 
 .youtube-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
     gap: 30px;
     margin-top: 60px;
 }
@@ -3256,7 +3298,7 @@ body {
 /* LinkedIn Cards */
 .linkedin-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(320px, 100%), 1fr));
     gap: 30px;
     margin-top: 60px;
 }
@@ -3468,18 +3510,57 @@ body {
 }
 
 /* Container Queries - component-level responsive grids */
-@container (max-width: 700px) {
+@container (max-width: 768px) {
     .portfolio-grid,
     .skills-grid {
         grid-template-columns: 1fr;
         grid-template-areas: none;
     }
+    .skill-category:nth-child(1),
+    .skill-category:nth-child(2),
+    .skill-category:nth-child(3),
+    .skill-category:nth-child(4) {
+        grid-area: auto;
+    }
+    .portfolio-item:nth-child(1),
+    .portfolio-item:nth-child(2),
+    .portfolio-item:nth-child(3),
+    .portfolio-item:nth-child(4),
+    .portfolio-item:nth-child(5),
+    .portfolio-item:nth-child(6) {
+        grid-area: auto;
+    }
+    .about-stats {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-areas: none;
+    }
+    .stat-item:nth-child(1),
+    .stat-item:nth-child(2),
+    .stat-item:nth-child(3) {
+        grid-area: auto;
+    }
+    .contact-content {
+        grid-template-columns: 1fr;
+        grid-template-areas: none;
+    }
+    .contact-info,
+    .contact-form {
+        grid-area: auto;
+    }
 }
 
-@container (min-width: 701px) and (max-width: 1000px) {
+@container (min-width: 769px) and (max-width: 1000px) {
     .portfolio-grid {
         grid-template-columns: repeat(2, 1fr);
         grid-template-areas: none;
+    }
+    .portfolio-item:nth-child(1),
+    .portfolio-item:nth-child(2),
+    .portfolio-item:nth-child(3),
+    .portfolio-item:nth-child(4),
+    .portfolio-item:nth-child(5),
+    .portfolio-item:nth-child(6) {
+        grid-area: auto;
     }
 }
 
@@ -3487,6 +3568,9 @@ body {
     .cert-grid,
     .youtube-grid,
     .linkedin-grid {
+        grid-template-columns: 1fr;
+    }
+    .about-stats {
         grid-template-columns: 1fr;
     }
 }
