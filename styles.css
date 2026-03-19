@@ -261,7 +261,6 @@ html {
     scroll-padding-top: 80px;
     background-color: #ffffff;
     overflow-x: hidden;
-    overflow-x: clip;
 }
 
 [data-theme="dark"] html {
@@ -291,7 +290,6 @@ body {
     background-color: #ffffff;
     background: #ffffff;
     overflow-x: hidden;
-    overflow-x: clip;
     opacity: 0;
     animation: pageLoad 0.8s ease forwards;
 }
@@ -678,6 +676,7 @@ p {
     font-size: 1.2rem;
     transition: var(--transition);
     backdrop-filter: blur(10px);
+    text-decoration: none;
 }
 
 .social-links a:hover {
@@ -3124,11 +3123,13 @@ body {
     box-shadow: 0 0 20px rgba(255, 0, 0, 0.4);
 }
 
-.youtube-content {
+.youtube-content,
+.linkedin-content {
     padding: 20px;
 }
 
-.youtube-content h3 {
+.youtube-content h3,
+.linkedin-content h3 {
     font-size: 1.1rem;
     font-weight: 600;
     color: #1f2937;
@@ -3140,16 +3141,19 @@ body {
     overflow: hidden;
 }
 
-[data-theme="dark"] .youtube-content h3 {
+[data-theme="dark"] .youtube-content h3,
+[data-theme="dark"] .linkedin-content h3 {
     color: var(--text-primary) !important;
 }
 
-.youtube-date {
+.youtube-date,
+.linkedin-date {
     font-size: 0.85rem;
     color: #6b7280;
 }
 
-[data-theme="dark"] .youtube-date {
+[data-theme="dark"] .youtube-date,
+[data-theme="dark"] .linkedin-date {
     color: var(--text-secondary) !important;
 }
 
@@ -3337,6 +3341,11 @@ body {
     backdrop-filter: blur(8px);
     border: 2px solid rgba(255,255,255,0.3);
     flex-shrink: 0;
+    transition: opacity 0.3s ease;
+}
+
+.linkedin-card:hover .category-icon {
+    opacity: 0;
 }
 
 
@@ -3376,6 +3385,11 @@ body {
     margin: 0;
     width: 100%;
     box-sizing: border-box;
+    transition: opacity 0.3s ease;
+}
+
+.linkedin-card:hover .gradient-title {
+    opacity: 0;
 }
 
 .linkedin-placeholder {
@@ -3502,33 +3516,4 @@ body {
     to { opacity: 1; }
 }
 
-/* Scroll-driven animations (progressive enhancement) */
-@supports (animation-timeline: scroll()) {
-    .reading-progress .progress-bar-fill {
-        animation: scaleX linear;
-        animation-timeline: scroll();
-        transform-origin: left;
-    }
 
-    @keyframes scaleX {
-        from { transform: scaleX(0); }
-        to { transform: scaleX(1); }
-    }
-
-    .scroll-animate,
-    .scroll-animate-left,
-    .scroll-animate-right,
-    .scroll-animate-fade,
-    .scroll-animate-zoom,
-    .scroll-animate-rotate,
-    .scroll-animate-slide-up {
-        animation: scrollReveal linear both;
-        animation-timeline: view();
-        animation-range: entry 0% entry 30%;
-    }
-
-    @keyframes scrollReveal {
-        from { opacity: 0; transform: translateY(30px); }
-        to { opacity: 1; transform: translateY(0); }
-    }
-}
