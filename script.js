@@ -281,15 +281,15 @@ try {
             cardTicking = true;
             requestAnimationFrame(() => {
                 const rect = this.getBoundingClientRect();
-                const rotateX = (e.clientY - rect.top - rect.height / 2) / 8;
-                const rotateY = (rect.width / 2 - (e.clientX - rect.left)) / 8;
-                this.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(20px) scale(1.02)`;
+                const rotateX = (e.clientY - rect.top - rect.height / 2) / 15;
+                const rotateY = (rect.width / 2 - (e.clientX - rect.left)) / 15;
+                this.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
                 cardTicking = false;
             });
         });
         
         card.addEventListener('mouseleave', function() {
-            this.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0) scale(1)';
+            this.style.transform = '';
         });
     });
     

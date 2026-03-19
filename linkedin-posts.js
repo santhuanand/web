@@ -94,15 +94,36 @@ class LinkedInPostsManager {
 
         const thumb = document.createElement('div');
         thumb.className = 'linkedin-thumbnail';
-        thumb.innerHTML = `
-            <div class="linkedin-gradient" style="background: linear-gradient(135deg, ${c1} 0%, ${c2} 100%);">
-                <div class="gradient-pattern"></div>
-                <span class="gradient-date">${post.date}</span>
-                <div class="category-icon"><i class="${cat.icon}"></i></div>
-                <p class="gradient-title">${this.escapeHtml(post.title)}</p>
-            </div>
-            <div class="linkedin-button"><i class="fab fa-linkedin-in"></i></div>
-        `;
+        const gradient = document.createElement('div');
+        gradient.className = 'linkedin-gradient';
+        gradient.style.background = `linear-gradient(135deg, ${c1} 0%, ${c2} 100%)`;
+
+        const pattern = document.createElement('div');
+        pattern.className = 'gradient-pattern';
+
+        const dateSpan = document.createElement('span');
+        dateSpan.className = 'gradient-date';
+        dateSpan.textContent = post.date;
+
+        const iconDiv = document.createElement('div');
+        iconDiv.className = 'category-icon';
+        const iconEl = document.createElement('i');
+        iconEl.className = cat.icon;
+        iconDiv.appendChild(iconEl);
+
+        const titleP = document.createElement('p');
+        titleP.className = 'gradient-title';
+        titleP.textContent = post.title;
+
+        gradient.append(pattern, dateSpan, iconDiv, titleP);
+
+        const btnDiv = document.createElement('div');
+        btnDiv.className = 'linkedin-button';
+        const btnIcon = document.createElement('i');
+        btnIcon.className = 'fab fa-linkedin-in';
+        btnDiv.appendChild(btnIcon);
+
+        thumb.append(gradient, btnDiv);
 
         card.appendChild(thumb);
         return card;

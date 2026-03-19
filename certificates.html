@@ -6,7 +6,6 @@
     <meta name="color-scheme" content="light dark">
     <meta name="view-transition" content="same-origin">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="X-Frame-Options" content="DENY">
     <meta http-equiv="X-XSS-Protection" content="1; mode=block">
     <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
     <title>Certificates - Santhosh Anand</title>
@@ -63,14 +62,14 @@
             <p class="text-large scroll-animate" style="text-align: center; color: white; margin-bottom: 40px;">Comprehensive Collection of Cloud, DevOps, Data Analytics, and AI Certifications</p>
             
             <div class="cert-filter scroll-animate" style="text-align: center; margin-bottom: 40px;">
-                <button class="filter-btn glass active hover-lift" onclick="filterCerts('all')">All Certificates</button>
-                <button class="filter-btn glass hover-lift" onclick="filterCerts('aws')">AWS</button>
-                <button class="filter-btn glass hover-lift" onclick="filterCerts('azure')">Azure</button>
-                <button class="filter-btn glass hover-lift" onclick="filterCerts('gcp')">Google Cloud</button>
-                <button class="filter-btn glass hover-lift" onclick="filterCerts('data')">Data & Analytics</button>
-                <button class="filter-btn glass hover-lift" onclick="filterCerts('devops')">DevOps</button>
-                <button class="filter-btn glass hover-lift" onclick="filterCerts('ai')">AI</button>
-                <button class="filter-btn glass hover-lift" onclick="filterCerts('others')">Others</button>
+                <button class="filter-btn glass active hover-lift" onclick="filterCerts('all', event)">All Certificates</button>
+                <button class="filter-btn glass hover-lift" onclick="filterCerts('aws', event)">AWS</button>
+                <button class="filter-btn glass hover-lift" onclick="filterCerts('azure', event)">Azure</button>
+                <button class="filter-btn glass hover-lift" onclick="filterCerts('gcp', event)">Google Cloud</button>
+                <button class="filter-btn glass hover-lift" onclick="filterCerts('data', event)">Data & Analytics</button>
+                <button class="filter-btn glass hover-lift" onclick="filterCerts('devops', event)">DevOps</button>
+                <button class="filter-btn glass hover-lift" onclick="filterCerts('ai', event)">AI</button>
+                <button class="filter-btn glass hover-lift" onclick="filterCerts('others', event)">Others</button>
             </div>
             <div class="preview-grid" id="certificatesGrid">
                 <div class="preview-item glass hover-lift" data-category="aws" onclick="openPDF('Certificates/AWS Solutions Architect Associate.pdf')">
@@ -586,10 +585,10 @@
             });
         }
         
-        function filterCerts(category) {
+        function filterCerts(category, e) {
             const items = document.querySelectorAll('.preview-item');
             const buttons = document.querySelectorAll('.filter-btn');
-            const activeButton = event.target;
+            const activeButton = e ? e.currentTarget : document.querySelector('.filter-btn.active');
             
             // Show loading state on button
             activeButton.style.opacity = '0.7';

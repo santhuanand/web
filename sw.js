@@ -14,6 +14,8 @@ const urlsToCache = [
   './Portfolio.pdf',
   './certificates.html',
   './404.html',
+  './icon-192.png',
+  './icon-512.png',
   './vendor/fontawesome/css/all.min.css',
   './vendor/emailjs/email.min.js',
   './vendor/fonts/inter.css'
@@ -45,8 +47,15 @@ self.addEventListener('fetch', event => {
 
   const url = new URL(event.request.url);
 
+  // Only handle same-origin or explicitly allowed API hosts
+  const allowedHosts = ['sheets.googleapis.com', 'www.googleapis.com', 'i.ytimg.com', 'i9.ytimg.com'];
+  const isSameOrigin = url.origin === self.location.origin;
+  const isAllowedAPI = allowedHosts.includes(url.hostname);
+
+  if (!isSameOrigin && !isAllowedAPI) return;
+
   // Network-first for API calls
-  if (url.hostname.includes('googleapis.com') || url.hostname.includes('youtube.com')) {
+  if (isAllowedAPI) {
     event.respondWith(
       fetch(event.request)
         .then(response => {
@@ -60,14 +69,12 @@ self.addEventListener('fetch', event => {
   }
 
   // Cache-first for same-origin static assets
-  if (url.origin === self.location.origin) {
-    event.respondWith(
-      caches.match(event.request)
-        .then(cached => cached || fetch(event.request).then(response => {
-          const clone = response.clone();
-          caches.open(CACHE_NAME).then(cache => cache.put(event.request, clone));
-          return response;
-        }))
-    );
-  }
+  event.respondWith(
+    caches.match(event.request)
+      .then(cached => cached || fetch(event.request).then(response => {
+        const clone = response.clone();
+        caches.open(CACHE_NAME).then(cache => cache.put(event.request, clone));
+        return response;
+      }))
+  );
 });

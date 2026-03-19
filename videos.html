@@ -6,7 +6,6 @@
     <meta name="color-scheme" content="light dark">
     <meta name="view-transition" content="same-origin">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="X-Frame-Options" content="DENY">
     <meta http-equiv="X-XSS-Protection" content="1; mode=block">
     <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
     <meta name="description" content="Watch all videos from Creative Smart Tech YouTube channel by Santhosh Anand">
@@ -135,6 +134,8 @@
                     this.renderVideos(videos, append);
                 } catch (error) {
                     console.error('Failed to load videos:', error);
+                    const container = document.getElementById('allVideosGrid');
+                    if (container) container.innerHTML = '<div class="youtube-loading"><p>Unable to load videos right now</p><a href="https://www.youtube.com/@creativesmarttech" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="margin-top:15px"><i class="fab fa-youtube"></i> Visit Channel</a></div>';
                 } finally {
                     this.isLoading = false;
                     if (btn) btn.innerHTML = '<i class="fas fa-plus"></i> Load More Videos';
