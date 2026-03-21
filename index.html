@@ -1,48 +1,57 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="color-scheme" content="light dark">
+    <meta name="view-transition" content="same-origin">
     <meta name="description" content="Santhosh Anand - Senior Development Manager with 13+ years experience in .NET, AWS, and team leadership. Expert in HRTech, HealthTech, and enterprise solutions.">
     <meta name="keywords" content="software developer, senior development manager, .NET developer, AWS architect, team leader, HRTech, HealthTech, enterprise solutions, Bengaluru">
     <meta name="author" content="Santhosh Anand">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://www.asnrtech.com">
     
+    <!-- Preconnect to API origins -->
+    <link rel="preconnect" href="https://sheets.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://www.googleapis.com" crossorigin>
+    <link rel="dns-prefetch" href="https://sheets.googleapis.com">
+    <link rel="dns-prefetch" href="https://www.googleapis.com">
+    
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.asnrtech.com">
     <meta property="og:title" content="Santhosh Anand - Senior Development Manager">
     <meta property="og:description" content="13+ years experience leading software development teams. Expert in .NET, AWS, and enterprise solutions.">
-    <meta property="og:image" content="https://www.asnrtech.com/Photo.jpeg">
+    <meta property="og:image" content="https://www.asnrtech.com/Photo.webp">
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://www.asnrtech.com">
     <meta property="twitter:title" content="Santhosh Anand - Senior Development Manager">
     <meta property="twitter:description" content="13+ years experience leading software development teams. Expert in .NET, AWS, and enterprise solutions.">
-    <meta property="twitter:image" content="https://www.asnrtech.com/Photo.jpeg">
+    <meta property="twitter:image" content="https://www.asnrtech.com/Photo.webp">
     
     <!-- Security Headers -->
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="X-Frame-Options" content="DENY">
     <meta http-equiv="X-XSS-Protection" content="1; mode=block">
     <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
     
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="icon" type="image/x-icon" href="favicon.svg">
-    <link rel="apple-touch-icon" sizes="180x180" href="favicon.svg">
+    <link rel="icon" type="image/png" sizes="192x192" href="icon-192.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="icon-192.png">
     
     <meta name="theme-color" content="#2563eb">
+    <link rel="manifest" href="manifest.json">
     
     <title>Santhosh Anand - Senior Development Manager | .NET & AWS Expert</title>
     <link rel="preload" href="styles.css" as="style">
-    <link rel="preload" href="Photo.jpeg" as="image">
+    <link rel="preload" href="Photo.avif" as="image" type="image/avif">
     <link rel="stylesheet" href="styles.css">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" crossorigin="anonymous" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" media="print" onload="this.media='all'">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link rel="stylesheet" href="vendor/fontawesome/css/all.min.css" media="print" onload="this.media='all'">
+    <link href="vendor/fonts/inter.css" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="vendor/fontawesome/css/all.min.css"><link rel="stylesheet" href="vendor/fonts/inter.css"></noscript>
+    <script src="vendor/emailjs/email.min.js"></script>
 
     
     <!-- Structured Data -->
@@ -58,15 +67,15 @@
       },
       "url": "https://www.asnrtech.com",
       "sameAs": [
-        "https://www.linkedin.com/in/santhoshanand"
+        "https://www.linkedin.com/in/santhoshanand",
+        "https://www.youtube.com/@creativesmarttech",
+        "https://whatsapp.com/channel/0029VbCcBxWJf05lQvBem22R"
       ],
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Bengaluru",
         "addressCountry": "IN"
       },
-      "email": "santhuanand7@gmail.com",
-      "telephone": "+919036046342",
       "knowsAbout": [".NET", "C#", "AWS", "JavaScript", "React", "SQL Server", "Team Management", "Agile"],
       "alumniOf": "VTU Bengaluru"
     }
@@ -117,7 +126,7 @@
                 <div class="hero-text">
                     <h1 class="hero-title font-extrabold">Santhosh Anand</h1>
                     <h2 class="hero-subtitle font-medium">Senior Development Manager @ TeamLease</h2>
-                    <p class="hero-description text-large font-light" style="color: white;">13+ years of experience leading high-impact software design, development, and team management across HRTech, HealthTech, Payment Gateway, ERP, and Utilities domains.</p>
+                    <p class="hero-description text-large font-light" style="color: white;"><span class="dynamic-years">13</span>+ years of experience leading high-impact software design, development, and team management across HRTech, HealthTech, Payment Gateway, ERP, and Utilities domains.</p>
                     <div class="hero-buttons">
                         <a href="#contact" class="btn btn-primary">Get In Touch</a>
                         <a href="Portfolio.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-secondary" aria-label="View Santhosh Anand's portfolio document">
@@ -128,6 +137,8 @@
                         <a href="https://www.linkedin.com/in/santhoshanand" target="_blank" rel="noopener noreferrer" aria-label="Visit Santhosh Anand's LinkedIn profile"><i class="fab fa-linkedin" aria-hidden="true"></i></a>
                         <a href="mailto:santhuanand7@gmail.com" aria-label="Send email to Santhosh Anand"><i class="fas fa-envelope" aria-hidden="true"></i></a>
                         <a href="tel:+919036046342" aria-label="Call Santhosh Anand"><i class="fas fa-phone" aria-hidden="true"></i></a>
+                        <a href="https://www.youtube.com/@creativesmarttech" target="_blank" rel="noopener noreferrer" aria-label="Visit Creative Smart Tech YouTube channel"><i class="fab fa-youtube" aria-hidden="true"></i></a>
+                        <a href="https://whatsapp.com/channel/0029VbCcBxWJf05lQvBem22R" target="_blank" rel="noopener noreferrer" aria-label="Follow Creative Smart Tech WhatsApp channel"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
                         <button id="theme-toggle" class="theme-toggle" aria-label="Toggle between light and dark mode">
                             <i class="fas fa-moon" aria-hidden="true"></i>
                         </button>
@@ -135,7 +146,11 @@
                 </div>
                 <div class="hero-image">
                     <div class="profile-photo">
-                        <img src="Photo.jpeg" alt="Santhosh Anand - Senior Development Manager professional headshot" loading="eager" width="300" height="300">
+                        <picture>
+                            <source srcset="Photo.avif" type="image/avif">
+                            <source srcset="Photo.webp" type="image/webp">
+                            <img src="Photo.webp" alt="Santhosh Anand - Senior Development Manager professional headshot" loading="eager" fetchpriority="high" width="300" height="300">
+                        </picture>
                     </div>
                 </div>
             </div>
@@ -147,11 +162,11 @@
         <div class="container">
             <h2 class="section-title font-bold scroll-animate-fade">About Me</h2>
             <div class="about-content">
-                <p class="text-large font-normal scroll-animate">Seasoned Software Development Manager with over 13 years of experience leading high-impact software design, development, and team management initiatives across HRTech, HealthTech, Payment Gateway, ERP, Verification, and Utilities domains.</p>
+                <p class="text-large font-normal scroll-animate">Seasoned Software Development Manager with over <span class="dynamic-years">13</span> years of experience leading high-impact software design, development, and team management initiatives across HRTech, HealthTech, Payment Gateway, ERP, Verification, and Utilities domains.</p>
                 <p class="text-large font-normal scroll-animate">Successfully delivered enterprise-grade applications serving major enterprise clients and over 3L+ active users daily. Expert in Microsoft (.NET) technologies, SQL databases, and AWS cloud solutions with proven ability to optimize performance and design scalable architectures.</p>
                 <div class="about-stats scroll-animate-zoom">
                     <div class="stat-item scroll-animate-slide-up">
-                        <h3>13+</h3>
+                        <h3 class="dynamic-years">13+</h3>
                         <p>Years Experience</p>
                     </div>
                     <div class="stat-item scroll-animate-slide-up">
@@ -169,9 +184,6 @@
 
     <!-- Experience Section -->
     <section id="experience" class="experience">
-        <div class="section-progress">
-            <div class="section-progress-fill" id="experienceProgress"></div>
-        </div>
         <div class="container">
             <h2 class="section-title font-bold scroll-animate-fade">Professional Experience</h2>
             <div class="timeline">
@@ -182,7 +194,7 @@
                     <div class="timeline-content glass hover-lift">
                         <h3 class="font-semibold">Senior Development Manager</h3>
                         <h4 class="font-medium">TeamLease Services Ltd, Bengaluru</h4>
-                        <span class="timeline-date">Oct 2019 - Present</span>
+                        <span class="timeline-date">Sep 2019 - Mar 2026</span>
                         <p>Domain: HRTech, Staffing & Compliance (3,500+ clients). Led a cross-functional development team of 10 members to deliver high-performance applications with assured scalability & availability.</p>
                         <ul class="achievements">
                             <li>Designed self-hosted workflow automation leveraging n8n, Amazon Q, and AI-driven tools, achieving 40% reduction in manual task completion time</li>
@@ -194,9 +206,9 @@
                                 <span class="detail-label">Team Size:</span>
                                 <span class="detail-value">10 members</span>
                             </div>
-                            <div class="detail-item">
-                                <span class="detail-label">Technologies:</span>
-                                <span class="detail-value">.NET Core, React, AWS, n8n</span>
+                             <div class="detail-item">
+                                <span class="detail-label">Focus:</span>
+                                <span class="detail-value">HRMS Development and Innovation</span>
                             </div>
                             <div class="detail-item">
                                 <span class="detail-label">Key Metrics:</span>
@@ -212,7 +224,7 @@
                     <div class="timeline-content">
                         <h3>Senior Software Engineer</h3>
                         <h4>Clario (BioClinica India Ltd), Bengaluru</h4>
-                        <span class="timeline-date">Jan 2017 - Oct 2019</span>
+                        <span class="timeline-date">Jan 2017 - Sep 2019</span>
                         <p>Domain: HealthTech (Clinical Trials for Abbott, AstraZeneca, Pfizer). Developed clinical trial management software used by global pharmaceutical clients.</p>
                         <ul class="achievements">
                             <li>Contributed to 15% improvement in data accuracy and regulatory compliance</li>
@@ -316,9 +328,6 @@
     <!-- Skills Section -->
     <section id="skills" class="skills gradient-bg-2">
         <div class="parallax-bg" style="background: linear-gradient(45deg, rgba(240, 147, 251, 0.1), rgba(245, 87, 108, 0.1));"></div>
-        <div class="section-progress">
-            <div class="section-progress-fill" id="skillsProgress"></div>
-        </div>
         <div class="container">
             <h2 class="section-title font-bold">Technical Expertise</h2>
             <div class="skills-grid">
@@ -334,9 +343,9 @@
                     <div class="skill-item">
                         <span class="skill-name">JavaScript / React / Node.js</span>
                         <div class="skill-bar">
-                            <div class="skill-progress" data-width="90%"></div>
+                            <div class="skill-progress" data-width="85%"></div>
                         </div>
-                        <span class="skill-percentage">90%</span>
+                        <span class="skill-percentage">85%</span>
                     </div>
                     <div class="skill-item">
                         <span class="skill-name">RESTful APIs / Microservices</span>
@@ -365,16 +374,16 @@
                     <div class="skill-item">
                         <span class="skill-name">Azure / CI/CD Pipelines</span>
                         <div class="skill-bar">
-                            <div class="skill-progress" data-width="85%"></div>
+                            <div class="skill-progress" data-width="80%"></div>
                         </div>
-                        <span class="skill-percentage">85%</span>
+                        <span class="skill-percentage">80%</span>
                     </div>
                     <div class="skill-item">
                         <span class="skill-name">DevOps Best Practices</span>
                         <div class="skill-bar">
-                            <div class="skill-progress" data-width="80%"></div>
+                            <div class="skill-progress" data-width="70%"></div>
                         </div>
-                        <span class="skill-percentage">80%</span>
+                        <span class="skill-percentage">70%</span>
                     </div>
                 </div>
                 <div class="skill-category scroll-animate-left">
@@ -418,7 +427,7 @@
                         <span class="skill-percentage">80%</span>
                     </div>
                     <div class="skill-item">
-                        <span class="skill-name">Team Management (10 members)</span>
+                        <span class="skill-name">Team Management (10+ members)</span>
                         <div class="skill-bar">
                             <div class="skill-progress" data-width="95%"></div>
                         </div>
@@ -438,9 +447,6 @@
 
     <!-- Portfolio Section -->
     <section id="portfolio" class="portfolio">
-        <div class="section-progress">
-            <div class="section-progress-fill" id="portfolioProgress"></div>
-        </div>
         <div class="container">
             <h2 class="section-title font-bold scroll-animate-fade">Featured Projects</h2>
             <div class="portfolio-grid">
@@ -838,6 +844,36 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="recommendation-card">
+                        <div class="quote-icon">
+                            <i class="fas fa-quote-right"></i>
+                        </div>
+                        <div class="recommendation-content">
+                            <p>I have known Santhosh for many years, and I can confidently say that he is a hardworking, reliable, and dedicated individual. His positive attitude and strong commitment to his work always stand out. He is someone who takes responsibility seriously and consistently strives to deliver quality results. Apart from his professional abilities, he is also a supportive team player who maintains good relationships with colleagues. He is a very talented professional and a very kind hearted person.</p>
+                        </div>
+                        <div class="recommendation-author">
+                            <div class="author-info">
+                                <div class="author-avatar">DK</div>
+                                <div class="author-details">
+                                    <div class="author-name-line">
+                                        <h4>Dilipkumar D P</h4>
+                                        <div class="rating-stars">
+                                            <i class="fas fa-star star"></i>
+                                            <i class="fas fa-star star"></i>
+                                            <i class="fas fa-star star"></i>
+                                            <i class="fas fa-star star"></i>
+                                            <i class="fas fa-star star"></i>
+                                        </div>
+                                    </div>
+                                    <div class="author-designation-line">
+                                        <p>Senior eCOA Specialist at Eli Lilly</p>
+                                        <span class="author-role">Fellow Student</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 
                 <div class="card-controls">
@@ -859,58 +895,44 @@
                         
                         <input type="radio" id="card5" name="recommendation" value="5">
                         <label for="card5" class="card-radio-btn" data-card="5"></label>
+                        
+                        <input type="radio" id="card6" name="recommendation" value="6">
+                        <label for="card6" class="card-radio-btn" data-card="6"></label>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Insights Section -->
+    <!-- Insights Section - Combined Posts & Videos -->
     <section id="insights" class="insights">
         <div class="container">
-            <h2 class="section-title font-bold scroll-animate-fade">Latest Insights</h2>
-            <div class="insights-grid">
-                <article class="insight-card glass hover-lift scroll-animate-zoom">
-                    <div class="insight-meta">
-                        <span class="insight-date text-small font-medium">Dec 2024</span>
-                        <span class="insight-category text-small font-semibold">AI & Automation</span>
-                    </div>
-                    <h3 class="font-semibold">Leveraging AI Tools for Development Team Productivity</h3>
-                    <p class="font-normal">How we achieved 40% reduction in manual tasks using Amazon Q, GitHub Copilot, and n8n workflow automation in our development process.</p>
-                    <div class="insight-tags">
-                        <span>AI</span>
-                        <span>Productivity</span>
-                        <span>Automation</span>
-                    </div>
-                </article>
-                
-                <article class="insight-card scroll-animate-zoom">
-                    <div class="insight-meta">
-                        <span class="insight-date">Nov 2024</span>
-                        <span class="insight-category">Leadership</span>
-                    </div>
-                    <h3>Scaling Engineering Teams in HRTech</h3>
-                    <p>Strategies for managing cross-functional teams of 10+ members while maintaining 95% sprint goal achievement in fast-paced environments.</p>
-                    <div class="insight-tags">
-                        <span>Leadership</span>
-                        <span>Agile</span>
-                        <span>Team Management</span>
-                    </div>
-                </article>
-                
-                <article class="insight-card scroll-animate-zoom">
-                    <div class="insight-meta">
-                        <span class="insight-date">Oct 2024</span>
-                        <span class="insight-category">Cloud Architecture</span>
-                    </div>
-                    <h3>Cloud-Native Architecture for Enterprise Applications</h3>
-                    <p>Best practices for migrating legacy systems to AWS cloud infrastructure while serving 300,000+ daily active users.</p>
-                    <div class="insight-tags">
-                        <span>AWS</span>
-                        <span>Architecture</span>
-                        <span>Scalability</span>
-                    </div>
-                </article>
+            <h2 class="section-title font-bold scroll-animate-fade">Insights</h2>
+            
+            <!-- LinkedIn Posts Subsection -->
+            <div class="insights-subsection">
+                <h3 class="subsection-title scroll-animate"><i class="fab fa-linkedin"></i> Latest LinkedIn Articles</h3>
+                <div class="linkedin-grid">
+                    <div class="youtube-loading">Loading Articles...</div>
+                </div>
+                <div class="insights-cta scroll-animate">
+                    <a href="articles.html" class="btn btn-primary">
+                        <i class="fab fa-linkedin" aria-hidden="true"></i> View All Articles
+                    </a>
+                </div>
+            </div>
+            
+            <!-- YouTube Videos Subsection -->
+            <div class="insights-subsection">
+                <h3 class="subsection-title scroll-animate"><i class="fab fa-youtube"></i> Latest Videos</h3>
+                <div class="youtube-grid">
+                    <div class="youtube-loading">Loading videos...</div>
+                </div>
+                <div class="insights-cta scroll-animate">
+                    <a href="videos.html" class="btn btn-primary">
+                        <i class="fab fa-youtube" aria-hidden="true"></i> View All Videos
+                    </a>
+                </div>
             </div>
         </div>
     </section>
@@ -939,7 +961,15 @@
                     </div>
                     <div class="contact-item scroll-animate">
                         <i class="fab fa-linkedin" aria-hidden="true"></i>
-                        <span>linkedin.com/in/santhoshanand</span>
+                        <span><a href="https://www.linkedin.com/in/santhoshanand" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">linkedin.com/in/santhoshanand</a></span>
+                    </div>
+                    <div class="contact-item scroll-animate">
+                        <i class="fab fa-youtube" aria-hidden="true"></i>
+                        <span><a href="https://www.youtube.com/@creativesmarttech" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">Creative Smart Tech</a></span>
+                    </div>
+                    <div class="contact-item scroll-animate">
+                        <i class="fab fa-whatsapp" aria-hidden="true"></i>
+                        <span><a href="https://whatsapp.com/channel/0029VbCcBxWJf05lQvBem22R" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">Creative Smart Tech</a></span>
                     </div>
                 </div>
                 
@@ -1041,18 +1071,37 @@
     <!-- Footer -->
     <footer class="footer">
         <div class="container">
-            <p style="color: white;">Made with ❤️ by Santhosh Anand © 2025</p>
+            <p style="color: white;">Made with ❤️ by Santhosh Anand © <script>document.write(new Date().getFullYear())</script></p>
         </div>
     </footer>
 
+    <script>
+        // Dynamic experience years - increments every November
+        (function() {
+            var now = new Date();
+            var baseYears = 13; // as of October 2024
+            var extraYears = now.getFullYear() - 2026;
+            if (now.getMonth() >= 10) extraYears++; // month 10 = November
+            var years = baseYears + Math.max(0, extraYears);
+            document.querySelectorAll('.dynamic-years').forEach(function(el) {
+                if (el.tagName === 'H3') el.textContent = years + '+';
+                else el.textContent = years;
+            });
+            document.querySelector('meta[name="description"]').setAttribute('content', 'Santhosh Anand - Senior Development Manager with ' + years + '+ years experience in .NET, AWS, and team leadership. Expert in HRTech, HealthTech, and enterprise solutions.');
+            document.querySelector('meta[property="og:description"]').setAttribute('content', years + '+ years experience leading software development teams. Expert in .NET, AWS, and enterprise solutions.');
+            document.querySelector('meta[property="twitter:description"]').setAttribute('content', years + '+ years experience leading software development teams. Expert in .NET, AWS, and enterprise solutions.');
+        })();
+    </script>
     <script src="script.js"></script>
+    <script src="config.js"></script>
     <script src="linkedin-posts.js"></script>
+    <script src="youtube-videos.js"></script>
     
     <!-- Service Worker Registration -->
     <script>
     if ('serviceWorker' in navigator) {
         window.addEventListener('load', () => {
-            navigator.serviceWorker.register('/sw.js')
+            navigator.serviceWorker.register('sw.js')
                 .then(registration => {
                     console.log('SW registered: ', registration);
                 })
