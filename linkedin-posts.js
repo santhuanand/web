@@ -1,9 +1,9 @@
 // LinkedIn Posts Integration with Google Sheets
 class LinkedInPostsManager {
     constructor() {
-        this.sheetId = '12DsWwpdqIcNTPyusaPuINW6_BAPtRrVdA-s9ZFPGWKc';
-        this.apiKey = window.__GOOGLE_API_KEY__ || '';
-        this.range = 'LinkedIn Articles!A:D';
+        this.apiKey = window.__API_KEY__ || '';
+        this.sheetId = window.__YT_SHEET_ID__ || '';
+        this.range = window.__LI_SHEET_RANGE__ || 'LinkedIn Articles!A:D';
         this.maxPosts = 6;
 
         this.categories = [

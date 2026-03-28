@@ -8,7 +8,7 @@
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta http-equiv="X-XSS-Protection" content="1; mode=block">
     <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
-    <meta name="description" content="Read all LinkedIn articles and insights by Santhosh Anand on technology, leadership, and cloud architecture">
+    <meta name="description" content="Read all LinkedIn articles and perspectives by Santhosh Anand on technology, leadership, and cloud architecture">
     <meta name="author" content="Santhosh Anand">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://www.asnrtech.com/articles.html">
@@ -20,12 +20,17 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.asnrtech.com/articles.html">
     <meta property="og:title" content="All Posts - Santhosh Anand">
-    <meta property="og:description" content="Read all LinkedIn articles and insights by Santhosh Anand on technology, leadership, and cloud architecture">
+    <meta property="og:description" content="Read all LinkedIn articles and perspectives by Santhosh Anand on technology, leadership, and cloud architecture">
     <meta property="og:image" content="https://www.asnrtech.com/Photo.webp">
     <title>All Posts - Santhosh Anand | LinkedIn</title>
-    <link rel="stylesheet" href="styles.css">
-    <link rel="stylesheet" href="vendor/fontawesome/css/all.min.css">
-    <link href="vendor/fonts/inter.css" rel="stylesheet">
+    <style>
+    *,*::before,*::after{box-sizing:border-box}body{margin:0}:root{--primary:#6366f1;--gradient-secondary:linear-gradient(135deg,#6366f1 0%,#8b5cf6 50%,#06b6d4 100%);--transition:all 0.4s cubic-bezier(0.23,1,0.32,1);--bg-primary:#fff;--text-primary:#333;--navbar-bg:rgba(255,255,255,0.95);--nav-link-color:#333;--nav-logo-color:#2563eb;--hamburger-color:#333;--nav-menu-bg:rgba(255,255,255,0.98);--section-alt-bg:#f8fafc;--text-muted:#6b7280;color-scheme:light dark}[data-theme="dark"]{--bg-primary:#000;--text-primary:#fff;--navbar-bg:rgba(0,0,0,0.95);--nav-link-color:#fff;--nav-logo-color:#4f46e5;--hamburger-color:#fff;--nav-menu-bg:#000;--section-alt-bg:#111;--text-muted:#9ca3af}html{scroll-behavior:smooth;scroll-padding-top:80px;background-color:var(--bg-primary);overflow-x:hidden}body{font-family:'Inter',sans-serif;line-height:1.6;color:var(--text-primary);background:var(--bg-primary);overflow-x:hidden;opacity:0;animation:pageLoad .8s ease forwards}@keyframes pageLoad{to{opacity:1}}.navbar{position:fixed;top:0;width:100%;background:var(--navbar-bg);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.2);z-index:1000;transition:all .3s ease;box-shadow:0 8px 32px 0 rgba(31,38,135,0.1)}.nav-container{max-width:1200px;margin:0 auto;padding:0 20px;display:flex;justify-content:space-between;align-items:center;height:70px}.nav-logo{font-size:1.5rem;font-weight:700;color:var(--nav-logo-color)}.nav-menu{display:flex;list-style:none;gap:clamp(.5rem,1.5vw,2rem)}.nav-link{text-decoration:none;color:var(--nav-link-color);font-weight:500;transition:color .3s ease}.hamburger{display:none;flex-direction:column;cursor:pointer}.hamburger span{width:25px;height:3px;background:var(--hamburger-color);margin:3px 0;transition:.3s}@media(max-width:768px){.hamburger{display:flex}.nav-menu{position:fixed;left:-100%;top:70px;flex-direction:column;background-color:var(--nav-menu-bg);backdrop-filter:blur(20px);width:100%;text-align:center;transition:.3s;box-shadow:0 10px 27px rgba(0,0,0,0.1);padding:2rem 0;z-index:999}.nav-menu.active{left:0}}
+    </style>
+    <link rel="stylesheet" href="styles.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="styles.css"></noscript>
+    <link rel="stylesheet" href="vendor/fontawesome/css/all.min.css" media="print" onload="this.media='all'">
+    <link href="vendor/fonts/inter.css" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="vendor/fontawesome/css/all.min.css"><link rel="stylesheet" href="vendor/fonts/inter.css"></noscript>
 </head>
 <body>
     <script>document.body.setAttribute('data-theme', localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));</script>
@@ -40,7 +45,7 @@
                 <li><a href="index.html#portfolio" class="nav-link">Projects</a></li>
                 <li><a href="certificates.html" class="nav-link">Certifications</a></li>
                 <li><a href="index.html#recommendations" class="nav-link">Recommendations</a></li>
-                <li><a href="index.html#insights" class="nav-link">Insights</a></li>
+                <li><a href="index.html#insights" class="nav-link">Thought Leadership</a></li>
                 <li><a href="index.html#contact" class="nav-link">Contact</a></li>
             </ul>
             <div class="hamburger">
@@ -57,10 +62,10 @@
                 <div class="page-header">
                     <a href="index.html#insights" class="back-link"><i class="fas fa-arrow-left"></i> Back</a>
                     <h1 class="section-title font-bold">All LinkedIn Articles</h1>
-                    <p class="page-subtitle">Insights on Technology, Leadership, AI Tech Stacks, and more</p>
+                    <p class="page-subtitle">Perspectives on Technology, Leadership, AI Tech Stacks, and more</p>
                 </div>
 
-                <div class="linkedin-grid" id="allArticlesGrid">
+                <div class="linkedin-grid" id="allArticlesGrid" aria-live="polite">
                     <div class="youtube-loading">Loading Articles...</div>
                 </div>
 
@@ -84,191 +89,7 @@
     </button>
 
     <script src="config.js"></script>
-    <script>
-        class AllArticlesManager {
-            constructor() {
-                this.sheetId = '12DsWwpdqIcNTPyusaPuINW6_BAPtRrVdA-s9ZFPGWKc';
-                this.apiKey = window.__GOOGLE_API_KEY__ || '';
-                this.range = 'LinkedIn Articles!A:D';
-
-                this.categories = [
-                    { keywords: ['leadership', 'team', 'management', 'leader', 'mentor'], icon: 'fas fa-users-cog', colors: ['#667eea', '#764ba2'] },
-                    { keywords: ['ai', 'artificial', 'machine', 'automation', 'copilot', 'chatgpt'], icon: 'fas fa-robot', colors: ['#f093fb', '#f5576c'] },
-                    { keywords: ['cloud', 'aws', 'azure', 'devops', 'infrastructure'], icon: 'fas fa-cloud', colors: ['#4facfe', '#00f2fe'] },
-                    { keywords: ['code', 'developer', 'programming', 'software', 'tech', '.net'], icon: 'fas fa-code', colors: ['#43e97b', '#38f9d7'] },
-                    { keywords: ['data', 'analytics', 'database', 'sql'], icon: 'fas fa-chart-bar', colors: ['#fa709a', '#fee140'] },
-                    { keywords: ['security', 'cyber', 'protect'], icon: 'fas fa-shield-alt', colors: ['#a8edea', '#fed6e3'] },
-                    { keywords: ['career', 'growth', 'success', 'journey', 'personal'], icon: 'fas fa-rocket', colors: ['#ff9a9e', '#fecfef'] },
-                    { keywords: ['agile', 'scrum', 'sprint', 'project'], icon: 'fas fa-tasks', colors: ['#a18cd1', '#fbc2eb'] },
-                    { keywords: ['social', 'community', 'network', 'connect'], icon: 'fas fa-handshake', colors: ['#ffecd2', '#fcb69f'] },
-                ];
-                this.fallbacks = [
-                    { icon: 'fas fa-lightbulb', colors: ['#0077b5', '#00a0dc'] },
-                    { icon: 'fas fa-pen-fancy', colors: ['#667eea', '#764ba2'] },
-                    { icon: 'fas fa-bullhorn', colors: ['#f093fb', '#f5576c'] },
-                    { icon: 'fas fa-compass', colors: ['#4facfe', '#00f2fe'] },
-                    { icon: 'fas fa-star', colors: ['#43e97b', '#38f9d7'] },
-                    { icon: 'fas fa-gem', colors: ['#fa709a', '#fee140'] }
-                ];
-            }
-
-            async init() {
-                if (!this.apiKey) return;
-                try {
-                    await this.loadArticles();
-                } catch (error) {
-                    console.error('Failed to load posts:', error);
-                    document.getElementById('allArticlesGrid').innerHTML = '<div class="youtube-loading">Failed to load posts</div>';
-                }
-            }
-
-            async loadArticles() {
-                const url = `https://sheets.googleapis.com/v4/spreadsheets/${this.sheetId}/values/${encodeURIComponent(this.range)}?key=${this.apiKey}`;
-                const response = await fetch(url);
-                if (!response.ok) throw new Error('API error');
-                const data = await response.json();
-                if (!data.values || data.values.length < 2) return;
-                const posts = this.parseSheetData(data.values);
-                this.renderArticles(posts);
-            }
-
-            parseSheetData(rows) {
-                const posts = [];
-                for (let i = 1; i < rows.length; i++) {
-                    const row = rows[i];
-                    if (!row || row.length < 4) continue;
-                    const postUrl = row[3] || '';
-                    if (!postUrl) continue;
-                    posts.push({
-                        rawDate: row[1] || '',
-                        date: this.formatDate(row[1] || ''),
-                        title: row[2] || 'LinkedIn Post',
-                        url: postUrl
-                    });
-                }
-                posts.sort((a, b) => new Date(b.rawDate) - new Date(a.rawDate));
-                return posts;
-            }
-
-            formatDate(dateString) {
-                if (!dateString) return '';
-                try {
-                    let date;
-                    if (dateString.includes('/') || dateString.includes('-')) date = new Date(dateString);
-                    else if (!isNaN(dateString)) {
-                        const epoch = new Date(1900, 0, 1);
-                        date = new Date(epoch.getTime() + (dateString - 2) * 86400000);
-                    } else date = new Date(dateString);
-                    if (isNaN(date.getTime())) return dateString;
-                    return date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' });
-                } catch { return dateString; }
-            }
-
-            getCategory(title, index) {
-                const lower = title.toLowerCase();
-                for (const cat of this.categories) {
-                    if (cat.keywords.some(kw => lower.includes(kw))) return cat;
-                }
-                return this.fallbacks[index % this.fallbacks.length];
-            }
-
-            renderArticles(posts) {
-                const container = document.getElementById('allArticlesGrid');
-                container.innerHTML = '';
-                posts.forEach((post, index) => {
-                    const card = document.createElement('article');
-                    card.className = 'linkedin-card glass hover-lift';
-                    card.style.cursor = 'pointer';
-                    card.setAttribute('role', 'link');
-                    card.setAttribute('tabindex', '0');
-                    card.setAttribute('aria-label', `Read LinkedIn post: ${post.title}`);
-                    card.onclick = () => window.open(post.url, '_blank', 'noopener,noreferrer');
-                    card.onkeydown = (e) => { if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); window.open(post.url, '_blank', 'noopener,noreferrer'); } };
-
-                    const cat = this.getCategory(post.title, index);
-                    const [c1, c2] = cat.colors;
-
-                    const thumbDiv = document.createElement('div');
-                    thumbDiv.className = 'linkedin-thumbnail';
-
-                    const gradient = document.createElement('div');
-                    gradient.className = 'linkedin-gradient';
-                    gradient.style.background = `linear-gradient(135deg, ${c1} 0%, ${c2} 100%)`;
-
-                    const pattern = document.createElement('div');
-                    pattern.className = 'gradient-pattern';
-
-                    const dateSpan = document.createElement('span');
-                    dateSpan.className = 'gradient-date';
-                    dateSpan.textContent = post.date;
-
-                    const iconDiv = document.createElement('div');
-                    iconDiv.className = 'category-icon';
-                    const iconEl = document.createElement('i');
-                    iconEl.className = cat.icon;
-                    iconDiv.appendChild(iconEl);
-
-                    const titleP = document.createElement('p');
-                    titleP.className = 'gradient-title';
-                    titleP.textContent = post.title;
-
-                    gradient.append(pattern, dateSpan, iconDiv, titleP);
-
-                    const btnDiv = document.createElement('div');
-                    btnDiv.className = 'linkedin-button';
-                    const btnIcon = document.createElement('i');
-                    btnIcon.className = 'fab fa-linkedin-in';
-                    btnDiv.appendChild(btnIcon);
-
-                    thumbDiv.append(gradient, btnDiv);
-
-                    card.appendChild(thumbDiv);
-                    container.appendChild(card);
-                });
-            }
-
-            escapeHtml(text) {
-                const div = document.createElement('div');
-                div.textContent = text;
-                return div.innerHTML;
-            }
-        }
-
-        // Mobile menu toggle
-        const hamburger = document.querySelector('.hamburger');
-        const navMenu = document.querySelector('.nav-menu');
-        hamburger?.addEventListener('click', function(e) {
-            e.preventDefault();
-            this.classList.toggle('active');
-            navMenu.classList.toggle('active');
-            document.body.style.overflow = navMenu.classList.contains('active') ? 'hidden' : '';
-        });
-        document.addEventListener('click', (e) => {
-            if (hamburger && navMenu && !hamburger.contains(e.target) && !navMenu.contains(e.target)) {
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('active');
-                document.body.style.overflow = '';
-            }
-        });
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && navMenu?.classList.contains('active')) {
-                hamburger.classList.remove('active');
-                navMenu.classList.remove('active');
-                document.body.style.overflow = '';
-            }
-        });
-
-        // Scroll to top
-        const scrollBtn = document.getElementById('scrollToTop');
-        window.addEventListener('scroll', () => {
-            scrollBtn.classList.toggle('visible', window.scrollY > 300);
-        });
-        scrollBtn?.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
-
-        // Init
-        document.addEventListener('DOMContentLoaded', () => {
-            setTimeout(() => new AllArticlesManager().init(), 100);
-        });
-    </script>
+    <script src="common.js"></script>
+    <script src="articles-page.js"></script>
 </body>
 </html>

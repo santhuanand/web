@@ -1,8 +1,8 @@
 // YouTube Videos Integration with Google Sheet Fallback
 class YouTubeVideosManager {
     constructor() {
-        this.apiKey = window.__GOOGLE_API_KEY__ || '';
-        this.channelHandle = 'creativesmarttech';
+        this.apiKey = window.__API_KEY__ || '';
+        this.channelId = window.__YT_CHANNEL_ID__ || '';
         this.maxVideos = 6;
         this.sheetId = window.__YT_SHEET_ID__ || '';
         this.sheetRange = window.__YT_SHEET_RANGE__ || '';
@@ -15,7 +15,7 @@ class YouTubeVideosManager {
 
     async init() {
         if (!this.apiKey) {
-            this.log('No API key');
+            this.log('No API key configured');
             this.showError();
             return;
         }
@@ -48,17 +48,13 @@ class YouTubeVideosManager {
     }
 
     async loadVideos() {
-        const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=UCL5u4u2kAytov22ITSXFI0g&maxResults=${this.maxVideos}&order=date&type=video&key=${this.apiKey}`;
+        const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&channelId=${this.channelId}&maxResults=${this.maxVideos}&order=date&type=video&key=${this.apiKey}`;
         this.log('Fetching:', url);
 
         const response = await fetch(url);
         this.log('Response status:', response.status);
 
-        if (!response.ok) {
-            const err = await response.json();
-            this.log('API Error:', err);
-            throw new Error(`API ${response.status}`);
-        }
+        if (!response.ok) throw new Error(`API ${response.status}`);
 
         const data = await response.json();
         this.log('Data:', data);

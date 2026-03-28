@@ -1,18 +1,8 @@
-// API key is encoded to avoid plain-text exposure in source code
-// SECURITY: This key is still visible to anyone inspecting the page.
-// You MUST restrict this key in Google Cloud Console:
-//   1. Application restrictions → HTTP referrers → add https://www.asnrtech.com/*
-//   2. API restrictions → restrict to Google Sheets API and YouTube Data API v3 only
-// For true security, proxy API calls through a backend (e.g., AWS Lambda + API Gateway)
+// API Configuration
 (function() {
-    var _k = [
-        'QUl6YVN5Q1Ns',
-        'aF9aOUwwMHAx',
-        'RTFjeXl6S19a',
-        'UlU1a3JlcDUw',
-        'RV9F'
-    ];
-    window.__GOOGLE_API_KEY__ = atob(_k.join(''));
+    window.__API_KEY__ = 'AIzaSyCSlh_Z9L00p1E1cyyzK_ZRU5krep50E_E';
+    window.__YT_CHANNEL_ID__ = 'UCL5u4u2kAytov22ITSXFI0g';
     window.__YT_SHEET_ID__ = '12DsWwpdqIcNTPyusaPuINW6_BAPtRrVdA-s9ZFPGWKc';
     window.__YT_SHEET_RANGE__ = 'YouTube Videos!A:D';
+    window.__LI_SHEET_RANGE__ = 'LinkedIn Articles!A:D';
 })();
