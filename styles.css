@@ -3017,8 +3017,8 @@ body {
 
 .scroll-to-top {
     position: fixed;
-    bottom: 100px;
-    right: 30px;
+    bottom: 110px;
+    right: 33px;
     width: 50px;
     height: 50px;
     background: var(--gradient-secondary);
@@ -3046,7 +3046,7 @@ body {
 
 @supports (padding: env(safe-area-inset-bottom)) {
     .scroll-to-top {
-        bottom: calc(100px + env(safe-area-inset-bottom));
+        bottom: calc(110px + env(safe-area-inset-bottom));
     }
     .footer {
         padding-bottom: calc(2rem + env(safe-area-inset-bottom));
@@ -3056,8 +3056,8 @@ body {
 
 @media (max-width: 768px) {
     .scroll-to-top {
-        bottom: 80px;
-        right: 20px;
+        bottom: 90px;
+        right: 23px;
         width: 45px;
         height: 45px;
         font-size: 1rem;
