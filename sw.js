@@ -1,4 +1,4 @@
-const CACHE_NAME = 'santhosh-portfolio-v20250716d';
+const CACHE_NAME = 'santhosh-portfolio-v20250716w';
 const urlsToCache = [
   './',
   './index.html',
@@ -9,6 +9,7 @@ const urlsToCache = [
   './youtube-videos.js',
   './common.js',
   './certificates-page.js',
+  './chatbot.js',
   './articles-page.js',
   './videos-page.js',
   './articles.html',

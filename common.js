@@ -3,6 +3,31 @@
     // Theme detection (already set by inline script, this ensures icon sync)
     const theme = document.body.getAttribute('data-theme');
 
+    // Theme toggle
+    var themeToggle = document.getElementById('theme-toggle');
+    if (themeToggle) {
+        var updateIcon = function() {
+            var icon = themeToggle.querySelector('i');
+            if (icon) {
+                if (document.body.getAttribute('data-theme') === 'dark') {
+                    icon.classList.remove('fa-moon');
+                    icon.classList.add('fa-sun');
+                } else {
+                    icon.classList.remove('fa-sun');
+                    icon.classList.add('fa-moon');
+                }
+            }
+        };
+        updateIcon();
+        themeToggle.addEventListener('click', function() {
+            var current = document.body.getAttribute('data-theme');
+            var next = current === 'dark' ? 'light' : 'dark';
+            document.body.setAttribute('data-theme', next);
+            localStorage.setItem('theme', next);
+            updateIcon();
+        });
+    }
+
     // Mobile hamburger menu
     const hamburger = document.querySelector('.hamburger');
     const navMenu = document.querySelector('.nav-menu');

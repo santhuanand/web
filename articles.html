@@ -60,13 +60,21 @@
         <section class="articles-page">
             <div class="container">
                 <div class="page-header">
-                    <a href="index.html#insights" class="back-link"><i class="fas fa-arrow-left"></i> Back</a>
+                    <div class="page-header-top">
+                        <a href="index.html#insights" class="back-link"><i class="fas fa-arrow-left"></i> Back</a>
+                        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle between light and dark mode"><i class="fas fa-moon" aria-hidden="true"></i></button>
+                    </div>
                     <h1 class="section-title font-bold">All LinkedIn Articles</h1>
                     <p class="page-subtitle">Perspectives on Technology, Leadership, AI Tech Stacks, and more</p>
                 </div>
 
                 <div class="linkedin-grid" id="allArticlesGrid" aria-live="polite">
-                    <div class="youtube-loading">Loading Articles...</div>
+                    <div class="skeleton-card"><div class="skeleton-thumbnail"></div><div class="skeleton-content"><div class="skeleton-line"></div><div class="skeleton-line skeleton-line-short"></div></div></div>
+                    <div class="skeleton-card"><div class="skeleton-thumbnail"></div><div class="skeleton-content"><div class="skeleton-line"></div><div class="skeleton-line skeleton-line-short"></div></div></div>
+                    <div class="skeleton-card"><div class="skeleton-thumbnail"></div><div class="skeleton-content"><div class="skeleton-line"></div><div class="skeleton-line skeleton-line-short"></div></div></div>
+                    <div class="skeleton-card"><div class="skeleton-thumbnail"></div><div class="skeleton-content"><div class="skeleton-line"></div><div class="skeleton-line skeleton-line-short"></div></div></div>
+                    <div class="skeleton-card"><div class="skeleton-thumbnail"></div><div class="skeleton-content"><div class="skeleton-line"></div><div class="skeleton-line skeleton-line-short"></div></div></div>
+                    <div class="skeleton-card"><div class="skeleton-thumbnail"></div><div class="skeleton-content"><div class="skeleton-line"></div><div class="skeleton-line skeleton-line-short"></div></div></div>
                 </div>
 
                 <div class="youtube-cta">

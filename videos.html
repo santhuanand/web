@@ -60,13 +60,21 @@
         <section class="videos-page">
             <div class="container">
                 <div class="page-header">
-                    <a href="index.html#youtube-section" class="back-link"><i class="fas fa-arrow-left"></i> Back</a>
+                    <div class="page-header-top">
+                        <a href="index.html#youtube-section" class="back-link"><i class="fas fa-arrow-left"></i> Back</a>
+                        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle between light and dark mode"><i class="fas fa-moon" aria-hidden="true"></i></button>
+                    </div>
                     <h1 class="section-title font-bold">All Videos</h1>
                     <p class="page-subtitle">Watch tutorials, tech insights, and more from Creative Smart Tech</p>
                 </div>
                 
                 <div class="youtube-grid" id="allVideosGrid" aria-live="polite">
-                    <div class="youtube-loading">Loading videos...</div>
+                    <div class="skeleton-card"><div class="skeleton-thumbnail"></div><div class="skeleton-content"><div class="skeleton-line"></div><div class="skeleton-line skeleton-line-short"></div></div></div>
+                    <div class="skeleton-card"><div class="skeleton-thumbnail"></div><div class="skeleton-content"><div class="skeleton-line"></div><div class="skeleton-line skeleton-line-short"></div></div></div>
+                    <div class="skeleton-card"><div class="skeleton-thumbnail"></div><div class="skeleton-content"><div class="skeleton-line"></div><div class="skeleton-line skeleton-line-short"></div></div></div>
+                    <div class="skeleton-card"><div class="skeleton-thumbnail"></div><div class="skeleton-content"><div class="skeleton-line"></div><div class="skeleton-line skeleton-line-short"></div></div></div>
+                    <div class="skeleton-card"><div class="skeleton-thumbnail"></div><div class="skeleton-content"><div class="skeleton-line"></div><div class="skeleton-line skeleton-line-short"></div></div></div>
+                    <div class="skeleton-card"><div class="skeleton-thumbnail"></div><div class="skeleton-content"><div class="skeleton-line"></div><div class="skeleton-line skeleton-line-short"></div></div></div>
                 </div>
                 
                 <div class="load-more-container" id="loadMoreContainer" style="display: none;">

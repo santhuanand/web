@@ -85,6 +85,7 @@
     </script>
 </head>
 <body>
+    <script>document.body.setAttribute('data-theme', localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light'));</script>
 
     
     <!-- Reading Progress Bar -->
@@ -981,7 +982,9 @@
             <div class="insights-subsection">
                 <h3 class="subsection-title scroll-animate"><i class="fab fa-linkedin"></i> Leadership & Tech Articles</h3>
                 <div class="linkedin-grid">
-                    <div class="youtube-loading">Loading Articles...</div>
+                    <div class="skeleton-card"><div class="skeleton-thumbnail"></div><div class="skeleton-content"><div class="skeleton-line"></div><div class="skeleton-line skeleton-line-short"></div></div></div>
+                    <div class="skeleton-card"><div class="skeleton-thumbnail"></div><div class="skeleton-content"><div class="skeleton-line"></div><div class="skeleton-line skeleton-line-short"></div></div></div>
+                    <div class="skeleton-card"><div class="skeleton-thumbnail"></div><div class="skeleton-content"><div class="skeleton-line"></div><div class="skeleton-line skeleton-line-short"></div></div></div>
                 </div>
                 <div class="insights-cta scroll-animate">
                     <a href="articles.html" class="btn btn-primary">
@@ -993,7 +996,9 @@
             <div class="insights-subsection" id="youtube-section">
                 <h3 class="subsection-title scroll-animate"><i class="fab fa-youtube"></i> Tech Insights & Tutorials</h3>
                 <div class="youtube-grid">
-                    <div class="youtube-loading">Loading videos...</div>
+                    <div class="skeleton-card"><div class="skeleton-thumbnail"></div><div class="skeleton-content"><div class="skeleton-line"></div><div class="skeleton-line skeleton-line-short"></div></div></div>
+                    <div class="skeleton-card"><div class="skeleton-thumbnail"></div><div class="skeleton-content"><div class="skeleton-line"></div><div class="skeleton-line skeleton-line-short"></div></div></div>
+                    <div class="skeleton-card"><div class="skeleton-thumbnail"></div><div class="skeleton-content"><div class="skeleton-line"></div><div class="skeleton-line skeleton-line-short"></div></div></div>
                 </div>
                 <div class="insights-cta scroll-animate">
                     <a href="videos.html" class="btn btn-primary">
@@ -1163,6 +1168,7 @@
     <script src="config.js"></script>
     <script src="linkedin-posts.js"></script>
     <script src="youtube-videos.js"></script>
+    <script src="chatbot.js" defer></script>
     
     <!-- Service Worker Registration -->
     <script>
